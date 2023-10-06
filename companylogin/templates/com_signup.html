@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Companylogin</title>
+    <style>
+   .form{
+    background-color: rgb(223, 85, 161);
+    color: black;
+   }
+   .al{
+    color: black;
+    font-size: x-large;
+   }
+    </style>
+</head>
+<body>
+     <form action="" method="">
+        <h1>  SIGN UP PAGE </h1>
+        <div class="form">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username"> <br> <br>
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email"> <br> <br>
+            <label for="organizationname">Organization Name :</label>
+            <input type="text" id="organizationname" name="organizationname"> <br> <br>
+            <label for="password">Password</label>
+            <input type="text" name="password" id="password"> <br><br>
+            <label for="confirmpassword">Confirmpassword</label>
+            <input type="text" id="confirmpassword" name="confirmpassword"><br><br> <br>
+            <input type="submit" value="Login"> <br> <br>
+            <a href="{% url 'comlogin' %}" class="al">Already have account</a>
+        </div>
+     </form>
+</body>
+</html>

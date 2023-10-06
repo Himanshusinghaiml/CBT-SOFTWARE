@@ -1,5 +1,7 @@
 from django.urls import path
 from companylogin import views
 urlpatterns=[
-    path('companylogin/',views.company,name="companylogin"),
+    path('companyzone/',views.company,name="companyzone"),
+    path('comlogin/',views.comlogin,name="comlogin"),
+    path('comhomepage/',views.comhomepage,name="comhomepage"),
 ]
