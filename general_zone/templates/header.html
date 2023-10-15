@@ -10,7 +10,7 @@
 /* Add some basic styling for the header and navigation menu */
 
 header {
-    background-color: rgb(34, 21, 214); /* Background color for the header */
+    background-color: black; /* Background color for the header */
     color: #fff; /* Text color for the header */
     padding: 5px 0; /* Add padding to the header */
     /* text-align: right;    */
@@ -53,11 +53,11 @@ nav a:hover {
         <img src="{% static 'img/logo.png' %}" alt="education" height="10%" width="10%" class="logo"> 
         <nav> 
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="{% url 'companyzone' %}"> Companylogin</a> </li>
-                <li><a href="#login">Center Login</a></li>
-                <li><a href="#aboutus">About Us</a></li>
-                <li><a href="#contactus">Contact Us</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'comsignup' %}"> Companylogin</a> </li>
+                <li><a href="{% url 'centerlogin' %}">Center Login</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'contact' %}">Contact Us</a></li>
                 
                 
             </ul>
