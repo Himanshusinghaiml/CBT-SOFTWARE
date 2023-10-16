@@ -1,37 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> CBT</title>
-    <style>
-        .Login1
-        {
-            background-color: palevioletred;
-        }
-        .l{
-            font-size: xx-large;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/comlogin.css' %}" />
 </head>
 <body>
-    <form  method="POST">
-        {% csrf_token %}
-        <h1> Login page </h1>
-    <div class="Login1">
-        <label for=" username"> username :</label>
-        <input type="text" name="username" id="username"><br><br>
-        <label for="password">Password</label>
-        <input type="text" name="password" id="password"> <br><br>
-        
-        <button type="submit">Submit</button> <br><br>
-        <a href="{% url 'comsignup' %}" class="l">Create an account</a>
-    </div>
-    </form>
-</body>
-</html>
-<!-- {% load static %} 
-<link rel="stylesheet" href="{% static 'css/comlogin.css' %}">
+     
+
  
 <div class="login_page">
   <div class="login_header">
@@ -39,14 +17,17 @@
   </div>
   <div class="login_container_root">
     <div class="login_container">
-   
-<form method="POST" style="display: flex; flex-direction: column; align-items: center">
+      <form
+        method="post"
+        style="display: flex; flex-direction: column; align-items: center"
+      >
         {% csrf_token %}
-    <input
+        <input
           type="text"
           class="login_username"
           name="username"
-          placeholder="Username" />
+          placeholder="Username"
+        />
         <input
           type="password"
           class="login_password"
@@ -54,17 +35,14 @@
           placeholder="Password"
         />
         <p class="login_password_forget">Forget password</p>
-        
-        </a>
+         
 
         <button class="login_btn">Login</button>
       </form>
-       <p class="singup_btn">SingUp</p> -->
-      <!-- template.html -->
+      <p class="singup_btn"><a href="{% url 'comsignup' %}" class="singup_btn">sign up</a></p>
 
-      
-
-      <!-- <div class="login_rights">
+       
+      <div class="login_rights">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -78,12 +56,13 @@
           />
         </svg>
         <p>
-           <a href="{% url 'comsignup' %}" style="color: white;"> Create an Account  </a><br><br>
-          <br>Perform login securely <br />
+          Perform login securely <br />
           All Copyrights Reserve to CBT.
         </p>
       </div>
     </div>
   </div>
-</div>  -->
- 
+</div>
+
+</body>
+</html>
