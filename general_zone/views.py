@@ -13,3 +13,14 @@ def about(request):
 
 def contact(request):
     return render(request,'contact.html')
+
+def courses(request):
+    return render(request,'courses.html')
+
+def pricing(request):
+    return render(request,'pricing.html')
+
+def event(request):
+    return render(request,'events.html')
+def trainer(req):
+    return render(req,'trainers.html')
