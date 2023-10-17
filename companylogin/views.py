@@ -1,9 +1,12 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate,login
- 
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required,user_passes_test
+from django.urls import reverse
+from django.views.decorators.cache import never_cache
 
 # Create your views here.
+ 
 def comsignup(request):
     if request.method == 'POST':
         username=request.POST.get('username')
@@ -23,13 +26,13 @@ def comsignup(request):
             email=email,
             password=password,
         )
-        login(request, sign_up)
+        # login(request, sign_up)
         sign_up.save()
         # return HttpResponse("successfully data saved in databse")
-        return redirect("comlogin")
-        
+        return redirect("comlogin")    
     return render(request,'com_signup.html')
 
+@never_cache
 def comlogin(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -43,29 +46,17 @@ def comlogin(request):
 
     return render(request, 'com_login.html')
 
-     
+    
 
-
+@login_required(login_url='homepage')
 def comhomepage(request):
     return render(request,'com_homepage.html')
 
+@login_required(login_url='comlogin')
 def comdashboard(request):
     return render(request,'com_dashboard.html')
 
 def comlogout(request):
-    content = """
-    <html>
-    <head>
-        <title> CBT</title>
-    </head>
-    <body>
-    <center>  <h1> Succesfully logout </h1></center>
-         
-         
-        <center><a href="/">CLICK THE LINK AND REDIRECT THE HOME PAGE </a></center>
-    </body>
-    </html>
-    """
-    response = HttpResponse(content, content_type="text/html")
-    return response
-    # return HttpResponse("Successfully Log out <li><a href=" ">Home</a></li> ")
+    logout(request)
+    return redirect('comlogin')
+    
