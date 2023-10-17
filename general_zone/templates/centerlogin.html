@@ -8,9 +8,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/comlogin.css' %}" />
 </head>
 <body>
-     
-
- 
 <div class="login_page">
   <div class="login_header">
     <h1 class="login_logo">CBT</h1>
@@ -37,9 +34,10 @@
         <p class="login_password_forget">Forget password</p>
          
 
-        <button class="login_btn">Login</button>
+        <button class="login_btn"><a href="{% url 'cendashboard' %}">Login</a></button>
       </form>
-      <p class="singup_btn">SingUp</p>
+      <!-- <p class="singup_btn">SingUp</p> -->
+
 
        
       <div class="login_rights">
