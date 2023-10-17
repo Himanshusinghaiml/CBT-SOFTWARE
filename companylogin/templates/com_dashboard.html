@@ -4,22 +4,22 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bootstrap Dashboard by Bootstrapious.com</title>
+    <title>compnayzone</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Google fonts - Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <!-- Choices CSS-->
-    <link rel="stylesheet" href="vendor/choices.js/public/assets/styles/choices.min.css">
+    <link rel="stylesheet" href="{% static 'vendor/choices.js/public/assets/styles/choices.min.css' %}">
     <!-- Custom Scrollbar-->
-    <link rel="stylesheet" href="vendor/overlayscrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="{% static 'vendor/overlayscrollbars/css/OverlayScrollbars.min.css' %}">
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="{% static 'css/style.default.css' %}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="{% static 'https://oss.maxc' %}dn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="{% static 'https://oss.maxc' %}dn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -32,7 +32,7 @@
         <div class="sidebar-header d-flex align-items-center justify-content-center p-3 mb-3">
           <!-- User Info-->
           <div class="sidenav-header-inner text-center"><img class="img-fluid rounded-circle avatar mb-3" src="{% static 'img/avatar-7.jpg' %}" alt="person">
-            <h2 class="h5 text-white text-uppercase mb-0">Nathan Andrews</h2>
+            <h2 class="h5 text-white text-uppercase mb-0">Himanshu singh</h2>
             <p class="text-sm mb-0 text-muted">Web Developer</p>
           </div>
           <!-- Small Brand information, appears on minimized sidebar--><a class="brand-small text-center" href="index.html">
@@ -99,7 +99,7 @@
     </nav>
     <div class="page">
       <!-- navbar-->src
- {% static '     <header cla' %}ss="header mb-5 pb-3">
+      <header class="header mb-5 pb-3">
         <nav class="nav navbar fixed-top">
           <div class="container-fluid">
             <div class="d-flex align-items-center justify-content-between w-100">
@@ -691,11 +691,11 @@
       </footer>
     </div>
     <!-- JavaScript files-->
-    <script src= "vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'vendor/chart.js/' %}Chart.min.js"></script>
-    <script src="{% static 'vendor/just-vali' %}date/js/just-validate.min.js"></script>
-    <script src="{% static 'vendor/choices.j' %}s/public/assets/scripts/choices.min.js"></script>
-    <script src="{% static 'vendor/overlaysc' %}rollbars/js/OverlayScrollbars.min.js"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+    <script src="{% static 'vendor/just-validate/js/just-validate.min.js' %}"></script>
+    <script src="{% static 'vendor/choices.js/public/assets/scripts/choices.min.js"' %}></script>
+    <script src="{% static 'vendor/overlayscrollbars/js/OverlayScrollbars.min.js' %}"></script>
     <script src="{% static 'js/charts-home.js' %}"></script>
     <!-- Main File-->
     <script src="{% static 'js/front.js'%}"></script>
