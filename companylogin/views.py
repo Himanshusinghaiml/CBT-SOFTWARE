@@ -22,7 +22,7 @@ def comsignup(request):
         # phone = request.POST.get('phone')
         email = request.POST.get('email')
         password = request.POST.get('password')
-        confirm_password =request.POST.get('cpassword')
+        cpassword =request.POST.get('cpassword')
         sign_up = User.objects.create_user(
             username=username,
             first_name=firstname,
