@@ -18,11 +18,15 @@ def comsignup(request):
         username=request.POST.get('username')
         firstname = request.POST.get('firstname')
         lastname = request.POST.get('lastname')
-        # organization = request.POST.get('organization')
-        # phone = request.POST.get('phone')
+        organization = request.POST.get('organization')
+        phone = request.POST.get('phone')
         email = request.POST.get('email')
         password = request.POST.get('password')
         cpassword =request.POST.get('cpassword')
+        if(password!=cpassword):
+            return redirect('comsignup')
+        if(len(phone)!=10 or len(phone)<10 or len(phone)>10):
+            return redirect('comsignup')
         sign_up = User.objects.create_user(
             username=username,
             first_name=firstname,

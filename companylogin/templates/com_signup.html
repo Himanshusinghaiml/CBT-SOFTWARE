@@ -46,7 +46,7 @@
             <label class="signup_tr_td_label">Organization :</label>
           </td>
           <td class="signup_tr_td_2">
-            <input type="text" class="signup_tr_td_input" required/>
+            <input type="text" class="signup_tr_td_input" name="organizations"/>
           </td>
         </tr>
         <tr class="signup_tr">
@@ -54,7 +54,7 @@
             <label class="signup_tr_td_label">Phone no :</label>
           </td>
           <td class="signup_tr_td_2">
-              <input type="text" class="signup_tr_td_phone_input" required/>
+              <input type="text" class="signup_tr_td_phone_input" name="phone"/>
             </div>
           </td>
         </tr>
@@ -126,10 +126,10 @@
           </td>
         </tr>
       </table>
-      <div style="margin-top: 30px">
+      <div style="margin-top:0px">
         <button class="signup_btn">Sign up</button><br>
-      </div>
-      <h2>Already have account : <a href= "{% url 'comlogin' %}">Sign in</a></h2>
+      </div> 
+      <a href= "{% url 'comlogin' %}" class="signup_btn" style="position: bottom;">Sign in</a>
     </form>
   </div>
 </div> 
