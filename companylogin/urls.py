@@ -4,7 +4,7 @@ from companylogin import views
 urlpatterns=[
     path('comsignup/',views.comsignup,name="comsignup"),
     path('comlogin/',views.comlogin,name="comlogin"),
-    path('comhomepage/',views.comhomepage,name="homepage"),
+    path('comhomepage/',views.comhomepage,name="comhomepage"),
     path('dashboard/',views.comdashboard,name="dashboard"),
     path('logout/',views.comlogout,name="logout"),
 ]
