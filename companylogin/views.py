@@ -13,7 +13,7 @@ from django.contrib import messages
  
 def comsignup(request):
     if request.user.is_authenticated:
-        return redirect('comhomepage')
+        return redirect('dashboard')
     if request.method == 'POST':
         username=request.POST.get('username')
         firstname = request.POST.get('firstname')
@@ -22,7 +22,7 @@ def comsignup(request):
         # phone = request.POST.get('phone')
         email = request.POST.get('email')
         password = request.POST.get('password')
-        # return  redirect('comlogin')
+        cpassword =request.POST.get('cpassword')
         sign_up = User.objects.create_user(
             username=username,
             first_name=firstname,
@@ -41,14 +41,14 @@ def comsignup(request):
  
 def comlogin(request):
     if request.user.is_authenticated:
-        return redirect('comhomepage')
+        return redirect('dashboard')
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('comhomepage')
+            return redirect('dashboard')
         else:
             return render(request, 'com_login.html')
 
@@ -65,7 +65,7 @@ def comdashboard(request):
     return render(request,'com_dashboard.html')
 
  
-# @login_required
+@login_required
 def comlogout(request):
     logout(request)
     messages.success(request, 'You have been logged out successfully.')
