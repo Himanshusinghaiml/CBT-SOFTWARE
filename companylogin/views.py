@@ -3,11 +3,15 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.urls import reverse
+from django.http import HttpResponseRedirect
 from django.views.decorators.cache import never_cache
+from django.views.decorators.cache import cache_control
 
 # Create your views here.
  
 def comsignup(request):
+    if request.user.is_authenticated:
+        return redirect('homepage')
     if request.method == 'POST':
         username=request.POST.get('username')
         firstname = request.POST.get('firstname')
@@ -32,8 +36,10 @@ def comsignup(request):
         return redirect("comlogin")    
     return render(request,'com_signup.html')
 
-@never_cache
+ 
 def comlogin(request):
+    if request.user.is_authenticated:
+        return redirect('homepage')
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -48,7 +54,7 @@ def comlogin(request):
 
     
 
-@login_required(login_url='homepage')
+@login_required(login_url='comlogin')
 def comhomepage(request):
     return render(request,'com_homepage.html')
 
@@ -56,7 +62,9 @@ def comhomepage(request):
 def comdashboard(request):
     return render(request,'com_dashboard.html')
 
+ 
+# @login_required
 def comlogout(request):
     logout(request)
-    return redirect('comlogin')
+    return  redirect('comlogin')
     
