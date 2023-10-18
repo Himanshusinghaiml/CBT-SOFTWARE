@@ -14,6 +14,13 @@ body {
   color: #444444;
 }
 
+.bg-primary{
+  background-color: #18d26e!important;
+}
+
+.color-primary{
+  color: #18d26e!important;
+}
 a {
   color: #5fcf80;
   text-decoration: none;

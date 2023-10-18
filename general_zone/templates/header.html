@@ -1,70 +1,75 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     
-     <style>
- 
-/* Add some basic styling for the header and navigation menu */
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="description">
+        <meta content="" name="keywords">
 
-header {
-    background-color: black; /* Background color for the header */
-    color: #fff; /* Text color for the header */
-    padding: 5px 0; /* Add padding to the header */
-    /* text-align: right;    */
-    /* Center-align text in the header */
-    /* position: fixed; */
-     
-}
+        <!-- bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+        crossorigin="anonymous">
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    text-align: right;
-}
+        <!-- Favicons -->
+        <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+        <link href="{% static 'assets/img/apple-touch-icon.png' }" rel="apple-touch-icon">
 
-nav li {
-    display: inline;
-    margin-right: 20px; /* Adjust the spacing between menu items */
-}
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-nav a {
-    text-decoration: none;
-    color: #fff; /* Text color for the links */
-    font-weight: bold;
-}
+        <!-- Vendor CSS Files -->
+        <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
 
-/* Style the links when hovered over */
-nav a:hover {
-    text-decoration: underline;
-}
-.logo{
-    text-align: left;
-    width: 5%;
-}
+        <!-- Template Main CSS File -->
+        
+        <link href="{% static 'assets/css1/style1.css' %}" rel="stylesheet">
+    </head>
+    
+    <body>
+        <!--<start header> -->
+        <header id="header" class="fixed-top">
+            <div class="container d-flex align-items-center">
+                <img class="logo me-auto" src={% static "assets/img/cbt_logo.png" %} style="width:250px;height:50px;" alt="logo">
 
-     </style>
-    <!-- <title>Your Website</title> -->
-</head>
-<body>
-    <header>
-        <img src="{% static 'img/logo.png' %}" alt="education" height="10%" width="10%" class="logo"> 
-        <nav> 
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="{% url 'comsignup' %}"> Companylogin</a> </li>
-                <li><a href="{% url 'centerlogin' %}">Center Login</a></li>
-                <li><a href="{% url 'about' %}">About Us</a></li>
-                <li><a href="{% url 'contact' %}">Contact Us</a></li>
-                
-                
-            </ul>
-        </nav>
-    </header>
+                <nav id="navbar" class="navbar order-last order-lg-0">
+                    <ul>
+                        <li><a class="active" href="/">Home</a></li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li class="dropdown"><a href="#"><span>Login</span></a>
+                            <ul>
+                                <li><a href="{% url 'comlogin' %}">Company Login</a></li>
+                                <li class="dropdown"><a href="{% url 'centerlogin' %}"><span>Center Login</span></a>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'courses' %}">Courses</a></li>
+                        <li><a href="{% url 'trainers' %}">Trainers</a></li>
+                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                    </ul>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav>
+                <!-- .navbar -->
 
-    <!-- Your page content goes here -->
+                <a href="{% url 'courses' %}" class="get-started-btn">Request Demo</a>
 
-</body>
+            </div>
+        </header><!-- End Header -->
+   
+        {% comment %} <!-- Vendor JS Files -->
+        <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+        <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+        <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+        <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+    
+        <!-- Template Main JS File -->
+        <script src="{% static 'assets/js/main.js' %}"></script>    {% endcomment %}
+    </body>
 </html>

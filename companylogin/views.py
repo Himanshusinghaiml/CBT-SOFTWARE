@@ -12,8 +12,8 @@ from django.contrib import messages
 # Create your views here.
  
 def comsignup(request):
-    if request.user.is_authenticated:
-        return redirect('dashboard')
+    # if request.user.is_authenticated:
+    #     return redirect('dashboard')
     if request.method == 'POST':
         username=request.POST.get('username')
         firstname = request.POST.get('firstname')

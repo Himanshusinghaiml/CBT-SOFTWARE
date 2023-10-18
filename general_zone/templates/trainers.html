@@ -1,11 +1,43 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    hey himanshu u r trainer 
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Courses</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/comlogin.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+    </head>
+    <body>
+
+        <!--  header body  -->
+        {% include "header.html" %}
+        <!--  header close  -->
+          
+        <!--contact body-->
+        <main class="d-flex align-items-center mb-5 ">
+            <div class="container">
+                <div class="row "style="">
+                    <div class="col-md-6 offset-md-3 "style="margin-top:7%;height:40%">
+                        <div class="card mt-3">
+                            <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
+                                <p style="font-weight:bold;font-size:30px;color:#ffffff">Trainers<p>
+                            </div>
+
+                            <div class="card-body ">
+                              </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+        <!--Contact close-->
+
+
+        <!-- Footer body   -->
+        {%include "footer.html" %}
+        <!-- Footer close  -->
+    </body>
 </html>

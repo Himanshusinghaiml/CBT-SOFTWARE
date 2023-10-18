@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>compnayzone</title>
+    <title>User Dashboard</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -31,70 +31,71 @@
         <!-- Sidebar Header    -->
         <div class="sidebar-header d-flex align-items-center justify-content-center p-3 mb-3">
           <!-- User Info-->
-          <div class="sidenav-header-inner text-center"><img class="img-fluid rounded-circle avatar mb-3" src="{% static 'img/avatar-7.jpg' %}" alt="person">
+          <div class="sidenav-header-inner text-center"><img class="img-fluid rounded-circle avatar mb-3" src="{% static 'img/himanshu.jpeg' %}" alt="person">
             <h2 class="h5 text-white text-uppercase mb-0">Himanshu singh</h2>
             <p class="text-sm mb-0 text-muted">Web Developer</p>
           </div>
           <!-- Small Brand information, appears on minimized sidebar--><a class="brand-small text-center" href="index.html">
-            <p class="h1 m-0">BD</p></a>
+            <p class="h1 m-0">HS</p></a>
         </div>
         <!-- Sidebar Navigation Menus--><span class="text-uppercase text-gray-500 text-sm fw-bold letter-spacing-0 mx-lg-2 heading">Main</span>
         <ul class="list-unstyled">                  
-          <li class="sidebar-item"><a class="sidebar-link" href="index.html"> 
+          <li class="sidebar-item"><a class="sidebar-link" href="{% url 'dashboard' %}"> 
               <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
                 <use xlink:href="#real-estate-1"> </use>
               </svg>Home </a></li>
-          <li class="sidebar-item"><a class="sidebar-link" href="forms.html"> 
+          <li class="sidebar-item"><a class="sidebar-link" href="{% url 'dashboard' %}"> 
               <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
                 <use xlink:href="#survey-1"> </use>
-              </svg>Forms </a></li>
-          <li class="sidebar-item"><a class="sidebar-link" href="charts.html"> 
+              </svg>Exams </a></li>
+          <li class="sidebar-item"><a class="sidebar-link" href="#"> 
               <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
                 <use xlink:href="#sales-up-1"> </use>
-              </svg>Charts </a></li>
-          <li class="sidebar-item"><a class="sidebar-link" href="tables.html"> 
+              </svg>Centers </a></li>
+          <li class="sidebar-item"><a class="sidebar-link" href="#"> 
               <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
                 <use xlink:href="#portfolio-grid-1"> </use>
-              </svg>Tables </a></li>
+              </svg>Questions </a></li>
           <li class="sidebar-item"><a class="sidebar-link" href="#exampledropdownDropdown" data-bs-toggle="collapse"> 
               <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
                 <use xlink:href="#browser-window-1"> </use>
-              </svg>Example dropdown </a>
+              </svg>Exams </a>
             <ul class="collapse list-unstyled " id="exampledropdownDropdown">
-              <li><a class="sidebar-link" href="#">Page</a></li>
-              <li><a class="sidebar-link" href="#">Page</a></li>
-              <li><a class="sidebar-link" href="#">Page</a></li>
+              <li><a class="sidebar-link" href="#">New Exam</a></li>
+              <li><a class="sidebar-link" href="#">Ongoing</a></li>
+              <li><a class="sidebar-link" href="#">Completed</a></li>
+              
             </ul>
           </li>
-          <li class="sidebar-item"><a class="sidebar-link" href="login.html"> 
+          <li class="sidebar-item"><a class="sidebar-link" href="#"> 
               <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
                 <use xlink:href="#disable-1"> </use>
               </svg>Login page </a></li>
-          <li class="sidebar-item"><a class="sidebar-link" href="#!"> 
+          <li class="sidebar-item"><a class="sidebar-link" href="#"> 
               <svg class="svg-icon svg-icon-xs svg-icon-heavy me-2">
                 <use xlink:href="#imac-screen-1"> </use>
               </svg>Demo
               <div class="badge bg-warning">6 New</div></a></li>
         </ul><span class="text-uppercase text-gray-500 text-sm fw-bold letter-spacing-0 mx-lg-2 heading">Second menu</span>
-        <ul class="list-unstyled py-4">
-          <li class="sidebar-item"> <a class="sidebar-link" href="#!"> 
+        {% comment %} <ul class="list-unstyled py-4">
+          <li class="sidebar-item"> <a class="sidebar-link" href="#"> 
               <svg class="svg-icon svg-icon-xs svg-icon-heavy me-2">
                 <use xlink:href="#chart-1"> </use>
               </svg>Demo</a></li>
-          <li class="sidebar-item"> <a class="sidebar-link" href="">
+          <li class="sidebar-item"> <a class="sidebar-link" href="#">
               <svg class="svg-icon svg-icon-xs svg-icon-heavy me-2">
                 <use xlink:href="#imac-screen-1"> </use>
               </svg>Demo
               <div class="badge bg-info">Special</div></a></li>
-          <li class="sidebar-item"> <a class="sidebar-link" href=""> 
+          <li class="sidebar-item"> <a class="sidebar-link" href="#"> 
               <svg class="svg-icon svg-icon-xs svg-icon-heavy me-2">
                 <use xlink:href="#quality-1"> </use>
               </svg>Demo</a></li>
-          <li class="sidebar-item"> <a class="sidebar-link" href=""> 
+          <li class="sidebar-item"> <a class="sidebar-link" href="#"> 
               <svg class="svg-icon svg-icon-xs svg-icon-heavy me-2">
                 <use xlink:href="#security-shield-1"> </use>
               </svg>Demo</a></li>
-        </ul>
+        </ul> {% endcomment %}
       </div>
     </nav>
     <div class="page">
@@ -107,7 +108,7 @@
                   <svg class="svg-icon svg-icon-sm svg-icon-heavy text-white">
                     <use xlink:href="#menu-1"> </use>
                   </svg></a><a class="navbar-brand ms-2" href="index.html">
-                  <div class="brand-text d-none d-md-inline-block text-uppercase letter-spacing-0"><span class="text-white fw-normal text-xs">Bootstrap </span><strong class="text-primary text-sm">Dashboard</strong></div></a></div>
+                  <div class="brand-text d-none d-md-inline-block text-uppercase letter-spacing-0"><span class="text-white fw-normal text-xs"></span><strong class="text-primary text-sm">Dashboard</strong></div></a></div>
               <ul class="nav-menu mb-0 list-unstyled d-flex flex-md-row align-items-md-center">
                 <!-- Notifications dropdown-->
                 <li class="nav-item dropdown"> <a class="nav-link text-white position-relative" id="notifications" rel="nofollow" data-bs-target="#" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

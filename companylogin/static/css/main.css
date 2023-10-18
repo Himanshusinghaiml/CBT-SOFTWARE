@@ -1,0 +1,24 @@
+.bg-primary{
+    background-color: #18d26e!important;
+}
+
+.bg-secondary{
+    background-color: #f1ed0cb4;
+}
+  
+.color-primary{
+    color: #18d26e!important;
+}
+
+.center{
+    text-align: center;
+}
+.font-primary{
+    font-size: 18px;
+}
+.bold{
+    font-weight: bold;
+}
+.bg-white{
+    background-color: white;
+}
