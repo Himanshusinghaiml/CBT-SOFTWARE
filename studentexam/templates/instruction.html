@@ -23,7 +23,7 @@
         <div class="col-md-12">
             <div class="top-links">
                 <ul>
-                    <li class=""><a href="/"><i class="fa fa-user"></i>Home</a></li>
+                    <li class=""> .Do not refresh the page</li>
                     <li class="">
                     </li>
                 </ul>
@@ -38,7 +38,7 @@
             <div class="container col-md-12 col-xs-12">
                  
                 <div class="navbar-header col-md-3 col-xs-6" style="border-right-style: solid;">
-                    <a class="navbar-brand home" style="position:; margin-top:5px" href="/" target="_blank"> <img src="/img/NTA_logo.png" alt="CBT logo" class="img-responsive"> </a>
+                    <a class="navbar-brand home" style="position:; margin-top:5px"  >  <img src="{% static 'assets/img/cbt_logo.png' %}" alt="CBT logo"  class="img-responsive"> </a>
                 </div>
                 <div class="navbar-header col-md-3 col-xs-6 pull-right">    
                 </div>
@@ -68,7 +68,7 @@
             <div class="col-md-12">
                 <input type="hidden" id="ExamID" value=1>
                 <input type="hidden" id="PaperID" value=3991>
-                <h1 class="pull-left">General Instructions</h1>
+                <!-- <h1 class="pull-left">General Instructions</h1> -->
                 <div class="pull-right" style="padding: 0">
                     <label> Choose Your Default Language</label>
                     <select ID="drpLanguage" class="form-control" data-role="none" id="drpLanguage1" name="drpLanguage1" onchange="changeIndtruct(this.value)"><option value="1">English</option>
@@ -89,29 +89,29 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="col-md-12" id="1">
-                                <h4 class="text-center">Please read the instructions carefully</h4>
+                                <h4 class="text-center">Please read the instructions carefully</h4><hr>
                                 <h4><strong><u>General Instructions:</u></strong></h4>
                                
                                 <ol>
                                     <li>
                                         <ul class="ulInstruction">
-                                            <li>Total duration of JEE-Main - 40503627_BTECH 9th Jan 2020 Shift 2 is 180 min.</li>
+                                            <li>Total duration of kit exam - 40503627_BTECH  cse Jan 2023 Shift 2 is 180 min.</li>
                                         </ul>
                                     </li>
                                     <li>The clock will be set at the server. The countdown timer in the top right corner of screen will display the remaining time available for you to complete the examination. When the timer reaches zero, the examination will end by itself. You will not be required to end or submit your examination.</li>
                                     <li>
                                         The Questions Palette displayed on the right side of screen will show the status of each question using one of the following symbols:
                                         <ol>
-                                            <li><img src="/img/QuizIcons/Logo1.png" /> You have not visited the question yet.<br /><br /></li>
-                                            <li><img src="/img/QuizIcons/Logo2.png" /> You have not answered the question.<br /><br /></li>
-                                            <li><img src="/img/QuizIcons/Logo3.png" /> You have answered the question.<br /><br /></li>
-                                            <li><img src="/img/QuizIcons/Logo4.png" /> You have NOT answered the question, but have marked the question for review.<br /><br /></li>
-                                            <li><img src="/img/QuizIcons/Logo5.png" /> The question(s) "Answered and Marked for Review" will be considered for evalution.<br /><br /></li>
+                                            <li><img src="{% static 'img/Logo1.png' %}" /> You have not visited the question yet.<br /><br /></li>
+                                            <li><img src="{% static 'img/Logo2.png' %}" /> You have not answered the question.<br /><br /></li>
+                                            <li><img src="{% static 'img/Logo3.png' %}" /> You have answered the question.<br /><br /></li>
+                                            <li><img src="{% static 'img/Logo4.png' %}" /> You have NOT answered the question, but have marked the question for review.<br /><br /></li>
+                                            <li><img src="{% static 'img/Logo5.png' %}" /> The question(s) "Answered and Marked for Review" will be considered for evalution.<br /><br /></li>
                                         </ol>
                                     </li>
                                     <li>You can click on the "&gt;" arrow which apperes to the left of question palette to collapse the question palette thereby maximizing the question window. To view the question palette again, you can click on "&lt;" which appears on the right side of question window.</li>
                                     <li>You can click on your "Profile" image on top right corner of your screen to change the language during the exam for entire question paper. On clicking of Profile image you will get a drop-down to change the question content to the desired language.</li>
-                                    <li>You can click on <img src="/img/QuizIcons/down.png" /> to navigate to the bottom and <img src="/img/QuizIcons/up.png" /> to navigate to top of the question are, without scrolling.</li>
+                                    <li>You can click on <img src="{% static 'img/down.png' %}" /> to navigate to the bottom and <img src="{% static 'img/up.png' %}"> to navigate to top of the question are, without scrolling.</li>
                                 </ol>
                                 <h4><strong><u>Navigating to a Question:</u></strong></h4>
                                 <ol start="7">
@@ -148,12 +148,12 @@
                                 <hr>
                                 <span class="text-danger">Please note all questions will appear in your default language. This language can be changed for a particular question later on.</span>
                                 <hr>
-                                <a href="{% url 'running' %}" class="btn btn-success btn-block">proceed</a>
                                 <hr>
                                 <label>
                                     <input type="checkbox" id="1_ch">&nbsp;&nbsp;I have read and understood the instructions. All computer hardware allotted to me are in proper working condition. I declare  that I am not in possession of / not wearing / not  carrying any prohibited gadget like mobile phone, bluetooth  devices  etc. /any prohibited material with me into the Examination Hall.I agree that in case of not adhering to the instructions, I shall be liable to be debarred from this Test and/or to disciplinary action, which may include ban from future Tests / Examinations
                                 </label>
                                 <hr>
+                                <a href="{% url 'running' %}" class="btn btn-success btn-block">proceed</a>
                                 <div class="col-md-4 col-md-offset-4 text-center">
                                     <a onClick="check_instruction('1')" class="btn btn-success btn-block">Proceed</a>
                                 </div>
@@ -174,17 +174,17 @@
                                     <li>
                                         स्क्रीन के दाहिने कोने पर प्रश्न पैलेट, प्रत्येक प्रश्न के लिए निम्न में से कोई एक स्थिति प्रकट करता है:
                                         <ol>
-                                            <li><img src="/img/QuizIcons/Logo1.png" /> आप अभी तक प्रश्न पर नहीं गए हैं।<br /><br /></li>
-                                            <li><img src="/img/QuizIcons/Logo2.png" /> आपने प्रश्न का उत्तर नहीं दिया है।<br /><br /></li>
-                                            <li><img src="/img/QuizIcons/Logo3.png" /> आप प्रश्न का उत्तर दे चुके हैं।<br /><br /></li>
-                                            <li><img src="/img/QuizIcons/Logo4.png" /> आपने प्रश्न का उत्तर नहीं दिया है पर प्रश्न को पुनर्विचार के लिए चिन्हित किया है।<br /><br /></li>
-                                            <li><img src="/img/QuizIcons/Logo5.png" /> प्रश्न जिसका उत्तर दिया गया है और समीक्षा के लिए भी चिन्हित है , उसका मूल्यांकन किया जायेगा ।<br /><br /></li>
+                                            <li><img src="{% static 'img/Logo1.png' %}" /> आप अभी तक प्रश्न पर नहीं गए हैं।<br /><br /></li>
+                                            <li><img src="{% static 'img/Logo2.png' %}" /> आपने प्रश्न का उत्तर नहीं दिया है।<br /><br /></li>
+                                            <li><img src="{% static 'img/Logo3.png' %}" /> आप प्रश्न का उत्तर दे चुके हैं।<br /><br /></li>
+                                            <li><img src="{% static 'img/Logo4.png' %}" /> आपने प्रश्न का उत्तर नहीं दिया है पर प्रश्न को पुनर्विचार के लिए चिन्हित किया है।<br /><br /></li>
+                                            <li><img src="{% static 'img/Logo5.png' %}" /> प्रश्न जिसका उत्तर दिया गया है और समीक्षा के लिए भी चिन्हित है , उसका मूल्यांकन किया जायेगा ।<br /><br /></li>
                                         </ol>
                                         कृप्या ध्यान दे प्रश्न "समीक्षा के लिए चिह्नित" की जांच नहीं की जाएगी, इसलिए अंक आवंटित नहीं किए जाएंगे।<br /><br />
                                     </li>
                                     <li>आप प्रश्न पैलेट को छुपाने के लिए "&gt;" चिन्ह पर क्लिक कर सकते है, जो प्रश्न पैलेट के बाईं ओर दिखाई देता है, जिससे प्रश्न विंडो सामने आ जाएगा. प्रश्न पैलेट को फिर से देखने के लिए, "&lt;" चिन्ह पर क्लिक कीजिए जो प्रश्न विंडो के दाईं ओर दिखाई देता है।</li>
                                     <li>सम्पूर्ण प्रश्नपत्र की भाषा को परिवर्तित करने के लिए आपको अपने स्क्रीन के ऊपरी दाहिने सिरे पर स्थित प्रोफाइल इमेज पर क्लिक करना होगा। प्रोफाइल इमेज को क्लिक करने पर आपको प्रश्न के अंतर्वस्तु को इच्छित भाषा में परिवर्तित करने के लिए ड्राप-डाउन मिलेगा ।</li>
-                                    <li>आपको अपने स्क्रीन के निचले हिस्से को स्क्रॉलिंग के बिना नेविगेट करने के लिए <img src="/img/QuizIcons/down.png" /> और ऊपरी हिस्से को नेविगेट करने के लिए <img src="/img/QuizIcons/up.png" /> पर क्लिक करना होगा ।</li>
+                                    <li>आपको अपने स्क्रीन के निचले हिस्से को स्क्रॉलिंग के बिना नेविगेट करने के लिए <img src="{% static 'img/down.png"' %} /> और ऊपरी हिस्से को नेविगेट करने के लिए <img src="{% static 'img/up.png" /' %}> पर क्लिक करना होगा ।</li>
                                 </ol>
                                 <h4><strong><u>किसी प्रश्न पर जाना :</u></strong></h4>
                                 <ol start="7">
@@ -245,11 +245,11 @@
                                         નીચેનાં પ્રતીકોમાંથી કોઇ એક પ્રતીકનો ઉપયોગ કરીને સ્ક્રીનની જમણી બાજુએ દર્શાવવામાં આવેલા પ્રશ્નોની પેલેટ દરેક પ્રશ્નની સ્થિતિ દર્શાવશે:
 
                                         <ol>
-                                            <li><img src="/img/QuizIcons/Logo1.png" /> તમે હજી સુધી પ્રશ્નની મુલાકાત લીધી નથી.<br /><br /></li>
-                                            <li><img src="/img/QuizIcons/Logo2.png" /> તમે પ્રશ્નનો જવાબ આપ્યો નથી.<br /><br /></li>
-                                            <li><img src="/img/QuizIcons/Logo3.png" /> તમે પ્રશ્નનો જવાબ આપ્યો છે.<br /><br /></li>
-                                            <li><img src="/img/QuizIcons/Logo4.png" /> તમે પ્રશ્નનો જવાબ આપ્યો નથી, પરંતુ સમીક્ષા માટે પ્રશ્ન ચિહ્નિત કર્યો છે.<br /><br /></li>
-                                            <li><img src="/img/QuizIcons/Logo5.png" /> મૂલ્યાંકન માટે પ્રશ્ન (ઓ) "જવાબ આપ્યો અને ચિહ્નિત થયેલ છે" માટે મૂલ્યાંકન કરવામાં આવશે.<br /><br /></li>
+                                            <li><img src="{% static 'img/Logo1.png' %}" /> તમે હજી સુધી પ્રશ્નની મુલાકાત લીધી નથી.<br /><br /></li>
+                                            <li><img src="{% static 'img/Logo2.png' %}" /> તમે પ્રશ્નનો જવાબ આપ્યો નથી.<br /><br /></li>
+                                            <li><img src="{% static 'img/Logo3.png' %}" /> તમે પ્રશ્નનો જવાબ આપ્યો છે.<br /><br /></li>
+                                            <li><img src="{% static 'img/Logo4.png' %}" /> તમે પ્રશ્નનો જવાબ આપ્યો નથી, પરંતુ સમીક્ષા માટે પ્રશ્ન ચિહ્નિત કર્યો છે.<br /><br /></li>
+                                            <li><img src="{% static 'img/Logo5.png' %}" /> મૂલ્યાંકન માટે પ્રશ્ન (ઓ) "જવાબ આપ્યો અને ચિહ્નિત થયેલ છે" માટે મૂલ્યાંકન કરવામાં આવશે.<br /><br /></li>
                                             પ્રશ્ન પર સમીક્ષાની સ્થિતિ માટે ચિહ્નિત થયેલું ફક્ત એ સૂચવે છે કે તમે ફરીથી તે પ્રશ્નને જોવા માંગો છો.
                                             <br />
                                             <br />
@@ -257,7 +257,7 @@
                                     </li>
                                     <li>પ્રશ્ન પૅલેટને વિસ્તૃત જોવા માટે પ્રશ્ન પૅલેટની ડાબી બાજુએ જે "&gt;" તીર દેખાય છે તેના પર ક્લિક કરી શકો છો, જેનાથી પ્રશ્ન વિન્ડો વિસ્તૃત થાય છે. પ્રશ્ન પેલેટને ફરી જોવા માટે, તમે "&lt;" પર ક્લિક કરી શકો છો જે પ્રશ્ન વિંડોની જમણી બાજુ પર દેખાય છે.</li>
                                     <li>સમગ્ર પરીક્ષા દરમિયાન ભાષા બદલવા માટે તમે તમારી સ્ક્રીનની ઉપર જમણા ખૂણે તમારી "પ્રોફાઇલ" Image પર ક્લિક કરી શકો છો. પ્રોફાઇલ Image ને ક્લિક કરવા પર તમને પ્રશ્ન સામગ્રીને ઇચ્છિત ભાષામાં બદલવા માટે ડ્રોપ-ડાઉન મળશે.</li>
-                                    <li>તમે  <img src="/img/QuizIcons/down.png" /> ઉપર ક્લિક કરી શકો છો  જે પ્રશ્નની નીચે લઈ જાય છે અને  <img src="/img/QuizIcons/up.png" /> જે સ્ક્રોલિંગ વગર, પ્રશ્નની ટોચ પર લઈ જાય છે.</li>
+                                    <li>તમે  <img src="{% static 'img/down.png"' %} /> ઉપર ક્લિક કરી શકો છો  જે પ્રશ્નની નીચે લઈ જાય છે અને  <img src="{% static 'img/up.png" /' %}> જે સ્ક્રોલિંગ વગર, પ્રશ્નની ટોચ પર લઈ જાય છે.</li>
                                 </ol>
                                 <h4><strong><u>પ્રશ્ન પર જવુ:</u></strong></h4>
                                 <ol start="7">
@@ -300,7 +300,7 @@
                                 </label>
                                 <hr>
                                 <div class="col-md-4 col-md-offset-4 text-center">
-                                 
+                                
                                     <a onClick="check_instruction('3')" class="btn btn-success btn-block" href="{% url 'running' %}">Proceed </a>
                                     <a href="{% url 'running' %}">proceed</a>
                                 </div>
@@ -323,36 +323,7 @@
     </div>
 </div>
     </div>
- 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            App.init();
-        });
-        var sessionTimeout = 20;
-        var url = window.location.pathname.split("/");
-        var Area = url[1];
-        function DisplaySessionTimeout()
-        {
-            sessionTimeout = sessionTimeout - 1;
-            if (sessionTimeout >= 0)
-                window.setTimeout("DisplaySessionTimeout()", 60000);
-            else
-            {
-                window.location = "/" + Area+ "/Logout";
-            }
-        }
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125433287-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
 
-        gtag('config', 'UA-125433287-1');
-    </script>
-    
-    <script src="/plugins/sweetalert2/sweetalert2.min.js"></script>
-    <script src="/Scripts/Quiz/Quiz.js" type="text/javascript"></script>
 
 </body>
 </html>
