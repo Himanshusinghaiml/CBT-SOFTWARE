@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'centerlogin',
     'companylogin',
     'general_zone',
+    'studentexam',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -81,9 +82,9 @@ WSGI_APPLICATION = 'CBT.wsgi.application'
 DATABASES = { 
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':  'userdata',
-        'USER':  'root',
-        'PASSWORD': 'Akash@123',
+        'NAME':  'CBT',
+        'USER':  'himanshu',
+        'PASSWORD': '5076',
         "HOST": "localhost",
         "PORT": "3306",    
     }

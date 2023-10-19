@@ -29,19 +29,29 @@
                                     {% csrf_token %}
 
                                     <div class="form-group pt-3 pb-4 mt-2">
+<<<<<<< HEAD
                                         <input type="text" name="username" class="form-control" id="username" placeholder="Username"required>
+=======
+                                        {% comment %} <label for="username">Username</label> {% endcomment %}
+                                        <input type="text" name="username" class="form-control" id="username" placeholder="Username">
+>>>>>>> 328db240dfb21ab56ce0ab4ca77bb669f552c02f
 
                                     </div>
 
                                     <div class="form-group pt-3 pb-4 mt-2">
+<<<<<<< HEAD
                                       <input type="password" name="password" class="form-control" id="password" placeholder="Password"required>
+=======
+                                      {% comment %} <label for="password">Password</label> {% endcomment %}
+                                      <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+>>>>>>> 328db240dfb21ab56ce0ab4ca77bb669f552c02f
                                     </div>
 
                                     <div class="row mt-3 pb-4">
                                         <div class="col">
                                             <div class="row">
                                                 <div class="col">
-                                                    <button class="btn btn-primary" type="submit" style="color:white;background-color:#65db9f;font-weight:bold;">Sign in</button>
+                                                    <a href="{% url 'cendashboard' %}"><button class="btn btn-primary" type="submit" style="color:white;background-color:#65db9f;font-weight:bold;">Sign in</button></a>
                                                 </div>
                                                 <div class="col">
                                                     <button class="btn btn-primary" type="reset" style="color:white;background-color:#65db9f;font-weight:bold;">Reset</button>
@@ -62,8 +72,13 @@
             </div>
         </main>
         <!--Login close-->
-
-
+        
+        <center><a href="{% url 'entrylogin' %}">
+            <button class="btn btn-primary" type="button" style="color: white; background-color: #65db9f; font-weight: bold;">
+              Sign in
+            </button>
+          </a> </center> 
+          
         <!-- Footer body   -->
         {%include "footer.html" %}
         <!-- Footer close  -->

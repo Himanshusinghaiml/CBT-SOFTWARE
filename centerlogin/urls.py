@@ -3,4 +3,5 @@ from centerlogin import views
 urlpatterns=[
     path('center-dashboard/',views.cendashboard,name="cendashboard"),
     path('center-logout/',views.cenlogout,name="cenlogout"),
+    path('center-entry-login/',views.entrylogin,name="entrylogin"),
 ]
