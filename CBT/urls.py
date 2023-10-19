@@ -22,4 +22,5 @@ urlpatterns = [
     path('',include('general_zone.urls')),
     path('',include('centerlogin.urls')),
     path('',include('companylogin.urls')),
+    path('',include('studentexam.urls')),
 ]

@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>center-entry-login</title>
+</head>
+<body>
+     <h1> click below and go for student exam, this button  is activate only when the candidate <br>
+    adhar based authentication on center .  even  center admin will not able to open this candidate Profile . </h1>
+     
+    <center><a href="{% url 'studhome' %}">
+        <button class="btn btn-primary" type="button" style="color: white; background-color: #65db9f; font-weight: bold;">
+          Student-exam
+        </button>
+      </a> </center> 
+      <hr>
+<br>
+      <h1> Click here and go  your dashboard. </h1>
+      <section>
+        
+        <a href="{% url 'cendashboard' %}">
+            <button class="btn btn-primary" type="button" style="color: white; background-color: #65db9f; font-weight: bold;">
+              <strong>YOUR Dashboard</strong> 
+            </button>
+          </a>
+      </section>
+      
+</body>
+</html>
