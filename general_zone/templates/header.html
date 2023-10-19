@@ -46,7 +46,8 @@
                         <li class="dropdown"><a href="#"><span>Login</span></a>
                             <ul>
                                 <li><a href="{% url 'comlogin' %}">Company Login</a></li>
-                                <li class="dropdown"><a href="{% url 'centerlogin' %}"><span>Center Login</span></a>
+                                <li class="dropdown"><a href="{% url 'centerlogin' %}"><span>Center Login</span></a></li>
+                                <li class="dropdown"><a href="{% url 'adminlogin' %}"><span>Admin Login</span></a></li>
                             </ul>
                         </li>
                         <li><a href="{% url 'courses' %}">Courses</a></li>
@@ -57,7 +58,7 @@
                 </nav>
                 <!-- .navbar -->
 
-                <a href="{% url 'courses' %}" class="get-started-btn">Request Demo</a>
+                <a href="{% url 'contact' %}" class="get-started-btn">Request Demo</a>
 
             </div>
         </header><!-- End Header -->

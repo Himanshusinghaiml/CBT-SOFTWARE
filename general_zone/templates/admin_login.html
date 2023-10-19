@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Company Login</title>
+        <title>Admin Login</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/comlogin.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
     </head>
@@ -21,7 +21,7 @@
                     <div class="col-md-6 offset-md-3 "style="margin-top:7%;height:40%">
                         <div class="card mt-3">
                             <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
-                                <p style="font-weight:bold;font-size:30px;color:#ffffff">Company Login<p>
+                                <p style="font-weight:bold;font-size:30px;color:#ffffff">Admin Login<p>
                             </div>
 
                             <div class="card-body ">
@@ -48,15 +48,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                </form>
-                                        <div class="col col-md-6 pb-4">  
-                                            <form action="{% url 'comsignup' %}">
-                                                <span style="color:red">No Account? &nbsp;</span>
-                                                <button class="btn btn-primary"style="color:white;background-color:#65db9f;font-weight:bold;">Sign Up</button>
-                                            </form>
-                                        </div>
-                                        <a href="#"style="color:red"><p>Forget Password</p></a>
-                                    </div>
+                                    </div> 
+                                </form>                                      
+                                    
                               </div>
 
                         </div>
