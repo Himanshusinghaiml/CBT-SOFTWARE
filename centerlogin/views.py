@@ -13,3 +13,12 @@ def cenlogout(request):
     return  redirect('homepage')
 def entrylogin(req):
     return render(req,'cen_entrylogin.html')
+
+def studentlist(request):
+    return render(request,'studentlist.html')
+def  democenter(request):
+    return render(request,'democenter.html')
+def  emergency(request):
+    return render(request,'cen_emer.html')
+def  seatarr(request):
+    return render(request,'seat_arrange.html')
