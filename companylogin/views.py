@@ -36,7 +36,9 @@ def comhomepage(request):
 def comdashboard(request):
     return render(request,'com_dashboard.html')
 
- 
+def addexam(request):
+    return render(request,'add_exam.html')
+
 @login_required
 def comlogout(request):
     logout(request)

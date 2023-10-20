@@ -20,69 +20,16 @@
         <!-- Favicon-->
         <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
         <!-- Tweaks for older IEs--><!--[if lt IE 9]-->
-            <script src="{% static 'https://oss.maxc' %}dn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-            <script src="{% static 'https://oss.maxc' %}dn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+        <script src="{% static 'https://oss.maxc' %}dn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="{% static 'https://oss.maxc' %}dn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+
+        <!-- FontAwesome CSS - loading as last, so it doesn't block rendering -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" 
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     </head>
-    <body>
-        <!-- Side Navbar -->
-        <nav class="side-navbar bg-second">
-            <div class="side-navbar-inner bg-second">
-                <!-- Sidebar Header    -->
-                <div class="sidebar-header d-flex align-items-center justify-content-center p-3 mb-3">
-                    <!-- User Info-->
-                    <div class="sidenav-header-inner text-center"><img class="img-fluid rounded-circle avatar mb-3" src="{% static 'img/himanshu.jpeg' %}" alt="person">
-                        <h2 class="h5 text-white text-uppercase mb-0">Himanshu singh</h2>
-                        <p class="text-sm mb-0 text-muted">Web Developer</p>
-                    </div>
-                    <!-- Small Brand information, appears on minimized sidebar-->
-                    <a class="brand-small text-center" href="#">
-                        <p class="h1 m-0">HS</p>
-                    </a>
-                </div>
-                <!-- Sidebar Navigation Menus-->
-                <ul class="list-unstyled">                  
-                    <li class="sidebar-item"><a class="sidebar-link" href="{% url 'dashboard' %}"> 
-                        <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
-                            <use xlink:href="#real-estate-1"> </use>
-                        </svg>Home </a>
-                    </li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="#exampledropdownDropdown" data-bs-toggle="collapse"> 
-                            <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
-                            <use xlink:href="#browser-window-1"> </use>
-                            </svg>Exams </a>
-                        <ul class="collapse list-unstyled " id="exampledropdownDropdown">
-                            <li><a class="sidebar-link" href="#">New Exam</a></li>
-                            <li><a class="sidebar-link" href="#">Ongoing</a></li>
-                            <li><a class="sidebar-link" href="#">Completed</a></li>                            
-                        </ul>
-                    </li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="#"> 
-                        <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
-                            <use xlink:href="#sales-up-1"> </use>
-                        </svg>Centers </a>
-                    </li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="#"> 
-                        <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
-                            <use xlink:href="#portfolio-grid-1"> </use>
-                        </svg>Questions </a>
-                    </li>                   
-                    <li class="sidebar-item"><a class="sidebar-link" href="#"> 
-                        <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
-                            <use xlink:href="#disable-1"> </use>
-                        </svg>Login page </a>
-                    </li>
-                    <li class="sidebar-item"><a class="sidebar-link" href="#"> 
-                        <svg class="svg-icon svg-icon-xs svg-icon-heavy me-2">
-                            <use xlink:href="#imac-screen-1"> </use>
-                        </svg>Demo
-                        <div class="badge bg-warning">6 New</div></a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <div class="page">
-        <!-- navbar-->
+    <body>    
         <header class="header mb-5 pb-3">
+            <!-- top navbar-->
             <nav class="nav navbar fixed-top">
             <div class="container-fluid">
                 <div class="d-flex align-items-center justify-content-between w-100">
@@ -102,9 +49,65 @@
                 </div>
             </div>
             </nav>
+
+            <!-- Side Navbar -->
+            <nav class="side-navbar bg-second">
+                <div class="side-navbar-inner bg-second">
+                    <!-- Sidebar Header    -->
+                    <div class="sidebar-header d-flex align-items-center justify-content-center p-3 mb-3">
+                        <!-- User Info-->
+                        <div class="sidenav-header-inner text-center"><img class="img-fluid rounded-circle avatar mb-3" src="{% static 'img/himanshu.jpeg' %}" alt="person">
+                            <h2 class="h5 text-white text-uppercase mb-0">Himanshu singh</h2>
+                            <p class="text-sm mb-0 text-muted">Web Developer</p>
+                        </div>
+                        <!-- Small Brand information, appears on minimized sidebar-->
+                        <a class="brand-small text-center" href="#">
+                            <p class="h1 m-0">HS</p>
+                        </a>
+                    </div>
+                    <!-- Sidebar Navigation Menus-->
+                    <ul class="list-unstyled">                  
+                        <li class="sidebar-item"><a class="sidebar-link" href="{% url 'dashboard' %}"> 
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
+                                <use xlink:href="#real-estate-1"> </use>
+                            </svg>Home </a>
+                        </li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="#exampledropdownDropdown" data-bs-toggle="collapse"> 
+                                <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
+                                <use xlink:href="#browser-window-1"> </use>
+                                </svg>Exams </a>
+                            <ul class="collapse list-unstyled " id="exampledropdownDropdown">
+                                <li><a class="sidebar-link" href="{% url 'addexam' %}">Add Exam</a></li>
+                                <li><a class="sidebar-link" href="#">Ongoing</a></li>
+                                <li><a class="sidebar-link" href="#">Completed</a></li>                            
+                            </ul>
+                        </li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="#"> 
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
+                                <use xlink:href="#sales-up-1"> </use>
+                            </svg>Centers </a>
+                        </li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="#"> 
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
+                                <use xlink:href="#portfolio-grid-1"> </use>
+                            </svg>Questions </a>
+                        </li>                   
+                        <li class="sidebar-item"><a class="sidebar-link" href="#"> 
+                            <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
+                                <use xlink:href="#disable-1"> </use>
+                            </svg>Login page </a>
+                        </li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="#"> 
+                            <svg class="svg-icon svg-icon-xs svg-icon-heavy me-2">
+                                <use xlink:href="#imac-screen-1"> </use>
+                            </svg>Demo
+                            <div class="badge bg-warning">6 New</div></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>  
         </header>
-        <!-- FontAwesome CSS - loading as last, so it doesn't block rendering -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        
     </body>
 </html>
 

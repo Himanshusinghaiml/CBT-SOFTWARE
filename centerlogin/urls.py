@@ -6,6 +6,6 @@ urlpatterns=[
     path('center-entry-login/',views.entrylogin,name="entrylogin"),
     path('student-list/',views.studentlist,name="studentlist"),
     path('demo-center/',views. democenter,name="democenter"),
-    path('center-emergency/',views. emergency,name="emergency"),
-    path('center-arrange/',views.seatarr,name="arrange"),
+    path('cent-eremergency/',views. emergency,name="emergency"),
+    path('cent-erarrange/',views.seatarr,name="arrange"),
 ]

@@ -5,5 +5,6 @@ urlpatterns=[
     path('comlogin/',views.comlogin,name="comlogin"),
     path('comhomepage/',views.comhomepage,name="comhomepage"),
     path('dashboard/',views.comdashboard,name="dashboard"),
+    path('addexam/',views.addexam,name="addexam"),
     path('logout/',views.comlogout,name="logout"),
 ]
