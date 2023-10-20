@@ -1,4 +1,5 @@
 {% load static %}
+<!--      write any code from 132 line or whenever make new template -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -40,7 +41,7 @@
         <ul class="list-unstyled">  
           
           
-          <li class="sidebar-item"><a class="sidebar-link" href=""> 
+          <li class="sidebar-item"><a class="sidebar-link" href="{% url 'cendashboard' %}"> 
               <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
                 <use xlink:href="#real-estate-1"> </use>
               </svg>Home </a></li>
@@ -53,7 +54,7 @@
            
            
 
-          <li class="sidebar-item"><a class="sidebar-link" href="{% url 'democenter' %}"> 
+          <li class="sidebar-item"><a class="sidebar-link" href=""> 
               <svg class="svg-icon svg-icon-xs svg-icon-heavy me-2">
                 <use xlink:href="#imac-screen-1"> </use>
               </svg>Demo
@@ -129,142 +130,17 @@
         </nav>
       </header>
       <!-- Counts Section -->
-      <section class="py-5">
-        <div class="container-fluid">
-          <div class="row">
-            <!-- Count item widget-->
-            <div class="col-xl-2 col-md-4 col-6 gy-4 gy-xl-0">
-              <div class="d-flex">
-                <svg class="svg-icon svg-icon-sm svg-icon-heavy text-primary mt-1 flex-shrink-0">
-                  <use xlink:href="#user-1"> </use>
-                </svg>
-                <div class="ms-2">
-                  <h3 class="h4 text-dark text-uppercase fw-normal">Total student</h3>
-                  <p class="text-gray-500 small">Last 7 days</p>
-                  <p class="display-6 mb-0">80</p>
-                </div>
-              </div>
-            </div>
-            <!-- Count item widget-->
-            <div class="col-xl-2 col-md-4 col-6 gy-4 gy-xl-0">
-              <div class="d-flex">
-                <svg class="svg-icon svg-icon-sm svg-icon-heavy text-primary mt-1 flex-shrink-0">
-                  <use xlink:href="#survey-1"> </use>
-                </svg>
-                <div class="ms-2">
-                  <h3 class="h4 text-dark text-uppercase fw-normal">staff should be available at center</h3>
-                  <p class="text-gray-500 small">Last 5 days</p>
-                  <p class="display-6 mb-0">10</p>
-                </div>
-              </div>
-            </div>
-            <!-- Count item widget-->
-            <div class="col-xl-2 col-md-4 col-6 gy-4 gy-xl-0">
-              <div class="d-flex">
-                <svg class="svg-icon svg-icon-sm svg-icon-heavy text-primary mt-1 flex-shrink-0">
-                  <use xlink:href="#list-details-1"> </use>
-                </svg>
-                <div class="ms-2">
-                  <h3 class="h4 text-dark text-uppercase fw-normal">New Quotes</h3>
-                  <p class="text-gray-500 small">Last 2 months</p>
-                  <p class="display-6 mb-0">342</p>
-                </div>
-              </div>
-            </div>
-            <!-- Count item widget-->
-            <div class="col-xl-2 col-md-4 col-6 gy-4 gy-xl-0">
-              <div class="d-flex">
-                <svg class="svg-icon svg-icon-sm svg-icon-heavy text-primary mt-1 flex-shrink-0">
-                  <use xlink:href="#numbers-1"> </use>
-                </svg>
-                <div class="ms-2">
-                  <h3 class="h4 text-dark text-uppercase fw-normal">New Invoices</h3>
-                  <p class="text-gray-500 small">Last 2 days</p>
-                  <p class="display-6 mb-0">123</p>
-                </div>
-              </div>
-            </div>
-            <!-- Count item widget-->
-            <div class="col-xl-2 col-md-4 col-6 gy-4 gy-xl-0">
-              <div class="d-flex">
-                <svg class="svg-icon svg-icon-sm svg-icon-heavy text-primary mt-1 flex-shrink-0">
-                  <use xlink:href="#literature-1"> </use>
-                </svg>
-                <div class="ms-2">
-                  <h3 class="h4 text-dark text-uppercase fw-normal">Open Cases</h3>
-                  <p class="text-gray-500 small">Last 3 months</p>
-                  <p class="display-6 mb-0">92</p>
-                </div>
-              </div>
-            </div>
-            <!-- Count item widget-->
-            <div class="col-xl-2 col-md-4 col-6 gy-4 gy-xl-0">
-              <div class="d-flex">
-                <svg class="svg-icon svg-icon-sm svg-icon-heavy text-primary mt-1 flex-shrink-0">
-                  <use xlink:href="#paper-stack-1"> </use>
-                </svg>
-                <div class="ms-2">
-                  <h3 class="h4 text-dark text-uppercase fw-normal">New Cases</h3>
-                  <p class="text-gray-500 small">Last 7 days</p>
-                  <p class="display-6 mb-0">70</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Header Section-->
-      <section class="bg-white py-5">
-        <div class="container-fluid">
-          <div class="row d-flex align-items-md-stretch">
-            <!-- To Do List-->
-            <div class="col-lg-3 col-md-6">
-              <div class="card shadow-0">
-                <div class="card-body p-0">
-                  <h2 class="h3 fw-normal">To do List</h2>
-                  <p class="text-sm text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                  <form>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="list1">
-                      <label class="form-check-label text-sm" for="list1">Similique sunt in culpa qui officia</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="list2">
-                      <label class="form-check-label text-sm" for="list2">Ed ut perspiciatis unde omnis iste</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="list3">
-                      <label class="form-check-label text-sm" for="list3">At vero eos et accusamus et iusto </label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="list4">
-                      <label class="form-check-label text-sm" for="list4">Explicabo Nemo ipsam voluptatem</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="list5">
-                      <label class="form-check-label text-sm" for="list5">Similique sunt in culpa qui officia</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="list6">
-                      <label class="form-check-label text-sm" for="list6">At vero eos et accusamus et iusto</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="list7">
-                      <label class="form-check-label text-sm" for="list7">Similique sunt in culpa qui officia</label>
-                    </div>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="list8">
-                      <label class="form-check-label text-sm" for="list8">Ed ut perspiciatis unde omnis iste</label>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-            <!-- Pie Chart-->
-             
-            <!-- Line Chart -->
-           
-      <!-- Updates Section -->
+<!--     this is the main section start where i can write anything in the dashboard -->
+
+
+    <h1> before conducting the exam firstly see the video then organize .</h1>
+
+
+
+
+
+ <!-- between this we can write content anything in the center dashboard   -->      
+       <!-- Updates Section -->
        
       <footer class="main-footer w-100 position-absolute bottom-0 start-0 py-2" style="background: #222">
         <div class="container-fluid">

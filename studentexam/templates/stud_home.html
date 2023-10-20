@@ -35,7 +35,7 @@
         <div class="navbar navbar-default yamm" role="navigation" id="navbar">
             <div class="container col-md-12 col-xs-12">
                 <div class="navbar-header col-md-3 col-xs-6" style="border-right-style: solid;">
-                    <a class="navbar-brand home" style="position:; margin-top:5px"   > <img src="{% static 'assets/img/cbt_logo.png' %}" alt="CBT logo" class="img-responsive"> </a>
+                    <a class="navbar-brand home" style="position:; margin-top:5px"   > <img src="{% static 'assets/img/cbt_logo.png' %}" alt="CBT logo" class="img-responsive" width="150px"> </a>
                 </div>
                 <div class="navbar-header col-md-3 col-xs-6 pull-right">
  </div>
@@ -43,20 +43,7 @@
         </div>
     </div>
 </header>
-<script type="text/javascript">
-
-        var sessionTimeout = 20;
-        function DisplaySessionTimeout()
-        {
-            sessionTimeout = sessionTimeout - 1;
-            if (sessionTimeout >= 0)
-                window.setTimeout("DisplaySessionTimeout()", 60000);
-            else
-            {
-                window.location.href = $('#hdfBaseUrl').val();
-            }
-        }
-</script>
+ 
         <div>
 <div id="heading-breadcrumbs">
     <div class="container">
