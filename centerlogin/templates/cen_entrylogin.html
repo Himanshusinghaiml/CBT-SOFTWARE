@@ -1,31 +1,104 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>center-entry-login</title>
-</head>
-<body>
-     <h1> click below and go for student exam, this button  is activate only when the candidate <br>
-    adhar based authentication on center .  even  center admin will not able to open this candidate Profile . </h1>
-     
-    <center><a href="{% url 'studhome' %}">
-        <button class="btn btn-primary" type="button" style="color: white; background-color: #65db9f; font-weight: bold;">
-          Student-exam
-        </button>
-      </a> </center> 
-      <hr>
-<br>
-      <h1> Click here and go  your dashboard. </h1>
-      <section>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="all,follow">
+        <!-- Google fonts - Roboto -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+        <!-- Choices CSS-->
+        <link rel="stylesheet" href="{% static 'vendor/choices.js/public/assets/styles/choices.min.css' %}">
+        <!-- Custom Scrollbar-->
+        <link rel="stylesheet" href="{% static 'vendor/overlayscrollbars/css/OverlayScrollbars.min.css' %}">
+        <!-- theme stylesheet-->
+        <link rel="stylesheet" href="{% static 'css/style.default.css' %}" id="theme-stylesheet">
+        <!-- Custom stylesheet - for your changes-->
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+        <!-- Favicon-->
+        <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+        <link rel="stylesheetn" href="{% static 'css/main.css' %}">
+        <l
+        <!-- Tweaks for older IEs--><!--[if lt IE 9]-->
+            <script src="{% static 'https://oss.maxc' %}dn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+            <script src="{% static 'https://oss.maxc' %}dn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    </head>
+    <body>
+        <!-- Side Navbar -->
+        <nav class="side-navbar bg-second">
+            <div class="side-navbar-inner bg-second">
+                <!-- Sidebar Header    -->
+                <div class="sidebar-header d-flex align-items-center justify-content-center p-3 mb-3">
+                    <!-- User Info-->
+                    <div class="sidenav-header-inner text-center"><img class="img-fluid rounded-circle avatar mb-3" src="{% static 'img/kit.jpeg' %}" alt="person">
+                        <h2 class="h5 text-white text-uppercase mb-0">KIT Varanasi</h2>
+                        <p class="text-sm mb-0">Center code-428</p>
+                    </div>
+                    <!-- Small Brand information, appears on minimized sidebar-->
+                    <a class="brand-small text-center" href="#">
+                        <p class="h1 m-0">HS</p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <div class="page">
+        <!-- navbar-->
+        <header class="header mb-5 pb-3">
+            <nav class="nav navbar fixed-top">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center justify-content-between w-100">
+                <div class="d-flex align-items-center"><a class="menu-btn d-flex align-items-center justify-content-center p-2 bg-gray-900" id="toggle-btn" href="#">
+                    <svg class="svg-icon svg-icon-sm svg-icon-heavy text-white">
+                        <use xlink:href="#menu-1"> </use>
+                    </svg></a>
+                    <div class="brand-text d-none d-md-inline-block text-uppercase letter-spacing-0"></div>
+                </div>
+                <ul class="nav-menu mb-0 list-unstyled d-flex flex-md-row align-items-md-center">
+                    <!-- Log out-->
+                    <li class="nav-item"><a class="nav-link text-white text-sm ps-0" href="{% url 'homepage' %}"> <span class="d-none d-sm-inline-block" style="font-weight:bold;font-size: 20px;">Logout</span>
+                        <svg class="svg-icon svg-icon-xs svg-icon-heavy">
+                        <use xlink:href="#security-1"> </use>
+                        </svg></a></li>
+                </ul>
+                </div>
+            </div>
+            </nav>
+        </header>
+        <main class="d-flex align-items-center mt-5 "style="margin-top:200px;">
+            <div class="container offset-2">
+                <div class="row mt-5">
         
-        <a href="{% url 'cendashboard' %}">
-            <button class="btn btn-primary" type="button" style="color: white; background-color: #65db9f; font-weight: bold;">
-              <strong>YOUR Dashboard</strong> 
-            </button>
-          </a>
-      </section>
-      
-</body>
+                    <div class="row pb-5 font-primary m-5 mt-5">
+                        <!------FIRST COLUMN-- -->
+                        <div class="col-md-4">
+                            <div class="card" style=" background-color:#2596be;width:300px; height:120px;padding: 20px 70px;">
+                                <div class="card-body">
+                                    <a class="stretched-link" href="{% url 'cendashboard' %}"><span style="font-size:20px;font-weight:bold;color:white">Dashboard</span>    
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!------SECOND COLUMN--- -->
+                        <div class="col-md-4">
+                            <div class="card" style="background-color:#66ff99;width:300px; height:120px;padding: 20px 60px;">
+                                <div class="card-body">
+                                    <a class="stretched-link" href="{% url 'studhome' %}"><span style="font-size:20px;font-weight:bold;color:white">Exam Panel</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>  
+            </div>
+        </main>
+        <!-- FontAwesome CSS - loading as last, so it doesn't block rendering -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    </body>
 </html>
+
+
+
+

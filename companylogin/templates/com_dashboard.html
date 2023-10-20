@@ -15,7 +15,7 @@
         <!-- Custom Scrollbar-->
         <link rel="stylesheet" href="{% static 'vendor/overlayscrollbars/css/OverlayScrollbars.min.css' %}">
         <!-- theme stylesheet-->
-        <link rel="stylesheet" href="{% static 'static/css/main.css' %}" id="theme-stylesheet">
+        <link rel="stylesheet" href="{% static 'static/css/main.css' %}">
         <!-- Custom stylesheet - for your changes-->
         <link rel="stylesheet" href="{% static 'css/custom.css' %}">
         <!-- Favicon-->
@@ -23,6 +23,8 @@
         <!-- Tweaks for older IEs--><!--[if lt IE 9]-->
         <script src="{% static 'https://oss.maxc' %}dn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="{% static 'https://oss.maxc' %}dn.com/respond/1.4.2/respond.min.js"></script>
+        <!-- font awesoms -->
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     
     </head>
     <body>
@@ -34,31 +36,33 @@
         <section style="margin-top:5%;">
             <div class="row p-5 ">
                 <!------FIRST COLUMN-- -->
-                <div class="col-md-3">
-                    <div class="card bg-primary ">
+                <div class="col-md-4">
+                    <div class="card" style="background-color:#2596be;width:300px; height:120px; padding:20px 60px;">
                         <div class="card-body">
-                            <h3 class="card-title color-primary font-white">Add a test</h3>
-                            
+                            <a class="stretched-link font-white" href="#"><span style="font-size:20px;font-weight:bold;color:white">Add test</span>    
+                            </a>
                         </div>
                     </div>
                 </div>
 
                 <!------SECOND COLUMN--- -->
-                <div class="col-md-3">
-                    <div class="card bg-yellow">
+                <div class="col-md-4">
+                    <div class="card" style="background-color:#cccc00;width: 300px; height: 120px;padding: 20px 50px;">
                         <div class="card-body">
-                            <h3 class="card-title color-primary">Ongoing tests</h3>
+                            <a class="stretched-link font-white" href="#"><span style="font-size:20px;font-weight:bold;color:white">Ongoing tests</span>    
+                            </a>
                         </div>
                     </div>
                 </div>
 
                 <!------THIRD COLUMN--- -->
-                <div class="col-md-3">
-                    <div class="card bg-red" style="">
+                <div class="col-md-4">
+                    <div class="card bg-red" style="width: 300px; height: 120px;padding: 20px 50px;">
                         <div class="card-body">
-                            <h3 class="card-title color-primary">Completed tests</h3>
+                            <a class="stretched-link font-white" href="#"><span style="font-size:20px;width:auto;font-weight:bold;color:white;">Completed tests</span>    
+                            </a>
                         </div>
-                    </div>
+                    </div>        
                 </div>
             </div>
         </section>
