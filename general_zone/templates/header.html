@@ -37,7 +37,7 @@
         <!--<start header> -->
         <header id="header" class="fixed-top">
             <div class="container d-flex align-items-center">
-                <img class="logo me-auto" src={% static 'assets/img/cbt_logo.png' %} style="width:250px;height:50px;" alt="logo">
+                <img class="logo me-auto" src= "{% static 'assets/img/cbt_logo.png' %}" style="width:250px;height:50px;" alt="logo">
 
                 <nav id="navbar" class="navbar order-last order-lg-0">
                     <ul>
@@ -47,7 +47,7 @@
                             <ul>
                                 <li><a href="{% url 'comlogin' %}">Company Login</a></li>
                                 <li class="dropdown"><a href="{% url 'centerlogin' %}"><span>Center Login</span></a></li>
-                                <li class="dropdown"><a href=" /"><span>Super Admin Login</span></a></li>
+                                <li class="dropdown"><a href="{% url 'adminpage' %}"><span> Admin Login</span></a></li>
                             </ul>
                         </li>
                         <li><a href="{% url 'courses' %}">Courses</a></li>

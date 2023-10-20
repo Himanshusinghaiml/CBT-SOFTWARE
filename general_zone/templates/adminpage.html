@@ -1,0 +1,49 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .data{
+            padding:  100px;
+            background-color: rgb(216, 208, 208);
+  
+        }
+        .td {
+            color: green;
+        }
+    </style>
+</head>
+ 
+<body>
+     <!-- contact_list.html -->
+<table border="1" class="data">
+    <thead class="td">
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Organizations</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.id   }}</td>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.phone }}</td>
+                <td>{{ contact.organizations }}</td>
+                <td>{{ contact.message }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+        
+</body>
+</html>

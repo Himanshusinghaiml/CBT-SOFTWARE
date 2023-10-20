@@ -10,4 +10,5 @@ urlpatterns = [
     path( 'events/',views.event,name="events"),
     path( 'trainers/',views.trainer,name="trainers"),
     path( 'courses/',views.courses,name="courses"),
-]
+    path( 'admin-control/',views.con1,name="adminpage"),
+] 
