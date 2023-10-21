@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from  .models import contact_data
 from  general_zone.models import contact_data
+from django.contrib.auth.models import User
 # Create your views here.
 def homepage(request):
     return render(request,'homepage.html')
