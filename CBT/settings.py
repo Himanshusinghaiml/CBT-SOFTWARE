@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'CBT.wsgi.application'
 DATABASES = { 
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':  'CBT',
+        'NAME':  'cbt',
         'USER':  'himanshu',
         'PASSWORD': '5076',
         "HOST": "localhost",

@@ -4,6 +4,7 @@ from  .models import contact_data
 from  general_zone.models import contact_data
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import authenticate,login,logout
 # Create your views here.
 def homepage(request):
     return render(request,'homepage.html')
@@ -46,6 +47,18 @@ def adminlogin(request):
     return render(request,'admin_login.html')
 
 def centerlogin(request):
+    if request.user.is_authenticated:
+        return redirect('entrylogin')
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('entrylogin')
+        else:
+            messages.error(request,' Invalid Credientials ❌ plz contact your organizations !')
+            return render(request, 'centerlogin.html')
     return render(request,'centerlogin.html')
 
 def about(request):
@@ -73,8 +86,11 @@ def contact(request):
 def courses(request):
     return render(request,'courses.html')
 
-def trainer(req):
-    return render(req,'trainers.html')
+def services(req):
+    return render(req,'services.html')
+
+def requestdemo(req):
+    return render(req,'request_demo.html')
 
 def con1(request):
     all_contacts = contact_data.objects.all()

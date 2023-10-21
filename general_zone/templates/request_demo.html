@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Admin Login</title>
+        <title>Request Demo</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/comlogin.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
     </head>
@@ -14,27 +14,42 @@
         {% include "header.html" %}
         <!--  header close  -->
           
-        <!--Login body-->
+        <!--Demo body-->
         <main class="d-flex align-items-center mb-5 ">
             <div class="container">
                 <div class="row "style="">
                     <div class="col-md-6 offset-md-3 "style="margin-top:7%;height:40%">
                         <div class="card mt-3">
                             <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
-                                <p style="font-weight:bold;font-size:30px;color:#ffffff">Admin Login<p>
+                                <p style="font-weight:bold;font-size:30px;color:#ffffff">Request for Demo<p>
                             </div>
 
                             <div class="card-body ">
-                                <form name="form" method="post" action="{% url 'adminpage' %}">
+                                <form name="form" method="post">
                                     {% csrf_token %}
 
                                     <div class="form-group pt-3 pb-4 mt-2">
-                                        <input type="text" name="username" class="form-control" id="username" placeholder="Username">
+                                        <input type="text" name="name" class="form-control" id="name" placeholder="Your name"required>
 
                                     </div>
 
                                     <div class="form-group pt-3 pb-4 mt-2">
-                                      <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                                        <input type="email" name="email" class="form-control" id="email" placeholder="Email Address"required>
+
+                                    </div>
+
+                                    <div class="form-group pt-3 pb-4 mt-2">
+                                        <input type="number" name="phone" class="form-control" id="phone" placeholder="Phone Number"required>
+
+                                    </div>
+
+                                    <div class="form-group pt-3 pb-4 mt-2">
+                                        <input type="text" name="organizations" class="form-control" id="organizations" placeholder="Organization name"required>
+
+                                    </div>
+
+                                    <div class="form-group pt-3 pb-4 mt-2">
+                                      <textarea name="message" class="form-control" rows="4" id="message" placeholder="Write your message"required></textarea>
                                     </div>
 
                                     <div class="row mt-3 pb-4">
@@ -48,8 +63,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> 
-                                </form>                                      
+                                    </div>
+                                </form>
                                     
                               </div>
 
@@ -59,7 +74,7 @@
                 </div>
             </div>
         </main>
-        <!--Login close-->
+        <!--Demo close-->
 
 
         <!-- Footer body   -->
