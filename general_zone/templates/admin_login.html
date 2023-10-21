@@ -25,16 +25,16 @@
                             </div>
 
                             <div class="card-body ">
-                                <form name="form" method="post">
+                                <form name="form" method="post" action="{% url 'adminpage' %}">
                                     {% csrf_token %}
 
                                     <div class="form-group pt-3 pb-4 mt-2">
-                                        <input type="text" name="username" class="form-control" id="username" placeholder="Username"required>
+                                        <input type="text" name="username" class="form-control" id="username" placeholder="Username">
 
                                     </div>
 
                                     <div class="form-group pt-3 pb-4 mt-2">
-                                      <input type="password" name="password" class="form-control" id="password" placeholder="Password"required>
+                                      <input type="password" name="password" class="form-control" id="password" placeholder="Password">
                                     </div>
 
                                     <div class="row mt-3 pb-4">
