@@ -20,7 +20,7 @@ def comsignup(request):
         password = request.POST.get('password')
         cpassword =request.POST.get('cpassword')
         if User.objects.filter(username=username).exists():
-            messages.error(request,'This username  already exist. please choose unique username !')
+            messages.error(request,'This username  already exist. please choose another username !')
             return redirect('comsignup')
         if(password!=cpassword):
             return redirect('comsignup')

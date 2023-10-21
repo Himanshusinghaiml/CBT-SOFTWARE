@@ -95,7 +95,7 @@
                             </div>
 
                             <div class="card-body ">
-                                <form name="form" method="post" action="{% url "addcenter" %}">
+                                <form name="form" method="post" action="{% url 'addcenter'  %}">
                                     {% csrf_token %}
                                     <div class="form-group pt-3">
                                         <input type="text" name="center_name" class="form-control" id="center_name" placeholder="Center Name"required>
