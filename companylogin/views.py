@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 from django.views.decorators.cache import never_cache
 from django.views.decorators.cache import cache_control
 from django.contrib import messages
-from .models import Tests
+from .models import *
 
 # Create your views here.
  
@@ -48,9 +48,21 @@ def completed_tests(request):
     return render(request,'completed_tests.html',{'tests':tests})
 
 def centers(request):
-    return render(request,'centers.html')
+    centers = Centers.objects.all()
+    return render(request,'centers.html',{'centers':centers})
 
 def addcenter(request):
+    msg=""
+    if request.method=='POST':
+        center_name = request.POST.get('center_name')
+        address = request.POST.get('address')
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+        profile_pic = request.POST.get('profile_pic')
+        password = request.POST.get('password')
+        center = Centers(center_name=center_name,address=address,phone=phone,email=email,profile_pic=profile_pic,password=password)
+        center.save()
+        messages.success(request, 'Center data added successfully.')
     return render(request,'centers.html')
 
 @login_required(login_url='comlogin')
