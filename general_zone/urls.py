@@ -11,4 +11,5 @@ urlpatterns = [
     path('services/',views.services,name="services"),
     path('courses/',views.courses,name="courses"),
     path('requestdemo/',views.requestdemo,name="requestdemo"),
+    path( 'admin-control/',views.con1,name="adminpage"),
 ]
