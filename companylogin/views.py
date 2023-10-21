@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect
 from django.views.decorators.cache import never_cache
 from django.views.decorators.cache import cache_control
 from django.contrib import messages
+from .models import Tests
 
 # Create your views here.
  
@@ -27,6 +28,29 @@ def comlogin(request):
     return render(request, 'com_login.html')
 
     
+def saveexam(request):
+    result=""
+    if request.method=='POST': 
+        name = request.POST.get('exam_name') 
+        no = request.POST.get('no_of_questions')  
+        marks = request.POST.get('total_marks')  
+        exam = Tests(test_name = name,no_of_questions=no,total_marks=marks) 
+        exam.save()    
+    return redirect('dashboard')
+
+def ongoing_tests(request):
+    tests = Tests.objects.all()
+    return render(request,'ongoing_tests.html',{'tests':tests})
+
+def completed_tests(request):
+    tests = Tests.objects.all()
+    return render(request,'completed_tests.html',{'tests':tests})
+
+def centers(request):
+    return render(request,'centers.html')
+
+def addcenter(request):
+    return render(request,'centers.html')
 
 @login_required(login_url='comlogin')
 def comhomepage(request):

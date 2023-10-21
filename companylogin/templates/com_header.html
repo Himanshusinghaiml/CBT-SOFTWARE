@@ -75,14 +75,14 @@
                         <li class="sidebar-item"><a class="sidebar-link" href="#exampledropdownDropdown" data-bs-toggle="collapse"> 
                                 <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
                                 <use xlink:href="#browser-window-1"> </use>
-                                </svg>Exams </a>
+                                </svg>Tests </a>
                             <ul class="collapse list-unstyled " id="exampledropdownDropdown">
-                                <li><a class="sidebar-link" href="{% url 'addexam' %}">Add Exam</a></li>
-                                <li><a class="sidebar-link" href="#">Ongoing</a></li>
-                                <li><a class="sidebar-link" href="#">Completed</a></li>                            
+                                <li><a class="sidebar-link" href="{% url 'addexam' %}">Add Test</a></li>
+                                <li><a class="sidebar-link" href="{% url 'ongoingtests' %}">Ongoing</a></li>
+                                <li><a class="sidebar-link" href="{% url 'completedtests' %}">Completed</a></li>                            
                             </ul>
                         </li>
-                        <li class="sidebar-item"><a class="sidebar-link" href="#"> 
+                        <li class="sidebar-item"><a class="sidebar-link" href="{% url 'centers' %}"> 
                             <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
                                 <use xlink:href="#sales-up-1"> </use>
                             </svg>Centers </a>

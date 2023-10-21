@@ -47,5 +47,8 @@ def contact(request):
 def courses(request):
     return render(request,'courses.html')
 
-def trainer(req):
-    return render(req,'trainers.html')
+def services(req):
+    return render(req,'services.html')
+
+def requestdemo(req):
+    return render(req,'request_demo.html')
