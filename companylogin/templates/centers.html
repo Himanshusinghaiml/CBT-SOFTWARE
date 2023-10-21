@@ -30,7 +30,11 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    
+        <script>
+            if ({{messages}}!=""){
+                alert({{messages}})
+            }
+        </script>
     </head>
     <body>
         <!-- header file -->      
@@ -52,26 +56,27 @@
                             <tr>
                                 <th scope="col">Center code</th>
                                 <th scope="col">Center Name</th>
-                                <th scope="col">Address</th>
+                                <th scope="col">Address</th>  
                                 <th scope="col">Mobile No.</th>
                                 <th scope="col">Email Id</th>
+                                <th scope="col">Profile Pic</th>
                                 <th scope="col">Password</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% comment %} {% for test in tests %}
-                                {% if test.status == "Completed" %} 
+                            {% for center in centers %}
                                     <tr>
-                                        <td>{{ test.id }}</td>
-                                        <td>{{ test.test_name }}</td>
-                                        <td>{{ test.no_of_questions }}</td>
-                                        <td>{{ test.total_marks }}</td>
-                                        <td style="color: #eb34e1;">{{ test.status }}</td>
+                                        <td>{{ center.id }}</td>
+                                        <td>{{ center.center_name }}</td>
+                                        <td>{{ center.address }}</td>
+                                        <td>{{ center.phone }}</td>
+                                        <td>{{ center.email }}</td>
+                                        <td>{{ center.profile_pic }}</td>
+                                        <td>{{ center.password }}</td>
                                         <td><a href="#" style="color: red;">Delete</a></td>
                                     </tr>
-                                {% endif %}
-                            {% endfor %} {% endcomment %}
+                            {% endfor %}
 
                         </tbody>                            
                     </table>
@@ -119,7 +124,8 @@
                                     </div>
 
                                     <div class="form-group pt-3">
-                                        <input type="file" name="image" class="form-control" id="image" placeholder="Upload Photo(Optional)">
+                                        <span>Upload Photo(Optional)</span>
+                                        <input type="file" name="profile_pic" class="form-control" id="image" placeholder="Upload Photo(Optional)">
                                       </div>
 
                                     <div class="row mt-3">

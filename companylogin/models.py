@@ -5,5 +5,12 @@ class Tests(models.Model):
     no_of_questions = models.PositiveIntegerField()
     total_marks = models.PositiveIntegerField()
     status = models.CharField(max_length=128,default="Active")
-
+    
+class Centers(models.Model):
+    center_name = models.CharField(max_length=256)
+    address = models.CharField(max_length=256)
+    phone = models.CharField(max_length=256)
+    email = models.CharField(max_length=256)
+    profile_pic = models.ImageField(upload_to='profile_pic/center/',null=True)
+    password = models.CharField(max_length=128)
     
