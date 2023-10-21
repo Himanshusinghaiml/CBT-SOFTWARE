@@ -43,5 +43,5 @@ def addexam(request):
 def comlogout(request):
     logout(request)
     messages.success(request, 'You have been logged out successfully.')
-    return  redirect('homepage')
+    return  redirect('comlogin')
     

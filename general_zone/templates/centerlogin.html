@@ -27,7 +27,7 @@
                             <div class="card-body ">
                                 <form name="form" method="post">
                                     {% csrf_token %}
-
+                                     {% include "msg.html" %}
                                     <div class="form-group pt-3 pb-4 mt-2">
                                         <input type="text" name="username" class="form-control" id="username" placeholder="Username"required>
 
