@@ -25,7 +25,7 @@
                             <div class="card-body ">
                                 <form name="form" method="post" onsubmit="return validate();">
                                     {% csrf_token %}
-
+                                    {% include "msg.html" %}
                                     <div class="form-group pt-3">
                                         <input type="text" name="username" class="form-control" id="username" placeholder="Enter User Name"required>
 
@@ -55,15 +55,8 @@
                                       <input type="password" name="password" class="form-control" id="password" placeholder="Password"required>
                                     </div>
                                     <div class="password_required" style="font-family:sans-serif;color:red;">
-                                        <div class="mt-2">Must Contains:</div>
-                                        <ul style="margin-top: 5px; padding-left: 20px">
-                                            <li>Minimum 8 chars</li>
-                                            <li>Uppercase</li>
-                                            <li>Lower Case</li>
-                                            <li>Special Character(@,#,$ etc)</li>
-                                            <li>Numeric Value</li>
-                                            <li>Letter</li>
-                                        </ul>
+                                        <!-- <div class="mt-2">Must Contains:</div> -->
+                                         
                                     </div>
 
                                     <div class="form-group pt-1">
@@ -75,17 +68,17 @@
                                                 <div class="col">
                                                     <button class="btn btn-primary" type="submit" style="color:white;background-color:#65db9f;font-weight:bold;">Sign up</button>
                                                 </div>
-                                                <div class="col">
+                                                <!-- <div class="col">
                                                     <button class="btn btn-primary" type="reset" style="color:white;background-color:#65db9f;font-weight:bold;">Reset</button>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                         
                                 </form>
                                         <div class="col">
                                           <form action="{% url 'comlogin' %}">
-                                              <span style="color:red">Already a user? &nbsp;</span>
-                                              <button class="btn btn-primary"style="color:white;background-color:#65db9f;font-weight:bold;">Sign In</button>
+                                              <!-- <span style="color:red">Already a user? &nbsp;</span> -->
+                                              <button class="btn btn-primary"style="color:white;background-color:#65db9f;font-weight:bold;">Already a user ?</button>
                                           </form>
                                         </div>
                                     </div>
