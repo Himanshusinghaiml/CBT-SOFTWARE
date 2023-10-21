@@ -23,6 +23,7 @@ def comlogin(request):
             login(request, user)
             return redirect('dashboard')
         else:
+            messages.error(request,' Invalid Credientials ❌ try again !')
             return render(request, 'com_login.html')
 
     return render(request, 'com_login.html')
@@ -79,5 +80,5 @@ def addexam(request):
 def comlogout(request):
     logout(request)
     messages.success(request, 'You have been logged out successfully.')
-    return  redirect('homepage')
+    return  redirect('comlogin')
     

@@ -27,7 +27,7 @@
                             <div class="card-body ">
                                 <form name="form" method="post">
                                     {% csrf_token %}
-
+                                     {% include "msg.html" %}
                                     <div class="form-group pt-3 pb-4 mt-2">
                                         <input type="text" name="username" class="form-control" id="username" placeholder="Username"required>
 
@@ -41,12 +41,10 @@
                                         <div class="col">
                                             <div class="row">
                                                 <div class="col">
-                                                    <a href="{% url 'entrylogin' %}"></a><button class="btn btn-primary" type="submit" style="color:white;background-color:#65db9f;font-weight:bold;">Sign in</button></a>
+                                                     <button class="btn btn-primary" type="submit" style="color:white;background-color:#65db9f;font-weight:bold;">Sign in</button></a>
                                                 </div>
                                              
-                                                <div class="col">
-                                                    <button class="btn btn-primary" type="reset" style="color:white;background-color:#65db9f;font-weight:bold;">Reset</button>
-                                                </div>
+                                                 
                                             </div>
                                         </div>
                                         <div class="col">
@@ -65,10 +63,7 @@
         </main>
         <!--Login close-->
         
-        <center><a href="{% url 'entrylogin' %}">
-            <button class="btn btn-primary" type="button" style="color: white; background-color: #65db9f; font-weight: bold;">
-              Sign in
-            </button>
+        <center><a href="#">-----------
           </a> </center> 
           
         <!-- Footer body   -->
