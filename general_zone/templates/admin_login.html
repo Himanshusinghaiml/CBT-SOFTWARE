@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Center Login</title>
+        <title>Admin Login</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/comlogin.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
     </head>
@@ -21,7 +21,7 @@
                     <div class="col-md-6 offset-md-3 "style="margin-top:7%;height:40%">
                         <div class="card mt-3">
                             <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
-                                <p style="font-weight:bold;font-size:30px;color:#ffffff">Center Login<p>
+                                <p style="font-weight:bold;font-size:30px;color:#ffffff">Admin Login<p>
                             </div>
 
                             <div class="card-body ">
@@ -41,20 +41,16 @@
                                         <div class="col">
                                             <div class="row">
                                                 <div class="col">
-                                                    <a href="{% url 'entrylogin' %}"></a><button class="btn btn-primary" type="submit" style="color:white;background-color:#65db9f;font-weight:bold;">Sign in</button></a>
+                                                    <button class="btn btn-primary" type="submit" style="color:white;background-color:#65db9f;font-weight:bold;">Sign in</button>
                                                 </div>
-                                             
                                                 <div class="col">
-                                         
+                                                    <button class="btn btn-primary" type="reset" style="color:white;background-color:#65db9f;font-weight:bold;">Reset</button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col">
-                                            <a style="color:red;margin-top:5px;"><p>Forgot Password?</p>
-                                            📞Contact your organizations
-                                        </div>
-                                      </div>
-                                </form>
+                                    </div> 
+                                </form>                                      
+                                    
                               </div>
 
                         </div>
@@ -64,13 +60,8 @@
             </div>
         </main>
         <!--Login close-->
-        
-        <center><a href="{% url 'entrylogin' %}">
-            <button class="btn btn-primary" type="button" style="color: white; background-color: #65db9f; font-weight: bold;">
-              Sign in
-            </button>
-          </a> </center> 
-          
+
+
         <!-- Footer body   -->
         {%include "footer.html" %}
         <!-- Footer close  -->

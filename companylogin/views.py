@@ -11,38 +11,6 @@ from django.contrib import messages
 
 # Create your views here.
  
-def comsignup(request):
-    # if request.user.is_authenticated:
-    #     return redirect('dashboard')
-    if request.method == 'POST':
-        username=request.POST.get('username')
-        firstname = request.POST.get('firstname')
-        lastname = request.POST.get('lastname')
-        organization = request.POST.get('organization')
-        phone = request.POST.get('phone')
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        cpassword =request.POST.get('cpassword')
-        if(password!=cpassword):
-            return redirect('comsignup')
-        if(len(phone)!=10 or len(phone)<10 or len(phone)>10):
-            return redirect('comsignup')
-        sign_up = User.objects.create_user(
-            username=username,
-            first_name=firstname,
-            last_name=lastname,
-            # organization=organization,
-            # phone_number=phone,
-            email=email,
-            password=password,
-        )
-        # login(request, sign_up)
-        sign_up.save()
-        # return HttpResponse("successfully data saved in databse")
-        return redirect("comlogin")    
-    return render(request,'com_signup.html')
-
- 
 def comlogin(request):
     if request.user.is_authenticated:
         return redirect('dashboard')
@@ -68,7 +36,9 @@ def comhomepage(request):
 def comdashboard(request):
     return render(request,'com_dashboard.html')
 
- 
+def addexam(request):
+    return render(request,'add_exam.html')
+
 @login_required
 def comlogout(request):
     logout(request)
