@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from  .models import contact_data
 from  general_zone.models import contact_data
 from django.contrib.auth.models import User
+from django.contrib import messages
 # Create your views here.
 def homepage(request):
     return render(request,'homepage.html')
@@ -58,7 +59,8 @@ def contact(request):
         organizations=organizations,
         message = message
     ) 
-        contactdata.save()     
+        contactdata.save() 
+        messages.success(request,'Sucessfully submitted.Our Executive will call you soon. Thank you .🤗 ')    
     return render(request,'contact.html')
 
 def courses(request):
