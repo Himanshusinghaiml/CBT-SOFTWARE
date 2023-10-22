@@ -12,4 +12,6 @@ urlpatterns=[
     path('addcenter/',views.addcenter,name="addcenter"),
     path('saveexam/',views.saveexam,name="saveexam"),
     path('logout/',views.comlogout,name="logout"),
+    path('company-entry/',views.companyentry,name="companyentry"),
+    path('password-center/',views.passcenter,name="passcenter"),
 ]
