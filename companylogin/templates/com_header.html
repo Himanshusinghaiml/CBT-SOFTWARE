@@ -21,7 +21,7 @@
         <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
         <!-- Tweaks for older IEs--><!--[if lt IE 9]-->
         <script src="{% static 'https://oss.maxc' %}dn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="{% static 'https://oss.maxc' %}dn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+        <script src="{% static 'https://oss.maxc' %}dn.com/respond/1.4.2/respond.min.js"></script> 
 
         <!-- FontAwesome CSS - loading as last, so it doesn't block rendering -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" 
@@ -92,10 +92,10 @@
                                 <use xlink:href="#portfolio-grid-1"> </use>
                             </svg>Questions </a>
                         </li>                   
-                        <li class="sidebar-item"><a class="sidebar-link" href="#"> 
+                        <li class="sidebar-item"><a class="sidebar-link" href="{% url 'passcenter' %}"> 
                             <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
                                 <use xlink:href="#disable-1"> </use>
-                            </svg>Login page </a>
+                            </svg>Create-password for center </a>
                         </li>
                         <li class="sidebar-item"><a class="sidebar-link" href="#"> 
                             <svg class="svg-icon svg-icon-xs svg-icon-heavy me-2">

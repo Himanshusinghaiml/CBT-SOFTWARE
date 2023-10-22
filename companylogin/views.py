@@ -14,14 +14,14 @@ from .models import *
  
 def comlogin(request):
     if request.user.is_authenticated:
-        return redirect('dashboard')
+        return redirect('companyentry')
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('dashboard')
+            return redirect('companyentry')
         else:
             messages.error(request,' Invalid Credientials ❌ try again !')
             return render(request, 'com_login.html')
@@ -81,4 +81,8 @@ def comlogout(request):
     logout(request)
     messages.success(request, 'You have been logged out successfully.')
     return  redirect('comlogin')
-    
+def companyentry(req):
+    return render(req,'com_entry.html')
+
+def passcenter(req):
+    return render(req,'pass_center.html')

@@ -30,11 +30,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <script>
-            if ({{messages}}!=""){
-                alert({{messages}})
-            }
-        </script>
+         
     </head>
     <body>
         <!-- header file -->      
@@ -100,7 +96,7 @@
                             </div>
 
                             <div class="card-body ">
-                                <form name="form" method="post" action="{% url "addcenter" %}">
+                                <form name="form" method="post" action="{% url 'addcenter'  %}">
                                     {% csrf_token %}
                                     <div class="form-group pt-3">
                                         <input type="text" name="center_name" class="form-control" id="center_name" placeholder="Center Name"required>
