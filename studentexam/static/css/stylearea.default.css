@@ -1,9 +1,9 @@
 .banner a:hover img,
 a,
-button {
+/* button {
     -webkit-transition: all .2s ease-out;
     -moz-transition: all .2s ease-out;
-}
+} */
 
 #error-page,
 .banner,
