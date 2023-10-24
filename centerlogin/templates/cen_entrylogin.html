@@ -20,6 +20,7 @@
         <!-- Favicon-->
         <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
         <link rel="stylesheetn" href="{% static 'css/main.css' %}">
+         
         <title>CBT</title>
             <!-- <script src="{% static 'https://oss.maxc' %}dn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
             <script src="{% static 'https://oss.maxc' %}dn.com/respond/1.4.2/respond.min.js"></script> -->
@@ -27,7 +28,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script>
+        <!-- <script>
             function openExamPortal() {
                 const url = "{% url 'studhome' %}"; // Replace this with the URL of your exam portal
                 const windowFeatures = 'width=' + screen.width + ',height=' + screen.height + ',fullscreen=yes,scrollbars=no,location=no,menubar=no,toolbar=no,status=no,resizable=no';
@@ -49,8 +50,8 @@
                     alert("Please disable your pop-up blocker to access the exam portal.");
                 }
             }
-            </script>
-                  
+            </script> -->
+            <!-- <script src="{% static 'js/logout.js' %}"></script>          -->
     </head>
     <body>
         <!-- Side Navbar -->
@@ -81,12 +82,16 @@
                     </svg></a>
                     <div class="brand-text d-none d-md-inline-block text-uppercase letter-spacing-0"></div>
                 </div>
-                <ul class="nav-menu mb-0 list-unstyled d-flex flex-md-row align-items-md-center">
+                <ul class="nav-menu mb-0 list-unstyled d-flex flex-md-row align-items-md-center"  >
                     <!-- Log out-->
-                    <li class="nav-item"><a class="nav-link text-white text-sm ps-0" href="{% url 'cenlogout' %}"> <span class="d-none d-sm-inline-block" style="font-weight:bold;font-size: 20px;">Logout</span>
-                        <svg class="svg-icon svg-icon-xs svg-icon-heavy">
-                        <use xlink:href="#security-1"> </use>
-                        </svg></a></li>
+
+                     <button id="logout" type="submit" class="btn btn-primary" style="cursor: pointer;">logout</button>
+                     <script>
+                        var logoutUrl = "{% url 'cenlogout' %}";
+                    </script>
+                    
+                    
+
                 </ul>
                 </div>
             </div>
@@ -129,6 +134,8 @@
             </main>
         </div>
         <!-- FontAwesome CSS - loading as last, so it doesn't block rendering -->
+        <script src="{% static 'js/logout.js' %}"></script>
+        
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     </body>
 </html>

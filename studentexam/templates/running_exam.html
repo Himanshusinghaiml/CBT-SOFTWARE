@@ -83,14 +83,14 @@
     <!-- endedd question showing -->
 
     <!-- showing question boxex start -->
- <div id="content" style="position: fixed; right: 350px; bottom: 20px;">
-<div id="content">
-    <div class="container">
-        <div class="row exam-paper">
+<div id="content" style="position: fixed; right: 350px; bottom: 20px;">
+    <div id="content">
+       <div class="container">
+           <div class="row exam-paper">
               <div class="col-md-4" id="pallette">    
-                     <div class="panel panel-default ">
-                             <div class="panel-body " style="height:300px;overflow-y:scroll;">
-                                   <ul class="pagination test-questions">
+                   <div class="panel panel-default ">
+                       <div class="panel-body " style="height:300px;overflow-y:scroll;">
+                            <ul class="pagination test-questions">
                         <li class="active" data-seq="1"><a class="test-ques que-not-answered " href="javascript:void(0);" data-href="page01">01</a></li>
                         <li class="" data-seq="1"><a class="test-ques que-not-attempted " href="javascript:void(0);" data-href="page02">02</a></li>
                         <li class="" data-seq="1"><a class="test-ques que-not-attempted " href="javascript:void(0);" data-href="page03">03</a></li>
@@ -152,7 +152,7 @@
 </div>
 </div>
  <!-- showing question boxes -->
-     
+  
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-125433287-1"></script>
 <div class="container" id="question-container">
 </div> 
@@ -161,7 +161,7 @@
     const questions = [
         {
             question: "What is your favorite color?",
-            options: ["Option 1", "Option 2", "Option 3"]
+            options: [" red", "orange 2", "blue 3"]
         },
         {
             question: "What is your favorite animal?",
@@ -201,17 +201,27 @@
                     <button class="button" onclick="clearResponse()">Clear Response</button>
                     <button class="button" onclick="previousQuestion()">Previous</button>
                     <button class="button" onclick="saveAndNext()">Save and Next</button>
+                    
+                    <a href="{% url 'over' %}"<button class="button" id="submit-button"> Submit </button></a>  
                 </div>
             `;
         }
     }
-
     function markForReview() {
         // Implement your code for marking the current question for review here.
+        
     }
 
     function clearResponse() {
         // Implement your code for clearing the response to the current question here.
+        const question = questions[currentQuestionIndex];
+    if (question) {
+        const radioButtons = document.getElementsByName(`question${currentQuestionIndex}`);
+
+        for (let i = 0; i < radioButtons.length; i++) {
+            radioButtons[i].checked = false;
+        }
+    }
     }
 
     function previousQuestion() {
@@ -227,10 +237,28 @@
             currentQuestionIndex++;
             displayQuestion(currentQuestionIndex);
         }
+        else {
+         
+        alert("Your Question is over ! if you sure answer have all done click submit button and finish your exam .");
+    }
     }
 
     // Initialize the first question.
     displayQuestion(currentQuestionIndex);
+    document.getElementById("submit-button").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent the default link behavior
+
+    var confirmation = confirm("Are you sure you want to submit?");
+    
+    if (confirmation) {
+        window.location.href = this.getAttribute("href");
+    } else {
+       
+    }
+});
+
+ 
+
 </script>
 </body>
 </html>

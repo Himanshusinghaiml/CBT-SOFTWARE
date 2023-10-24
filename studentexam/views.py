@@ -15,4 +15,5 @@ def running(req):
         'start_time': start_time.strftime("%Y-%m-%d %H:%M:%S"),  # Format the time as a string
         'end_time': end_time.strftime("%Y-%m-%d %H:%M:%S"),
     })
-    # return render(req,'running_exam.html')
+def over(req):
+    return render(req,'submit.html')
