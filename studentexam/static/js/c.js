@@ -41,3 +41,4 @@ $(document).ready(function () {
         // Load the initial question
         loadQuestion(currentQuestionId);
     });
+

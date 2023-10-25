@@ -8,12 +8,39 @@
   <link rel="stylesheet" href="{% static 'css/run.css' %}">
   <link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+   <style>
+    body{
+      background-image: url("{% static 'img/exampic.jpg' %}");
+    }
+    .profile-photo {
+    background-image: url("{% static 'css/photogrid.jpg' %}");
+  }
+   </style>
 </head>
 <body>
+     
   <div class="container1">
+    <div class="container10">
+        <div class="box">DSA</div>
+        <div class="box">Operating System</div>
+        <div class="box">Computer Network</div>
+        <div class="box">Coding</div>
+        <div class="box">Aptitide</div>
+      </div>
+    
     <div class="header">
-      <h1>Student Exam Panel</h1>
+      <!-- <h1>Student Exam Panel</h1> -->
+      <header>
+        <ul class="header-menu">
+          <li>Exam name: TCS NQT |</li>
+          <li>Candidate Name: Himanshu Singh</li>
+          <div id="timer">1h 0m 0s</div>
+        </ul>
+        <div class="profile-photo"></div>
+      </header>
+       
     </div>
     <div class="question-container">
        
@@ -159,6 +186,32 @@ function markview()
     {
         alert("sorry for the inconvience !! this button is under maintenence,");
     } 
-</script>   
+</script>  
+ <!-- timer code for starting the exam -->
+
+    <script>
+        // var endTime = new Date("{{ end_time }}");
+        var endTime = new Date();
+        endTime.setMinutes(endTime.getMinutes() + 30);
+        function updateTimer() {
+            var currentTime = new Date();
+            var timeLeft = endTime - currentTime;
+
+            if (timeLeft <= 0) {
+                document.getElementById("timer").textContent = "Time's up!";
+                clearInterval(timerInterval);
+            } else {
+                var hours = Math.floor(timeLeft / 3600000);
+                var minutes = Math.floor((timeLeft % 3600000) / 60000);
+                var seconds = Math.floor((timeLeft % 60000) / 1000);
+
+                document.getElementById("timer").textContent = "Time left: " + hours + "h " + minutes + "m " + seconds + "s";
+            }
+        }
+        updateTimer();  // Call once to display the initial time
+        var timerInterval = setInterval(updateTimer, 1000);  // Update the timer every second
+    </script>
+    <!-- timer code ended -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-125433287-1"></script> 
 </body>
 </html>
