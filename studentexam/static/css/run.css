@@ -1,118 +1,108 @@
-/* Add this code in your CSS file, e.g., styles.css */
 
-header {
-    background-color:rgba(10, 10, 183, 0.704);
-    color: #fff;
-    padding: 10px 20px; /* Increase padding for better spacing */
-    text-align: right;
-}
-
-.header-menu {
-    list-style: none;
-    padding: 0;
-    display: flex; /* Use flexbox for flexible layout */
-    flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
-    justify-content: space-between; /* Spread items across the header */
-
-}
-
-.header-menu li {
-    margin-right: 20px;
-    font-weight: bold;
-    white-space: nowrap; /* Prevent text from wrapping within a list item */
-}
-
-#timer {
-    margin-left: 10px;
-}
-
-/* Media query for small screens (e.g., mobile) */
-@media (max-width: 600px) {
-    .header-menu li {
-        margin-right: 0; /* Remove right margin on small screens to prevent overlap */
-        margin-bottom: 10px; /* Add bottom margin for spacing between items */
-        text-align: center; /* Center align text on small screens */
-    }
-}
-
-
-/* Add this code in your CSS file, e.g., styles.css */
-
-.question-container {
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    width: 300px;
-    margin: 0 auto;
-}
-
-/* Optional styles for better readability */
-h2 {
-    font-size: 1.2em;
-    margin: 0;
-}
-
-h3 {
-    font-size: 1em;
-    margin: 0;
-}
-
-/* Remove the default list styles */
-ol {
-    list-style: none;
-    padding: 0;
-}
-
-/* Style the radio buttons and labels */
-ol li {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-input[type="radio"] {
-    margin-right: 5px;
-}
-
-/* Optional styles for hover effect on options */
-ol li:hover {
-    background-color: #e0e0e0;
-    cursor: pointer;
-}
 body {
-    display: flex;
-    /* justify-content: center; */
-    /* align-items: center; */
-    height: 100vh;
+    font-family: Arial, sans-serif;
+    /* background-color: #f4f4f4; */
+    /* background-color: #f5deb3;
+     */
+     background-color: red;
     margin: 0;
-}
-.container {
-            width: 60%;
-            margin: 0 auto;
-            border: 1px solid #ccc;
-            padding: 20px;
-        }
-        .question {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        .options {
-            margin-bottom: 20px;
-        }
-        .options label {
-            display: block;
-            margin-bottom: 10px;
-        }
-        .button-container {
-            display: flex;
-            justify-content: space-between;
-        }
-        .button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-    
- 
+    padding: 0;
+  }
+
+  .container1 {
+    max-width: 999px;
+    /* margin: 30px auto; */
+    margin: 10px;
+    background-color: #fff;
+    border: dotted;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 600px;
+  }
+
+  .header {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .question-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .question-list {
+    flex: 1;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+  }
+
+  .question-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+   
+
+  .question {
+    flex: 3;
+    padding: 20px;
+  }
+
+  .question-number {
+    font-weight: bold;
+  }
+
+  .answers {
+    flex: 4;
+    padding: 20px;
+  }
+
+  .answer-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+  }
+
+  .answered {
+    background-color: #4CAF50;
+    color: #fff;
+  }
+
+  .not-answered {
+    background-color: #FF5722;
+    color: #fff;
+  }
+
+  /* .button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  } */
+  
+  .button-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 60%;
+    /* background-color: white; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 20px; */
+    margin: 60px;
+
+  }
+  .button-container button:hover {
+    background-color: #0056b3; /* Button color on hover */
+  }
+  .button-container button {
+    padding: 10px 20px;
+    background-color: #007BFF; /* Button color */
+    color: #fff; /* Text color */
+    border: list-style-type;
+    cursor: pointer;
+  }
+   
+   
