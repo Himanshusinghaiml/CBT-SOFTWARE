@@ -78,10 +78,10 @@
         <!-- end first column -->
 
          <!-- second column start-->
-        <div class="col-md-6 text-right">
+        <div class="col-md-6 text-right" id="logout">
             <div class="card" style="background-color:#FF5733; width:300px; height:120px; padding: 20px 50px; margin-left: 100px;">
                 <div class="card-title">
-                    <a class="stretched-link" href="{% url 'logout' %}"></a>
+                    <!-- <a class="stretched-link" href="{% url 'logout' %}"></a> -->
                     <span style="font-size:10px; font-weight:bold; color:white">Log out</span><br>
                 </div>
                 <div class="card-body">
@@ -443,5 +443,7 @@
             }
         });
     </script>
+    <script> var logoutUrl = "{% url 'logout' %}"; </script>
+    <script src="{% static 'js/logout.js' %}"></script>
 </body>
 </html>

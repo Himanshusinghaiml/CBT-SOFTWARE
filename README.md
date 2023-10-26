@@ -62,6 +62,7 @@
 - Bootstrap
 - Django
 - SQLite3
+- mysql 
 
 ## <a name="design-inspo"></a> Design Inspiration
 The backend interface of this project was inspired by [Himanshu singh, Akash Anand] 

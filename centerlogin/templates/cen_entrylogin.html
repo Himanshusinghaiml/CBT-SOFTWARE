@@ -20,6 +20,7 @@
         <!-- Favicon-->
         <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
         <link rel="stylesheetn" href="{% static 'css/main.css' %}">
+         
         <title>CBT</title>
             <!-- <script src="{% static 'https://oss.maxc' %}dn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
             <script src="{% static 'https://oss.maxc' %}dn.com/respond/1.4.2/respond.min.js"></script> -->
@@ -50,7 +51,7 @@
                 }
             }
             </script>
-                  
+           
     </head>
     <body>
         <!-- Side Navbar -->
@@ -81,12 +82,16 @@
                     </svg></a>
                     <div class="brand-text d-none d-md-inline-block text-uppercase letter-spacing-0"></div>
                 </div>
-                <ul class="nav-menu mb-0 list-unstyled d-flex flex-md-row align-items-md-center">
+                <ul class="nav-menu mb-0 list-unstyled d-flex flex-md-row align-items-md-center"  >
                     <!-- Log out-->
-                    <li class="nav-item"><a class="nav-link text-white text-sm ps-0" href="{% url 'cenlogout' %}"> <span class="d-none d-sm-inline-block" style="font-weight:bold;font-size: 20px;">Logout</span>
-                        <svg class="svg-icon svg-icon-xs svg-icon-heavy">
-                        <use xlink:href="#security-1"> </use>
-                        </svg></a></li>
+
+                     <button id="logout" type="submit" class="btn btn-primary" style="cursor: pointer;">logout</button>
+                     <script>
+                        var logoutUrl = "{% url 'cenlogout' %}";
+                    </script>
+                    
+                    
+
                 </ul>
                 </div>
             </div>
@@ -129,6 +134,8 @@
             </main>
         </div>
         <!-- FontAwesome CSS - loading as last, so it doesn't block rendering -->
+        <script src="{% static 'js/logout.js' %}"></script>
+        
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     </body>
 </html>
