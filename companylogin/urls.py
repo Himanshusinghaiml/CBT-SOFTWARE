@@ -2,16 +2,18 @@ from django.urls import path
 from companylogin import views
 
 urlpatterns=[
-    path('comlogin/',views.comlogin,name="comlogin"),
-    path('comhomepage/',views.comhomepage,name="comhomepage"),
-    path('dashboard/',views.comdashboard,name="dashboard"),
-    path('addexam/',views.addexam,name="addexam"),
+    path('comlogin/',views.comLogin,name="comlogin"),
+    path('com_dashboard/',views.com_dashboard,name="com_dashboard"),
+    path('addexam/',views.addExam,name="addexam"),
     path('ongoingtests/',views.ongoing_tests,name="ongoingtests"),
     path('completedtests/',views.completed_tests,name="completedtests"),
     path('centers/',views.centers,name="centers"),
-    path('addcenter/',views.addcenter,name="addcenter"),
-    path('saveexam/',views.saveexam,name="saveexam"),
-    path('logout/',views.comlogout,name="logout"),
+    path('addcenter/',views.addCenter,name="addcenter"),
+    path('saveexam/',views.saveExam,name="saveexam"),
+    path('logout/',views.comLogout,name="logout"),
     path('company-entry/',views.companyentry,name="companyentry"),
     path('password-center/',views.passcenter,name="passcenter"),
+    path('questions/',views.questions,name="questions"),
+    path('addquestion/',views.addQuestion,name="addquestion"),
+    
 ]

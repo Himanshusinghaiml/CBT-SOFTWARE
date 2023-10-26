@@ -12,24 +12,36 @@ from .models import *
 
 # Create your views here.
  
-def comlogin(request):
+def comLogin(request):
     if request.user.is_authenticated:
-        return redirect('companyentry')
+        return redirect('com_dashboard')
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('companyentry')
+            return redirect('com_dashboard')
         else:
             messages.error(request,' Invalid Credientials ❌ try again !')
             return render(request, 'com_login.html')
 
     return render(request, 'com_login.html')
 
+@login_required(login_url='comlogin')
+def com_dashboard(request):
+    return render(request,'com_dashboard.html')
+
+@login_required
+def comLogout(request):
+    logout(request)
+    messages.success(request, 'You have been logged out successfully.')
+    return  redirect('comlogin')
+
+def addExam(request):
+    return render(request,'add_exam.html')
     
-def saveexam(request):
+def saveExam(request):
     result=""
     if request.method=='POST': 
         name = request.POST.get('exam_name') 
@@ -37,7 +49,7 @@ def saveexam(request):
         marks = request.POST.get('total_marks')  
         exam = Tests(test_name = name,no_of_questions=no,total_marks=marks) 
         exam.save()    
-    return redirect('dashboard')
+    return redirect('com_dashboard')
 
 def ongoing_tests(request):
     tests = Tests.objects.all()
@@ -51,7 +63,7 @@ def centers(request):
     centers = Centers.objects.all()
     return render(request,'centers.html',{'centers':centers})
 
-def addcenter(request):
+def addCenter(request):
     msg=""
     if request.method=='POST':
         center_name = request.POST.get('center_name')
@@ -65,24 +77,34 @@ def addcenter(request):
         messages.success(request, 'Center data added successfully.')
     return render(request,'centers.html')
 
-@login_required(login_url='comlogin')
-def comhomepage(request):
-    return render(request,'com_homepage.html')
+def questions(request):
+    questions = Questions.objects.all()
+    return render(request,'questions.html',{ 'questions':questions})
 
-@login_required(login_url='comlogin')
-def comdashboard(request):
-    return render(request,'com_dashboard.html')
+def addQuestion(request):
+    msg=""
+    if request.method=='POST':
+        question = request.POST.get('question')
+        option_1 = request.POST.get('option_1')
+        option_2 = request.POST.get('option_2')
+        option_3 = request.POST.get('option_3')
+        option_4 = request.POST.get('option_4')
+        correct_option = request.POST.get('correct_option')
+        marks = request.POST.get('marks')
+        question = Questions(question=question,option_1=option_1,option_2=option_2,option_3=option_3,option_4=option_4,correct_option=correct_option,marks=marks)
+        question.save()
+        messages.success(request, 'Question added successfully.')
+    return render(request,'questions.html')
 
-def addexam(request):
-    return render(request,'add_exam.html')
 
-@login_required
-def comlogout(request):
-    logout(request)
-    messages.success(request, 'You have been logged out successfully.')
-    return  redirect('comlogin')
+
+
+
+
+
 def companyentry(req):
     return render(req,'com_entry.html')
 
 def passcenter(req):
     return render(req,'pass_center.html')
+

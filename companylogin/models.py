@@ -13,3 +13,12 @@ class Centers(models.Model):
     email = models.CharField(max_length=256)
     profile_pic = models.FileField(upload_to='profile_pic/',null=True,default=None)
     password = models.CharField(max_length=128)
+    
+class Questions(models.Model):
+    question = models.CharField(max_length=512)
+    option_1 = models.CharField(max_length=256)
+    option_2 = models.CharField(max_length=256)
+    option_3 = models.CharField(max_length=256)
+    option_4 = models.CharField(max_length=256)
+    correct_option = models.CharField(max_length=256)
+    marks = models.PositiveIntegerField()

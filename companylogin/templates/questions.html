@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Exam Centers</title>
+        <title>Questions</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="all,follow">
@@ -38,38 +38,40 @@
         <!-- header close -->
 
         <!-- main content -->
-        <div class="page " style="background-color: #ddd2d287;">
+        <div class="page " style="background-color: #ddd2d287;" >
 
             <!-- Table data -->
-            <div class="container offset-md-1" id="centers_table">
+            <div class="container offset-md-1" id="question_table">
                
                 <div class="row p-1"style="margin-top:10%;" >
-                    <table class="table table-bordered table-success" style="width: 85%;">
+                    <table class="table table-bordered-bg-danger" style="width: 85%;">
                         <thead> 
                             <tr>
-                                <h2 style="font-size:30px;color:#ff216f;margin-left: 30%;">Exam Centers List</h2>
+                                <h2 style="font-size:30px;color:#ff216f;margin-left: 30%;">Questions List</h2>
                             </tr>                          
-                            <tr>
-                                <th scope="col">Center code</th>
-                                <th scope="col">Center Name</th>
-                                <th scope="col">Address</th>  
-                                <th scope="col">Mobile No.</th>
-                                <th scope="col">Email Id</th>
-                                <th scope="col">Profile Pic</th>
-                                <th scope="col">Password</th>
+                            <tr >
+                                <th scope="col">Question code</th>
+                                <th scope="col">Question</th>
+                                <th scope="col">Option 1</th>  
+                                <th scope="col">Option 2</th>
+                                <th scope="col">Option 3</th>
+                                <th scope="col">Option 4</th>
+                                <th scope="col"style="color: green;">Correct Option</th>
+                                <th>Marks</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            {% for center in centers %}
-                                    <tr>
-                                        <td>{{ center.id }}</td>
-                                        <td>{{ center.center_name }}</td>
-                                        <td>{{ center.address }}</td>
-                                        <td>{{ center.phone }}</td>
-                                        <td>{{ center.email }}</td>
-                                        <td>{{ center.profile_pic }}</td>
-                                        <td>{{ center.password }}</td>
+                        <tbody >
+                            {% for question in questions %}
+                                    <tr style="background-color: #ffffff;!important">
+                                        <td>{{ question.id }}</td>
+                                        <td>{{ question.question }}</td>
+                                        <td>{{ question.option_1 }}</td>
+                                        <td>{{ question.option_2 }}</td>
+                                        <td>{{ question.option_3 }}</td>
+                                        <td>{{ question.option_4 }}</td>
+                                        <td>{{ question.correct_option }}</td>
+                                        <td>{{ question.marks }}</td>
                                         <td><a href="#" style="color: red;">Delete</a></td>
                                     </tr>
                             {% endfor %}
@@ -79,49 +81,58 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <button class="btn btn-outline-danger" id="add_center_btn" >Add Center</button>
+                        <button class="btn btn-outline-danger" id="add_question_btn" >Add Question</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Add a center -->
-            <div class="container" id="add_center_form"style="display:none;">
+            <!-- Add a question -->
+            <div class="container" id="add_question_form"style="display:none;">
                 <div class="row "style="margin-top:5%; ">
                     <div class="col-md-6 offset-md-3 ">
                         <div class="card mt-3">
 
                             <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
                                 
-                                <p style="font-weight:bold;font-size:30px;color:#ffffff">Enter Center Details<p>
+                                <p style="font-weight:bold;font-size:30px;color:#ffffff">Enter Question Details<p>
                             </div>
 
                             <div class="card-body ">
-                                <form name="form" method="post" action="{% url 'addcenter'  %}">
+                                <form name="form" method="post" action="{% url 'addquestion'  %}">
                                     {% csrf_token %}
                                     <div class="form-group pt-3">
-                                        <input type="text" name="center_name" class="form-control" id="center_name" placeholder="Center Name"required>
+                                        <input type="text" name="question" class="form-control" id="question" placeholder="Question"required>
 
                                     </div>
 
                                     <div class="form-group pt-3">
-                                        <input type="text" name="address" class="form-control" id="address"placeholder="Address"required>
+                                        <input type="text" name="option_1" class="form-control" id="option_1"placeholder="Option 1"required>
                                     </div>
 
                                     <div class="form-group pt-3">
-                                        <input type="text" name="phone" class="form-control" id="phone" placeholder="Phone No"required>
+                                        <input type="text" name="option_2" class="form-control" id="option_2" placeholder="Option 2"required>
                                     </div>
 
                                     <div class="form-group pt-3">
-                                      <input type="email" name="email" class="form-control" id="email" placeholder="Email address"required>
+                                      <input type="text" name="option_3" class="form-control" id="option_3" placeholder="Option 3"required>
                                     </div>
 
                                     <div class="form-group pt-3">
-                                      <input type="password" name="password" class="form-control" id="password" placeholder="Password"required>
+                                      <input type="text" name="option_4" class="form-control" id="option_4" placeholder="Option 4"required>
                                     </div>
 
                                     <div class="form-group pt-3">
-                                        <span>Upload Photo(Optional)</span>
-                                        <input type="file" name="profile_pic" class="form-control" id="image" placeholder="Upload Photo(Optional)">
+                                        <span>Correct Option</span>
+                                        <select name="correct_option" class="form-control" id="correct_option" placeholder="Correct Option">
+                                            <option>Select</option>
+                                            <option value="option_1">Option 1</option>
+                                            <option value="option_2">Option 2</option>
+                                            <option value="option_3">Option 3</option>
+                                            <option value="option_4">Option 4</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group pt-3">
+                                        <input type="text" name="marks" class="form-control" id="marks" placeholder="Marks"required>
                                       </div>
 
                                     <div class="row mt-3">
@@ -160,15 +171,15 @@
         <script src="{% static 'js/front.js'%}"></script>
 
         <script>
-            document.getElementById("add_center_btn").addEventListener("click", function() {
-                var hiddenContent = document.getElementById("add_center_form");
-                var centers_table = document.getElementById("centers_table");
+            document.getElementById("add_question_btn").addEventListener("click", function() {
+                var hiddenContent = document.getElementById("add_question_form");
+                var question_table = document.getElementById("question_table");
                 if (hiddenContent.style.display === "none") {
-                    centers_table.style.display = "none";
+                    question_table.style.display = "none";
                     hiddenContent.style.display = "block";
                 }else{
                     hiddenContent.style.display = "none";
-                    centers_table.style.display = "block";
+                    question_table.style.display = "block";
                 }
                 
             });
