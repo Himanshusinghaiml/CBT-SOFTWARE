@@ -27,7 +27,7 @@
 ## <a name="features"></a>  Features
 * ### General Features
     - Cross-platform
-    - Responsive
+    - Responsive7
     - Accessible
     - Supports objective questions
 
@@ -38,7 +38,7 @@
         - Resumption capability for students
         - Automatic grading
         - Question randomization
-        
+        - AI based software         
     * #### Examiner
         
         - Manage exams and set questions for assigned courses.
