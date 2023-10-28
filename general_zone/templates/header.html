@@ -6,12 +6,15 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="description">
         <meta content="" name="keywords">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- i write new line above -->
+
 
         <!-- bootstrap -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
         rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
         crossorigin="anonymous">
-
+        <!-- why github not working -->
         <!-- Favicons -->
         <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
         <link href="{% static 'assets/img/apple-touch-icon.png' }" rel="apple-touch-icon">
@@ -51,8 +54,8 @@
                         <li class="dropdown"><a href="#"><span>Login</span></a>
                             <ul>
                                 <li><a href="{% url 'comlogin' %}">Company Login</a></li>
-                                <li class="dropdown"><a href="{% url 'centerlogin' %}"><span>Center Login</span></a></li>
-                                <li class="dropdown"><a href="{% url 'adminlogin' %}"><span>Admin Login</span></a></li>
+                                <li><a href="{% url 'centerlogin' %}">Center Login</a></li>
+                                <li><a href="{% url 'adminlogin' %}">admin login</a></li>
                             </ul>
                         </li>
                         <li><a href="{% url 'courses' %}">Courses</a></li>
@@ -64,7 +67,7 @@
                 <!-- .navbar -->
 
                 <a href="{% url 'requestdemo' %}" class="get-started-btn">Request Demo</a>
-
+                <a href="/">Home</a>
             </div>
         </header><!-- End Header -->
     </body>
