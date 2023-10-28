@@ -13,84 +13,84 @@
 
         <!--Main body-->
         <section class="about main"> 
-        <main class="d-flex align-items-center mb-5 ">
-            <div class="container">
-                <div class="row "style="margin-top:5%; ">
-                    <div class="col-md-6 offset-md-3 ">
-                        <div class="card mt-3">
+            <main class="d-flex align-items-center mb-5 ">
+                <div class="container">
+                    <div class="row "style="margin-top:5%; ">
+                        <div class="col-md-6 offset-md-3 ">
+                            <div class="card mt-3">
 
-                            <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
-                                <p style="font-weight:bold;font-size:30px;color:#ffffff">Register Here<p>
-                            </div>
+                                <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
+                                    <p style="font-weight:bold;font-size:30px;color:#ffffff">Register Here<p>
+                                </div>
 
-                            <div class="card-body ">
-                                <form name="form" method="post" onsubmit="return validate();">
-                                    {% csrf_token %}
-                                    {% include "msg.html" %}
-                                    <div class="form-group pt-3">
-                                        <input type="text" name="username" class="form-control" id="username" placeholder="Enter User Name"required>
+                                <div class="card-body ">
+                                    <form name="form" method="post" onsubmit="return validate();">
+                                        {% csrf_token %}
+                                        {% include "msg.html" %}
+                                        <div class="form-group pt-3">
+                                            <input type="text" name="username" class="form-control" id="username" placeholder="Enter User Name"required>
 
-                                    </div>
+                                        </div>
 
-                                    <div class="form-group pt-3">
-                                        <input type="text" name="firstname" class="form-control" id="firstname"placeholder="Enter First Name"required>
-                                    </div>
+                                        <div class="form-group pt-3">
+                                            <input type="text" name="firstname" class="form-control" id="firstname"placeholder="Enter First Name"required>
+                                        </div>
 
-                                    <div class="form-group pt-3">
-                                        <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Enter Last Name"required>
-                                    </div>
+                                        <div class="form-group pt-3">
+                                            <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Enter Last Name"required>
+                                        </div>
 
-                                    <div class="form-group pt-3">
-                                        <input type="text" id="organizations" class="form-control" name="organizations"placeholder="Organization Name"required>
-                                    </div>
+                                        <div class="form-group pt-3">
+                                            <input type="text" id="organizations" class="form-control" name="organizations"placeholder="Organization Name"required>
+                                        </div>
 
-                                    <div class="form-group pt-3">
-                                        <input type="number" name="phone" class="form-control" id="phone" placeholder="Phone number"required>
-                                    </div>
+                                        <div class="form-group pt-3">
+                                            <input type="number" name="phone" class="form-control" id="phone" placeholder="Phone number"required>
+                                        </div>
 
-                                    <div class="form-group pt-3">
-                                      <input type="email" name="email" class="form-control" id="email" placeholder="Email address"required>
-                                    </div>
+                                        <div class="form-group pt-3">
+                                        <input type="email" name="email" class="form-control" id="email" placeholder="Email address"required>
+                                        </div>
 
-                                    <div class="form-group pt-3">
-                                      <input type="password" name="password" class="form-control" id="password" placeholder="Password"required>
-                                    </div>
-                                    <div class="password_required" style="font-family:sans-serif;color:red;">
-                                        <!-- <div class="mt-2">Must Contains:</div> -->
-                                         
-                                    </div>
+                                        <div class="form-group pt-3">
+                                        <input type="password" name="password" class="form-control" id="password" placeholder="Password"required>
+                                        </div>
+                                        <div class="password_required" style="font-family:sans-serif;color:red;">
+                                            <!-- <div class="mt-2">Must Contains:</div> -->
+                                            
+                                        </div>
 
-                                    <div class="form-group pt-1">
-                                        <input type="text" name="cpassword" class="form-control" id="cpassword" placeholder="Confirm Password"required>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <button class="btn btn-primary" type="submit" style="color:white;background-color:#65db9f;font-weight:bold;">Sign up</button>
+                                        <div class="form-group pt-1">
+                                            <input type="text" name="cpassword" class="form-control" id="cpassword" placeholder="Confirm Password"required>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <button class="btn btn-primary" type="submit" style="color:white;background-color:#65db9f;font-weight:bold;">Sign up</button>
+                                                    </div>
+                                                    <!-- <div class="col">
+                                                        <button class="btn btn-primary" type="reset" style="color:white;background-color:#65db9f;font-weight:bold;">Reset</button>
+                                                    </div> -->
                                                 </div>
-                                                <!-- <div class="col">
-                                                    <button class="btn btn-primary" type="reset" style="color:white;background-color:#65db9f;font-weight:bold;">Reset</button>
-                                                </div> -->
+                                            </div>
+                                            
+                                    </form>
+                                            <div class="col">
+                                            <form action="{% url 'comlogin' %}">
+                                                <!-- <span style="color:red">Already a user? &nbsp;</span> -->
+                                                <button class="btn btn-primary"style="color:white;background-color:#65db9f;font-weight:bold;">Already a user ?</button>
+                                            </form>
                                             </div>
                                         </div>
-                                        
-                                </form>
-                                        <div class="col">
-                                          <form action="{% url 'comlogin' %}">
-                                              <!-- <span style="color:red">Already a user? &nbsp;</span> -->
-                                              <button class="btn btn-primary"style="color:white;background-color:#65db9f;font-weight:bold;">Already a user ?</button>
-                                          </form>
-                                        </div>
-                                    </div>
-                              </div>
+                                </div>
 
+                            </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
-            </div>
-        </main>
+            </main>
         </section><!--main close-->
 
         <!-- JAVASCRIPT FOR FORM VALIDATION -->

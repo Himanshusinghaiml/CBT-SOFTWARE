@@ -66,9 +66,58 @@
                 </nav>
                 <!-- .navbar -->
 
-                <a href="{% url 'requestdemo' %}" class="get-started-btn">Request Demo</a>
-                <a href="/">Home</a>
+                <button class="get-started-btn"  data-target="#loginModal">Request Demo</button>
             </div>
         </header><!-- End Header -->
+
+
+        <!--Demo body-->
+        <section class="about main">                
+            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color:#99db9fdd;">
+                            <h5 class="modal-title" id="exampleModalLabel">Request a Demo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form name="form" method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Your name"required>
+            
+                                </div>
+            
+                                <div class="form-group ">
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="Email Address"required>
+            
+                                </div>
+            
+                                <div class="form-group">
+                                    <input type="number" name="phone" class="form-control" id="phone" placeholder="Phone Number"required>
+            
+                                </div>
+            
+                                <div class="form-group">
+                                    <input type="text" name="organizations" class="form-control" id="organizations" placeholder="Organization name"required>
+            
+                                </div>
+            
+                                <div class="form-group">
+                                <textarea name="message" class="form-control" rows="4" id="message" placeholder="Write your message"required></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="reset" class="btn btn-secondary" >Reset</button>
+                            <button type="submit" class="btn btn-outline-success">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Demo close-->
     </body>
 </html>
