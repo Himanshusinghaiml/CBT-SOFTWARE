@@ -1,12 +1,14 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate,login,logout
-from django.contrib.auth.decorators import login_required,user_passes_test
-# Create your views here.
 from django.contrib import messages
 
 from django.http import HttpResponse
+
 def cendashboard(request):
-    return render(request,'cen_dashboard.html') 
+    try:
+        if request.session['center_id']:
+            return render(request,'cen_dashboard.html')
+    except KeyError:
+        return redirect('centerlogin')  
 
 def cenlogout(request):
     try:
@@ -18,14 +20,37 @@ def cenlogout(request):
         pass
     return  redirect('centerlogin')
 
-def entrylogin(req):
-    return render(req,'cen_entrylogin.html')
+def entrylogin(request):
+    try:
+        if request.session['center_id']:
+            return render(request,'cen_entrylogin.html')
+    except KeyError:
+        return redirect('centerlogin') 
 
 def studentlist(request):
-    return render(request,'studentlist.html')
+    try:
+        if request.session['center_id']:
+            return render(request,'studentlist.html')
+    except KeyError:
+        return redirect('centerlogin')
+
 def  democenter(request):
-    return render(request,'democenter.html')
+    try:
+        if request.session['center_id']:
+            return render(request,'democenter.html')
+    except KeyError:
+        return redirect('centerlogin')
+
 def  emergency(request):
-    return render(request,'cen_emer.html')
+    try:
+        if request.session['center_id']:
+            return render(request,'cen_emer.html')
+    except KeyError:
+        return redirect('centerlogin')
+
 def  seatarr(request):
-    return render(request,'seat_arrange.html')
+    try:
+        if request.session['center_id']:
+            return render(request,'seat_arrange.html')
+    except KeyError:
+        return redirect('centerlogin')

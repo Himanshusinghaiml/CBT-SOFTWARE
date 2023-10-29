@@ -24,9 +24,11 @@ def comLogout(request):
         pass
     return  redirect('comlogin')
 
+
 def addExam(request):
     return render(request,'add_exam.html')
-    
+ 
+   
 def saveExam(request):
     result=""
     if request.method=='POST': 
@@ -37,17 +39,21 @@ def saveExam(request):
         exam.save()    
     return redirect('com_dashboard')
 
+
 def ongoing_tests(request):
     tests = Test.objects.all()
     return render(request,'ongoing_tests.html',{'tests':tests})
+
 
 def completed_tests(request):
     tests = Test.objects.all()
     return render(request,'completed_tests.html',{'tests':tests})
 
+
 def centers(request):
     centers = Center.objects.all()
     return render(request,'centers.html',{'centers':centers})
+
 
 def addCenter(request):
     msg=""
@@ -63,9 +69,11 @@ def addCenter(request):
         messages.success(request, 'Center added successfully.')
     return render(request,'centers.html')
 
+
 def questions(request):
     questions = Question.objects.all()
     return render(request,'questions.html',{ 'questions':questions})
+
 
 def addQuestion(request):
     msg=""
@@ -82,8 +90,10 @@ def addQuestion(request):
         messages.success(request, 'Question added successfully.')
     return render(request,'questions.html')
 
+
 def companyentry(req):
     return render(req,'com_entry.html')
+
 
 def passcenter(req):
     return render(req,'pass_center.html')
