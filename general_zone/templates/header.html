@@ -1,79 +1,505 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="" name="description">
-        <meta content="" name="keywords">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- i write new line above -->
 
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- i write new line above -->
+    <style>
+        /* Style for the login modal */
+        #loginModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+        }
 
-        <!-- bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
-        rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
-        crossorigin="anonymous">
-        <!-- why github not working -->
-        <!-- Favicons -->
-        <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
-        <link href="{% static 'assets/img/apple-touch-icon.png' }" rel="apple-touch-icon">
+        .modal-content {
+            background-color: #fff;
+            width: 50%;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #000;
+            border-radius: 5px;
+        }
 
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-        <!-- Vendor CSS Files -->
-        <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
-        <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
-        <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-        <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-        <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-        <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
-        <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-
-        <!--  BOOTSTRAP  -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <!-- Template Main CSS File -->
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #000;
+        }
         
-        <link href="{% static 'assets/css1/style1.css' %}" rel="stylesheet">
+ 
+    </style>
 
-    </head>
-    
-    <body>
-        <!--<start header> -->
-        <header id="header" class="fixed-top">
-            <div class="container d-flex align-items-center">
-                <!-- <img class="logo me-auto" src= "{% static 'assets/img/cbt_logo.png' %}" style="width:250px;height:50px;" alt="logo"> -->
-                <a href="/">
-                    <img class="logo me-auto" src="{% static 'assets/img/cbt_logo.png' %}" style="width:250px; height:50px;" alt="logo">
-                </a>
-                
-                <nav id="navbar" class="navbar order-last order-lg-0">
-                    <ul>
-                        <li><a class="active" href="/">Home</a></li>
-                        <li><a href="{% url 'about' %}">About Us</a></li>
-                        <li class="dropdown"><a href="#"><span>Login</span></a>
-                            <ul>
-                                <li><a href="{% url 'comlogin' %}">Company Login</a></li>
-                                <li><a href="{% url 'centerlogin' %}">Center Login</a></li>
-                                <li><a href="{% url 'adminlogin' %}">admin login</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="{% url 'courses' %}">Courses</a></li>
-                        <li><a href="{% url 'services' %}">Services</a></li>
-                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
-                        <li><a href="#">Our Top Center list</a></li>
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav>
-                <!-- .navbar -->
-                <a href="{% url 'requestdemo' %}" class="get-started-btn">Request Demo</a>
-                <!-- <a href="/">Home</a> -->
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- why github not working -->
+    <!-- Favicons -->
+    <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+    <link href="{% static 'assets/img/apple-touch-icon.png' }" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+    <!--  BOOTSTRAP  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Template Main CSS File -->
+
+    <link href="{% static 'assets/css1/style1.css' %}" rel="stylesheet">
+
+</head>
+    <!--<start header> -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+            <!-- <img class="logo me-auto" src= "{% static 'assets/img/cbt_logo.png' %}" style="width:250px;height:50px;" alt="logo"> -->
+            <a href="/">
+                <img class="logo me-auto" src="{% static 'assets/img/cbt_logo.png' %}" style="width:250px; height:50px;"
+                    alt="logo">
+            </a>
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li><a class="active" href="/">Home</a></li>
+                    <li><a href="{% url 'about' %}">About Us</a></li>
+                    <li class="dropdown"><a href="#"><span>Login</span></a>
+                        <ul>
+           <div class="container">
+                                <li><button id="comloginbutton" class="custom-buttom"> Company login</button></li>
+                            </div>
+                            <!-- <li><a href="{% url 'comlogin' %}">Company Login</a></li> -->
+                            <li> <a><button id="cenloginbutton">Center Login</button> </a></li>
+                            <!-- <li><a href="{% url 'centerlogin' %}">Center Login</a></li> -->
+                            <!-- <li><a href="{% url 'adminlogin' %}">admin login</a></li> -->
+                            <li><button id="adminloginbutton"> Admin Login</button></li>
+                        </ul>
+                    </li>
+                    <li><a href="{% url 'courses' %}">Courses</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                    <li><a href="#">Center list</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <!-- .navbar -->
+            <a href="{% url 'contact' %}" class="get-started-btn">Demo</a>
+        </div>
+    </header><!-- End Header -->
+    <!-- <script src="{% static 'js/main.js' %}"></script> -->
+
+    <!--  this is poup for company login  code -->
+    <div id="comloginmodal" class="modal">
+        <section class="about main">
+            <main class="d-flex align-items-center mb-5 ">
+                <div class="container">
+
+                    <div class="col-md-6 offset-md-3 " style="margin-top:7%;height:40%">
+                        <div class="card mt-3">
+                            <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
+                                <p style="font-weight:bold;font-size:30px;color: #232f3e">Company Login
+                                <p>
+                            </div>
+
+                            <div class="card-body ">
+                                <form name="form" method="post" action="{% url 'comlogin' %}">
+                                    {% csrf_token %}
+                                    {% include "msg.html" %}
+                                    <div class="form-group pt-3 pb-4 mt-2">
+                                        <input type="text" name="username" class="form-control" id="username"
+                                            placeholder="Username" required>
+
+                                    </div>
+
+                                    <div class="form-group pt-3 pb-4 mt-2">
+                                        <input type="password" name="password" class="form-control" id="password"
+                                            placeholder="Password" required>
+                                    </div>
+
+                                    <div class="row mt-3 pb-4">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <button class="btn btn-primary" type="submit"
+                                                        style="color:white;background-color:#65db9f;font-weight:bold;">Sign
+                                                        in</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="col col-md-6 pb-4">
+                                     
+                                         
+
+                                        <button class="btn btn-primary"
+                                            style="color:white;background-color:#65db9f;font-weight:bold;" id="signuploginbutton">don't
+                                            have an account?</button>
+                                    
+                                </div>
+                                <a href="#" style="color:red">
+                                    <p>Forget Password ?</p>
+                                </a>
+                                <span class="close-button" id="closecom">&times;</span>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+        </section>
+    </div>
+    <!-- here ended company login poupup-->
+
+    <!-- here start for popup for center login -->
+    <div id="cenloginmodal" class="modal">
+        <section class="about main">
+            <main class="d-flex align-items-center mb-5 ">
+                <div class="container">
+
+                    <div class="col-md-6 offset-md-3 " style="margin-top:7%;height:40%">
+                        <div class="card mt-3">
+                            <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
+                                <p style="font-weight:bold;font-size:30px;color: #232f3e">Center Login
+                                <p>
+                            </div>
+
+                            <div class="card-body ">
+                                <form name="form" method="post" action="{% url 'centerlogin' %}">
+                                    {% csrf_token %}
+                                    {% include "msg.html" %}
+                                    <div class="form-group pt-3 pb-4 mt-2">
+                                        <input type="text" name="username" class="form-control" id="username"
+                                            placeholder="Username" required>
+
+                                    </div>
+
+                                    <div class="form-group pt-3 pb-4 mt-2">
+                                        <input type="password" name="password" class="form-control" id="password"
+                                            placeholder="Password" required>
+                                    </div>
+
+                                    <div class="row mt-3 pb-4">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <button class="btn btn-primary" type="submit"
+                                                        style="color:white;background-color:#65db9f;font-weight:bold;">Sign
+                                                        in</button></a>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <a style="color:red;margin-top:5px;">
+                                                <p>Forgot Password?</p>
+                                                📞Contact your organizations
+                                        </div>
+                                    </div>
+                                    <span class="close-button" id="closecen">&times;</span>
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </main>
+        </section>
+    </div>
+    <!-- start for admin code -->
+    <div id="adminloginmodal" class="modal">
+        <section class="about main">
+            <main class="d-flex align-items-center mb-5 ">
+                <div class="container">
+                    <div class="row " style="">
+                        <div class="col-md-6 offset-md-3 " style="margin-top:7%;height:40%">
+                            <div class="card mt-3">
+                                <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
+                                    <p style="font-weight:bold;font-size:30px;color: #232f3e">Admin Login
+                                    <p>
+                                </div>
+
+                                <div class="card-body ">
+                                    <form name="form" method="post" action="{% url 'adminpage' %}">
+                                        {% csrf_token %}
+
+                                        <div class="form-group pt-3 pb-4 mt-2">
+                                            <input type="text" name="username" class="form-control" id="username"
+                                                placeholder="Username">
+
+                                        </div>
+
+                                        <div class="form-group pt-3 pb-4 mt-2">
+                                            <input type="password" name="password" class="form-control" id="password"
+                                                placeholder="Password">
+                                        </div>
+
+                                        <div class="row mt-3 pb-4">
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <button class="btn btn-primary" type="submit"
+                                                            style="color:white;background-color:#65db9f;font-weight:bold;">Sign
+                                                            in</button>
+                                                    </div>
+                                                    <div class="col">
+                                                        <button class="btn btn-primary" type="reset"
+                                                            style="color:white;background-color:#65db9f;font-weight:bold;">Reset</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <span class="close-button" id="closeadmin">&times;</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+            <!--Login close-->
+        </section>
+    </div>
+    <!-- ended admin code -->
+
+    <!--  code for sign up company -->
+ <div id="signuploginmodal" class="modal">
+    <section class="about main"> 
+        <main class="d-flex align-items-center mb-5 ">
+            <div class="container">
+                <div class="row "style="margin-top:5%; ">
+                    <div class="col-md-6 offset-md-3 ">
+                        <div class="card mt-3">
+
+                            <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
+                                <p style="font-weight:bold;font-size:30px;color: #232f3e">Register Here<p>
+                            </div>
+
+                            <div class="card-body ">
+                                <form name="form" method="post" onsubmit="return validate();">
+                                    {% csrf_token %}
+                                    {% include "msg.html" %}
+                                    <div class="form-group pt-3">
+                                        <input type="text" name="username" class="form-control" id="username" placeholder="Enter User Name"required>
+
+                                    </div>
+
+                                     
+
+                                    <div class="form-group pt-3">
+                                        <input type="number" name="phone" class="form-control" id="phone" placeholder="Phone number"required>
+                                    </div>
+
+                                    <div class="form-group pt-3">
+                                      <input type="email" name="email" class="form-control" id="email" placeholder="Email address"required>
+                                    </div>
+
+                                    <div class="form-group pt-3">
+                                      <input type="password" name="password" class="form-control" id="password" placeholder="Password"required>
+                                    </div>
+                                    <div class="password_required" style="font-family:sans-serif;color:red;">
+                                        <!-- <div class="mt-2">Must Contains:</div> -->
+                                         
+                                    </div>
+
+                                    <div class="form-group pt-1">
+                                        <input type="text" name="cpassword" class="form-control" id="cpassword" placeholder="Confirm Password"required>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <button class="btn btn-primary" type="submit" style="color:white;background-color:#65db9f;font-weight:bold;">Sign up</button>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                </form>
+                                <div class="col"><button class="btn btn-primary"style="color:white;background-color:#65db9f;font-weight:bold;" id="already">Already a user ?</button>
+                    
+                                </div>
+                                        <div class="col col-md-6 pb-4">
+                                            <!-- <button class="btn btn-primary"
+                                                style="color:white;background-color:#65db9f;font-weight:bold;" id="comloginbutton">Already a User
+                                            </button>  -->
+                                        
+                                    </div>
+                                        <span class="close-button" id="closesignup">&times;</span>
+                                    </div>
+                              </div>
+
+                        </div>
+                    </div>
+                      
+                </div>
+           </main>
+       </section>
+</div>
+        
+     
+        <!-- ended sign up code  of company login -->
+<!-- already a user code -->
+
+<div id="alreadymodal" class="modal">
+    <section class="about main">
+        <main class="d-flex align-items-center mb-5 ">
+            <div class="container">
+
+                <div class="col-md-6 offset-md-3 " style="margin-top:7%;height:40%">
+                    <div class="card mt-3">
+                        <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
+                            <p style="font-weight:bold;font-size:30px;color: #232f3e">Company Login
+                            <p>
+                        </div>
+
+                        <div class="card-body ">
+                            <form name="form" method="post" action="{% url 'comlogin' %}">
+                                {% csrf_token %}
+                                {% include "msg.html" %}
+                                <div class="form-group pt-3 pb-4 mt-2">
+                                    <input type="text" name="username" class="form-control" id="username"
+                                        placeholder="Username" required>
+
+                                </div>
+
+                                <div class="form-group pt-3 pb-4 mt-2">
+                                    <input type="password" name="password" class="form-control" id="password"
+                                        placeholder="Password" required>
+                                </div>
+
+                                <div class="row mt-3 pb-4">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <button class="btn btn-primary" type="submit"
+                                                    style="color:white;background-color:#65db9f;font-weight:bold;">Sign
+                                                    in</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                             
+                            <span class="close-button" id="closealready">&times;</span>
+
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </header><!-- End Header -->
-        <!-- <script src="{% static 'js/main.js' %}"></script> -->
-    </body>
+        </main>
+    </section>
+</div>
+<!-- ended code of already user -->
+
+    <!--  js code for poup  -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const comloginButton = document.getElementById('comloginbutton');
+            const cenloginButton = document.getElementById('cenloginbutton');
+            const comloginModal = document.getElementById('comloginmodal');
+            const cenloginModal = document.getElementById('cenloginmodal');
+            const closeComModal = document.getElementById('closecom');
+            const closeCenModal = document.getElementById('closecen');
+            const adminloginButton = document.getElementById('adminloginbutton');
+            const adminloginModal = document.getElementById('adminloginmodal');
+            const closeadminModal = document.getElementById('closeadmin');
+            const signuploginButton = document.getElementById('signuploginbutton');
+            const signuploginModal = document.getElementById('signuploginmodal');
+            const closesignupModal = document.getElementById('closesignup');
+
+            const  already = document.getElementById('already');
+            const  alreadymodal = document.getElementById('alreadymodal');
+            const closealready = document.getElementById('closealready');
+
+            comloginButton.addEventListener('click', function () {
+                comloginModal.style.display = 'block';
+                signuploginModal.style.display = 'none'; //for disable 
+            });
+
+            cenloginButton.addEventListener('click', function () {
+                cenloginModal.style.display = 'block';
+                document.body.classList.remove('no-scroll');
+            });
+
+            adminloginButton.addEventListener('click', function () {
+                adminloginModal.style.display = 'block';
+                document.body.classList.remove('no-scroll');
+            });
+
+            signuploginButton.addEventListener('click', function () {
+                signuploginModal.style.display = 'block';
+                comloginModal.style.display = 'none';// for disable 
+            });
+
+            already.addEventListener('click', function () {
+                alreadymodal.style.display = 'block';
+                signuploginModal.style.display = 'none';// for disable 
+            });
+
+
+            closeComModal.addEventListener('click', function () {
+                comloginModal.style.display = 'none';
+                document.body.classList.remove('no-scroll');
+            });
+
+            closeadminModal.addEventListener('click', function () {
+                adminloginModal.style.display = 'none';
+                document.body.classList.remove('no-scroll');
+            });
+
+            closesignupModal.addEventListener('click', function () {
+                signuploginModal.style.display = 'none';
+                document.body.classList.remove('no-scroll');
+            });
+
+            closealready.addEventListener('click', function () {
+                alreadymodal.style.display = 'none';
+                 
+            });
+
+            closeCenModal.addEventListener('click', function () {
+                cenloginModal.style.display = 'none';
+                document.body.classList.remove('no-scroll');
+            });
+        });
+    </script>
+
+
+</body>
+
 </html>

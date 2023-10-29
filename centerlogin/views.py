@@ -10,8 +10,8 @@ def cendashboard(request):
 
 def cenlogout(request):
     logout(request)
-    messages.success(request, 'You have been logged out successfully.')
-    return  redirect('centerlogin')
+    # messages.success(request, 'You have been logged out successfully.')
+    return  redirect('homepage')
 
 def entrylogin(req):
     return render(req,'cen_entrylogin.html')
