@@ -7,6 +7,13 @@
         <title>Request Demo</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/comlogin.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+        <!-- Add Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Add Bootstrap JS and jQuery (make sure jQuery is included before Bootstrap JS) -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <body>
 
@@ -15,66 +22,52 @@
         <!--  header close  -->
           
         <!--Demo body-->
-    <section class="about main">     
-        <main class="d-flex align-items-center mb-5 ">
-            <div class="container">
-                <div class="row "style="">
-                    <div class="col-md-6 offset-md-3 "style="margin-top:7%;height:40%">
-                        <div class="card mt-3">
-                            <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
-                                <p style="font-weight:bold;font-size:30px;color:#ffffff">Request for Demo<p>
-                            </div>
-
-                            <div class="card-body ">
-                                <form name="form" method="post">
-                                    {% csrf_token %}
-
-                                    <div class="form-group pt-3 pb-4 mt-2">
-                                        <input type="text" name="name" class="form-control" id="name" placeholder="Your name"required>
-
-                                    </div>
-
-                                    <div class="form-group pt-3 pb-4 mt-2">
-                                        <input type="email" name="email" class="form-control" id="email" placeholder="Email Address"required>
-
-                                    </div>
-
-                                    <div class="form-group pt-3 pb-4 mt-2">
-                                        <input type="number" name="phone" class="form-control" id="phone" placeholder="Phone Number"required>
-
-                                    </div>
-
-                                    <div class="form-group pt-3 pb-4 mt-2">
-                                        <input type="text" name="organizations" class="form-control" id="organizations" placeholder="Organization name"required>
-
-                                    </div>
-
-                                    <div class="form-group pt-3 pb-4 mt-2">
-                                      <textarea name="message" class="form-control" rows="4" id="message" placeholder="Write your message"required></textarea>
-                                    </div>
-
-                                    <div class="row mt-3 pb-4">
-                                        <div class="col">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <button class="btn btn-primary" type="submit" style="color:white;background-color:#65db9f;font-weight:bold;">Sign in</button>
-                                                </div>
-                                                <div class="col">
-                                                    <button class="btn btn-primary" type="reset" style="color:white;background-color:#65db9f;font-weight:bold;">Reset</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                                    
-                              </div>
-
+        <section class="about main">                
+            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background-color:#99db9fdd;">
+                            <h5 class="modal-title" id="exampleModalLabel">Request a Demo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form name="form" method="post">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Your name"required>
+            
+                                </div>
+            
+                                <div class="form-group ">
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="Email Address"required>
+            
+                                </div>
+            
+                                <div class="form-group">
+                                    <input type="number" name="phone" class="form-control" id="phone" placeholder="Phone Number"required>
+            
+                                </div>
+            
+                                <div class="form-group">
+                                    <input type="text" name="organizations" class="form-control" id="organizations" placeholder="Organization name"required>
+            
+                                </div>
+            
+                                <div class="form-group">
+                                <textarea name="message" class="form-control" rows="4" id="message" placeholder="Write your message"required></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="reset" class="btn btn-secondary" >Reset</button>
+                            <button type="submit" class="btn btn-outline-success">Login</button>
                         </div>
                     </div>
-
                 </div>
             </div>
-        </main>
+        </section>
         <!--Demo close-->
 
     </section>
@@ -96,4 +89,56 @@
         {%include "footer.html" %}
         <!-- Footer close  -->
     </body>
-</html>
+</html> 
+
+<!-- Add Bootstrap JS and jQuery (make sure jQuery is included before Bootstrap JS) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Login</button>
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#99db9fdd;">
+                <h5 class="modal-title" id="exampleModalLabel">Request a Demo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="form" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Your name"required>
+
+                    </div>
+
+                    <div class="form-group ">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Email Address"required>
+
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" name="phone" class="form-control" id="phone" placeholder="Phone Number"required>
+
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="organizations" class="form-control" id="organizations" placeholder="Organization name"required>
+
+                    </div>
+
+                    <div class="form-group">
+                      <textarea name="message" class="form-control" rows="4" id="message" placeholder="Write your message"required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="reset" class="btn btn-secondary" >Reset</button>
+                <button type="submit" class="btn btn-outline-success">Login</button>
+            </div>
+        </div>
+    </div>
+</div>

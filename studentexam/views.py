@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from datetime import datetime, timedelta
-from .models import Question # import table from models.py which will store question for all 
+from companylogin.models import *
+from django.http import JsonResponse
+from .models import Question
+# import table from models.py which will store question for all 
 
 # Create your views here.
 def studhome(req):
@@ -19,23 +22,9 @@ def running(req):
 def over(req):
     return render(req,'submit.html')
 
-new_question = Question(
-    question_text="what is your  rally laptop name ?",
-    option1="monkey",
-    option2="asus",
-    option3="jp",
-    option4="hp",
-    correct_option="option1"
-)
-existing_question = Question.objects.filter(question_text=new_question.question_text).first()
-
-if not existing_question:
-    # Save the new question to the database only if it doesn't already exist
-    new_question.save()
 
 # this is for exam conducting exam using ajax technology 
-from django.http import JsonResponse
-from .models import Question
+
 
 def get_next_question(request, current_question_id):
     try:
@@ -45,6 +34,7 @@ def get_next_question(request, current_question_id):
     
     if next_question:
         data = {
+            'id':next_question.id,
             'question_text': next_question.question_text,
             'option1': next_question.option1,
             'option2': next_question.option2,
@@ -53,6 +43,7 @@ def get_next_question(request, current_question_id):
         }
     else:
         data = {
+            'id':'',
             'question_text': "No more questions",
             'option1': '',
             'option2': '',
@@ -70,6 +61,7 @@ def get_previous_question(request, current_question_id):
 
     if previous_question:
         data = {
+            'id':previous_question.id,
             'question_text': previous_question.question_text,
             'option1': previous_question.option1,
             'option2': previous_question.option2,
@@ -78,6 +70,7 @@ def get_previous_question(request, current_question_id):
         }
     else:
         data = {
+            'id':'',
             'question_text': "No previous questions",
             'option1': '',
             'option2': '',

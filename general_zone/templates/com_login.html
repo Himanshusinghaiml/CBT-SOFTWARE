@@ -4,25 +4,26 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Contact us</title>
+        <title>Company Login</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/comlogin.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+        
     </head>
     <body>
 
         <!--  header body  -->
         {% include "header.html" %}
         <!--  header close  -->
-         
-        <!--contact body-->
-        <section class="about main"> 
+          
+        <!--Login body-->
+        <section class="about main">
             <main class="d-flex align-items-center mb-5 ">
                 <div class="container">
                     <div class="row "style="">
                         <div class="col-md-6 offset-md-3 "style="margin-top:7%;height:40%">
                             <div class="card mt-3">
                                 <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
-                                    <p style="font-weight:bold;font-size:30px;color:#ffffff">Contact Us<p>
+                                    <p style="font-weight:bold;font-size:30px;color:#ffffff">Company Login<p>
                                 </div>
 
                                 <div class="card-body ">
@@ -30,43 +31,34 @@
                                         {% csrf_token %}
                                         {% include "msg.html" %}
                                         <div class="form-group pt-3 pb-4 mt-2">
-                                            <input type="text" name="name" class="form-control" id="name" placeholder="Your name"required>
+                                            <input type="email" name="email" class="form-control" id="email" placeholder="Email Id"required>
 
                                         </div>
 
                                         <div class="form-group pt-3 pb-4 mt-2">
-                                            <input type="email" name="email" class="form-control" id="email" placeholder="Email Address"required>
-
-                                        </div>
-
-                                        <div class="form-group pt-3 pb-4 mt-2">
-                                            <input type="number" name="phone" class="form-control" id="phone" placeholder="Phone Number"required>
-
-                                        </div>
-
-                                        <div class="form-group pt-3 pb-4 mt-2">
-                                            <input type="text" name="organizations" class="form-control" id="organizations" placeholder="Organization name"required>
-
-                                        </div>
-
-                                        <div class="form-group pt-3 pb-4 mt-2">
-                                        <textarea name="message" class="form-control" rows="4" id="message" placeholder="Write your message"required></textarea>
+                                        <input type="password" name="password" class="form-control" id="password" placeholder="Password"required>
                                         </div>
 
                                         <div class="row mt-3 pb-4">
                                             <div class="col">
                                                 <div class="row">
                                                     <div class="col">
-                                                        <button class="btn btn-primary" type="submit" style="color:white;background-color:#65db9f;font-weight:bold;">Submit</button>
+                                                        <button class="btn btn-primary" type="submit" style="color:white;background-color:#65db9f;font-weight:bold;">Sign in</button>
                                                     </div>
-                                                    <div class="col">
+                                                    <!-- <div class="col">
                                                         <button class="btn btn-primary" type="reset" style="color:white;background-color:#65db9f;font-weight:bold;">Reset</button>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
-                                        </div>
                                     </form>
-                                        
+                                            <div class="col col-md-6 pb-4">  
+                                                <form action="{% url 'comsignup' %}">
+                                                    
+                                                    <button class="btn btn-primary"style="color:white;background-color:#65db9f;font-weight:bold;">don't have an account?</button>
+                                                </form>
+                                            </div>
+                                            <a href="#"style="color:red"><p>Forget Password ?</p></a>
+                                        </div>
                                 </div>
 
                             </div>
@@ -75,11 +67,8 @@
                     </div>
                 </div>
             </main>
+            <!--Login close-->
         </section>
-        <div id="preloader"></div>
-        <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
-            <i class="bi bi-arrow-up-short"></i>
-        </a>
 
         <!-- Vendor JS Files -->
         <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
@@ -90,11 +79,9 @@
 
         <!-- Template Main JS File -->
         <script src="{% static 'assets/js/main.js' %}"></script>
-        <!--Contact close-->
+
         <!-- Footer body   -->
         {%include "footer.html" %}
         <!-- Footer close  -->
     </body>
 </html>
-
- 

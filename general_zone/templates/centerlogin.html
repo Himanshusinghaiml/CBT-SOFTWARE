@@ -20,6 +20,43 @@
     <section class="about main">
         <main class="d-flex align-items-center mb-5 ">
             <div class="container">
+                <div class="row "style="">
+                    <div class="col-md-6 offset-md-3 "style="margin-top:7%;height:40%">
+                        <div class="card mt-3">
+                            <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
+                                <p style="font-weight:bold;font-size:30px;color:#ffffff">Center Login<p>
+                            </div>
+
+                            <div class="card-body ">
+                                <form name="form" method="post">
+                                    {% csrf_token %}
+                                     {% include "msg.html" %}
+                                    <div class="form-group pt-3 pb-4 mt-2">
+                                        <input type="email" name="email" class="form-control" id="email" placeholder="Email Id"required>
+
+                                    </div>
+
+                                    <div class="form-group pt-3 pb-4 mt-2">
+                                      <input type="password" name="password" class="form-control" id="password" placeholder="Password"required>
+                                    </div>
+
+                                    <div class="row mt-3 pb-4">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col">
+                                                     <button class="btn btn-primary" type="submit" style="color:white;background-color:#65db9f;font-weight:bold;">Sign in</button></a>
+                                                </div>
+                                             
+                                                 
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <a style="color:red;margin-top:5px;"><p>Forgot Password?</p>
+                                            📞Contact your organizations
+                                        </div>
+                                      </div>
+                                </form>
+                              </div>
 
                 <div class="col-md-6 offset-md-3 " style="margin-top:7%;height:40%">
                     <div class="card mt-3">

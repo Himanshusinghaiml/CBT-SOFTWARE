@@ -1,15 +1,14 @@
 $(document).ready(function () {
-        let currentQuestionId = 1; // Initialize with the first question's ID
+        let currentQuestionId = 0; // Initialize with the first question's ID
         
         function loadQuestion(questionId) {
             $.ajax({
                 url: `/get_next_question/${questionId}/`,
                 method: 'GET',
                 success: function (data) {
-                    if (data.question_text) {
-                        // why question id not fetch ,what was the reson behind it , i tried many times 
+                    if (data.question_text) { 
+                        $('#question_no').next('label').text(data.id);
                         $('#question-text').text(`Question ${data.id}: ${data.question_text}`);
-                        // $('#question-text').text(data.question_text);
                         $('#option1').next('label').text(data.option1);
                         $('#option2').next('label').text(data.option2);
                         $('#option3').next('label').text(data.option3);
@@ -30,7 +29,7 @@ $(document).ready(function () {
         });
 
         $('#prev-button').click(function () {
-            if (currentQuestionId > 1) {
+            if (currentQuestionId >= 1) {
                 currentQuestionId -= 1;
                 loadQuestion(currentQuestionId);
             } else {
