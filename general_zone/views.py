@@ -14,26 +14,13 @@ def about(request):
 
 def comsignup(request):
     if request.method == 'POST':
-        username=request.POST.get('username')
+        username=request.POST.get('name')
         phone = request.POST.get('phone')
         email = request.POST.get('email')
         password = request.POST.get('password')
-        cpassword =request.POST.get('cpassword')
-        if Company.objects.filter(email=email).exists():
-            messages.error(request,'Email already exist. please try with another email !')
-            return redirect('comsignup')
-        if(password!=cpassword):
-            messages.error(request,'Password and confirm password should be same !')
-            return redirect('comsignup')
-        if(len(phone)!=10):
-            messages.error(request,'Mobile number should be 10 digit long !')
-            return redirect('comsignup')
-
         company = Company(name=username, phone=phone, email=email, password=password)
         company.save()
-        messages.success(request, 'Your account is created successfully. Please log in.')
-        return redirect("comlogin")    
-    return render(request,'com_signup.html')
+        return redirect('homepage')    
 
 def comLogin(request):
     try:
@@ -50,12 +37,10 @@ def comLogin(request):
             if user.password == password:
                 request.session['com_id'] = user.id
                 return redirect('com_dashboard')
-            else:
-                messages.error(request, 'Incorrect password ❌ Please try again.')
         except Company.DoesNotExist:
-            messages.error(request, 'User not found ❌ Please Sign up before Sign in.')
+            pass
 
-    return render(request, 'com_login.html')
+    return redirect('homepage')
 
 def centerlogin(request):
     try:
@@ -72,12 +57,10 @@ def centerlogin(request):
             if user.password == password:
                 request.session['center_id'] = user.id
                 return redirect('entrylogin')
-            else:
-                messages.error(request, 'Incorrect password ❌ Please try again.')
         except Center.DoesNotExist:
-            messages.error(request, 'User not found ❌ Please contact your organization.')
+            pass
 
-    return render(request, 'centerlogin.html')
+    return redirect('homepage')
 
 def adminlogin(request):
     return render(request,'admin_login.html')

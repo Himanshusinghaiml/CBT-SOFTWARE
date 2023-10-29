@@ -26,7 +26,7 @@
                                     <p style="font-weight:bold;font-size:30px;color:#ffffff">Company Login<p>
                                 </div>
 
-                                <div class="card-body ">
+                                {% comment %} <div class="card-body ">
                                     <form name="form" method="post">
                                         {% csrf_token %}
                                         {% include "msg.html" %}
@@ -59,7 +59,7 @@
                                             </div>
                                             <a href="#"style="color:red"><p>Forget Password ?</p></a>
                                         </div>
-                                </div>
+                                </div> {% endcomment %}
 
                             </div>
                         </div>

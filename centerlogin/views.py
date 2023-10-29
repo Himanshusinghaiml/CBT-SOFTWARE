@@ -8,49 +8,54 @@ def cendashboard(request):
         if request.session['center_id']:
             return render(request,'cen_dashboard.html')
     except KeyError:
-        return redirect('centerlogin')  
+        pass
+        return redirect('homepage')  
 
 def cenlogout(request):
     try:
         if request.session['center_id']:
             request.session['center_id'] = None
-            messages.success(request, 'You have been logged out successfully.')
-            return  redirect('centerlogin')
+            return  redirect('homepage')
     except KeyError:
         pass
-    return  redirect('centerlogin')
+    return  redirect('homepage')
 
 def entrylogin(request):
     try:
         if request.session['center_id']:
             return render(request,'cen_entrylogin.html')
     except KeyError:
-        return redirect('centerlogin') 
+        pass
+    return redirect('homepage')
 
 def studentlist(request):
     try:
         if request.session['center_id']:
             return render(request,'studentlist.html')
     except KeyError:
-        return redirect('centerlogin')
+        pass
+    return redirect('homepage')
 
-def  democenter(request):
+def democenter(request):
     try:
         if request.session['center_id']:
             return render(request,'democenter.html')
     except KeyError:
-        return redirect('centerlogin')
+        pass
+    return redirect('homepage')
 
-def  emergency(request):
+def emergency(request):
     try:
         if request.session['center_id']:
             return render(request,'cen_emer.html')
     except KeyError:
-        return redirect('centerlogin')
+        pass
+    return redirect('homepage')
 
-def  seatarr(request):
+def seatarr(request):
     try:
         if request.session['center_id']:
             return render(request,'seat_arrange.html')
     except KeyError:
-        return redirect('centerlogin')
+        pass
+    return redirect('homepage')
