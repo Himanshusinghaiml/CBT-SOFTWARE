@@ -33,18 +33,6 @@
                                         </div>
 
                                         <div class="form-group pt-3">
-                                            <input type="text" name="firstname" class="form-control" id="firstname"placeholder="Enter First Name"required>
-                                        </div>
-
-                                        <div class="form-group pt-3">
-                                            <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Enter Last Name"required>
-                                        </div>
-
-                                        <div class="form-group pt-3">
-                                            <input type="text" id="organizations" class="form-control" name="organizations"placeholder="Organization Name"required>
-                                        </div>
-
-                                        <div class="form-group pt-3">
                                             <input type="number" name="phone" class="form-control" id="phone" placeholder="Phone number"required>
                                         </div>
 
@@ -112,7 +100,20 @@
                 return true;
             }
         </script>
-            
+        <div id="preloader"></div>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+            <i class="bi bi-arrow-up-short"></i>
+        </a>
+
+        <!-- Vendor JS Files -->
+        <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+        <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+        <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+        <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+        <!-- Template Main JS File -->
+        <script src="{% static 'assets/js/main.js' %}"></script>
         <!--Footer page-->
         {%include "footer.html" %}
         <!--Footer close-->

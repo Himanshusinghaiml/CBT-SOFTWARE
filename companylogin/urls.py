@@ -2,7 +2,6 @@ from django.urls import path
 from companylogin import views
 
 urlpatterns=[
-    path('comlogin/',views.comLogin,name="comlogin"),
     path('com_dashboard/',views.com_dashboard,name="com_dashboard"),
     path('addexam/',views.addExam,name="addexam"),
     path('ongoingtests/',views.ongoing_tests,name="ongoingtests"),

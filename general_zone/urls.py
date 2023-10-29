@@ -4,6 +4,7 @@ from general_zone import views
 urlpatterns = [
     path('',views.homepage,name="homepage"),
     path('comsignup/',views.comsignup,name="comsignup"),
+    path('comlogin/',views.comLogin,name="comlogin"),
     path('centerlogin/',views.centerlogin,name="centerlogin"),
     path('adminlogin/',views.adminlogin,name="adminlogin"),
     path('about/',views.about,name="about"),

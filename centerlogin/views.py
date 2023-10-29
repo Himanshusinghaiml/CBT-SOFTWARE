@@ -9,8 +9,13 @@ def cendashboard(request):
     return render(request,'cen_dashboard.html') 
 
 def cenlogout(request):
-    logout(request)
-    messages.success(request, 'You have been logged out successfully.')
+    try:
+        if request.session['center_id']:
+            request.session['center_id'] = None
+            messages.success(request, 'You have been logged out successfully.')
+            return  redirect('centerlogin')
+    except KeyError:
+        pass
     return  redirect('centerlogin')
 
 def entrylogin(req):

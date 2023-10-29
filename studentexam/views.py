@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from datetime import datetime, timedelta
-from companylogin.models import Questions
+from companylogin.models import *
 from django.http import JsonResponse
 from .models import Question
 # import table from models.py which will store question for all 
