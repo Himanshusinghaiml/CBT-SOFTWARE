@@ -203,9 +203,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    OverlayScrollbars(document.querySelector(".side-navbar"), {
-        overflowBehavior: {
-            x: "hidden",
-        },
-    });
+    // OverlayScrollbars(document.querySelector(".side-navbar"), {
+    //     overflowBehavior: {
+    //         x: "hidden",
+    //     },
+    // });
 });
