@@ -1,6 +1,6 @@
 $(document).ready(function () {
         let currentQuestionId = 0; // Initialize with the first question's ID
-        
+        var size;
         function loadQuestion(questionId) {
             $.ajax({
                 url: `/get_next_question/${questionId}/`,
@@ -13,9 +13,11 @@ $(document).ready(function () {
                         $('#option2').next('label').text(data.option2);
                         $('#option3').next('label').text(data.option3);
                         $('#option4').next('label').text(data.option4);
+                        size = data.size;
                     } else {
-                        alert('No more questions.');
-                    }
+                        alert('Question is not in database ! try to contact organization ');
+                    
+                }
                 },
                 error: function () {
                     alert('Failed to load the question.');
@@ -24,8 +26,14 @@ $(document).ready(function () {
         }
 
         $('#next-button').click(function () {
-            currentQuestionId += 1;
-            loadQuestion(currentQuestionId);
+            if(currentQuestionId<size-1){
+                currentQuestionId += 1;
+                loadQuestion(currentQuestionId);
+            }
+            else{
+                alert("Question ended ");
+            }
+             
         });
 
         $('#prev-button').click(function () {

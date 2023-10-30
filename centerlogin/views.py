@@ -1,31 +1,61 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth import authenticate,login,logout
-from django.contrib.auth.decorators import login_required,user_passes_test
-# Create your views here.
 from django.contrib import messages
 
 from django.http import HttpResponse
+
 def cendashboard(request):
-    return render(request,'cen_dashboard.html') 
+    try:
+        if request.session['center_id']:
+            return render(request,'cen_dashboard.html')
+    except KeyError:
+        pass
+        return redirect('homepage')  
 
 def cenlogout(request):
     try:
         if request.session['center_id']:
             request.session['center_id'] = None
-            messages.success(request, 'You have been logged out successfully.')
-            return  redirect('centerlogin')
+            return  redirect('homepage')
     except KeyError:
         pass
-    return  redirect('centerlogin')
+    return  redirect('homepage')
 
-def entrylogin(req):
-    return render(req,'cen_entrylogin.html')
+def entrylogin(request):
+    try:
+        if request.session['center_id']:
+            return render(request,'cen_entrylogin.html')
+    except KeyError:
+        pass
+    return redirect('homepage')
 
 def studentlist(request):
-    return render(request,'studentlist.html')
-def  democenter(request):
-    return render(request,'democenter.html')
-def  emergency(request):
-    return render(request,'cen_emer.html')
-def  seatarr(request):
-    return render(request,'seat_arrange.html')
+    try:
+        if request.session['center_id']:
+            return render(request,'studentlist.html')
+    except KeyError:
+        pass
+    return redirect('homepage')
+
+def democenter(request):
+    try:
+        if request.session['center_id']:
+            return render(request,'democenter.html')
+    except KeyError:
+        pass
+    return redirect('homepage')
+
+def emergency(request):
+    try:
+        if request.session['center_id']:
+            return render(request,'cen_emer.html')
+    except KeyError:
+        pass
+    return redirect('homepage')
+
+def seatarr(request):
+    try:
+        if request.session['center_id']:
+            return render(request,'seat_arrange.html')
+    except KeyError:
+        pass
+    return redirect('homepage')

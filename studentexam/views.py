@@ -2,7 +2,7 @@ from django.shortcuts import render
 from datetime import datetime, timedelta
 from companylogin.models import *
 from django.http import JsonResponse
-from .models import Question
+from companylogin.models import Question
 # import table from models.py which will store question for all 
 
 # Create your views here.
@@ -35,11 +35,12 @@ def get_next_question(request, current_question_id):
     if next_question:
         data = {
             'id':next_question.id,
-            'question_text': next_question.question_text,
-            'option1': next_question.option1,
-            'option2': next_question.option2,
-            'option3': next_question.option3,
-            'option4': next_question.option4,
+            'question_text': next_question.question,
+            'option1': next_question.option_1,
+            'option2': next_question.option_2,
+            'option3': next_question.option_3,
+            'option4': next_question.option_4,
+            'size':Question.objects.count()
         }
     else:
         data = {
@@ -49,6 +50,7 @@ def get_next_question(request, current_question_id):
             'option2': '',
             'option3': '',
             'option4': '',
+            'size':Question.objects.count()
         }
 
     return JsonResponse(data)
@@ -62,11 +64,11 @@ def get_previous_question(request, current_question_id):
     if previous_question:
         data = {
             'id':previous_question.id,
-            'question_text': previous_question.question_text,
-            'option1': previous_question.option1,
-            'option2': previous_question.option2,
-            'option3': previous_question.option3,
-            'option4': previous_question.option4,
+            'question_text': previous_question.question,
+            'option1': previous_question.option_1,
+            'option2': previous_question.option_2,
+            'option3': previous_question.option_3,
+            'option4': previous_question.option_4,
         }
     else:
         data = {
