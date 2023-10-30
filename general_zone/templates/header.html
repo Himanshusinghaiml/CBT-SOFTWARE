@@ -245,7 +245,7 @@
                                     </div>
 
                                     <div class="card-body ">
-                                        <form name="form" method="post" action="{% url 'adminlogin' %}">
+                                        <form name="form" method="post" action="{% url 'adminhome' %}">
                                             {% csrf_token %}
 
                                             <div class="form-group pt-3 pb-4 mt-2">
@@ -321,7 +321,7 @@
                                             <input type="password" name="password" class="form-control" id="password" placeholder="Password"required>
                                         </div>
 
-                                        <div class="form-group pt-1">
+                                        <div class="form-group pt-3">
                                             <input type="text" name="cpassword" class="form-control" id="cpassword" placeholder="Confirm Password"required>
                                         </div>
                                         <div class="row mt-3">

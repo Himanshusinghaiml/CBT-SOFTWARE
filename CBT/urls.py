@@ -25,6 +25,7 @@ urlpatterns = [
     path('',include('centerlogin.urls')),
     path('',include('companylogin.urls')),
     path('',include('studentexam.urls')),
+    path('',include('admin_zone.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
