@@ -86,9 +86,8 @@ def contact(request):
         phone = phone,
         organizations=organizations,
         message = message ) 
-        contactdata.save() 
-        messages.success(request,'Sucessfully submitted.Our Executive will reach you soon. Thank you .🤗 ')    
-    return render(request,'contact.html')
+        contactdata.save()     
+    return redirect('homepage')
 
 def con1(request):
     all_contacts = contact_data.objects.all()

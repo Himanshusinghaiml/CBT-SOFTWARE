@@ -97,7 +97,7 @@
                         </li>
                         <li><a href="{% url 'courses' %}">Courses</a></li>
                         <li><a href="{% url 'services' %}">Services</a></li>
-                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                        <li><a href="#" id="contactbutton">Contact Us</a></li>
                         <li><a href="#">Center list</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
@@ -113,7 +113,7 @@
                 <main class="d-flex align-items-center mb-5 ">
                     <div class="container">
 
-                        <div class="col-md-6 offset-md-3 " style="margin-top:7%;height:40%">
+                        <div class="col-md-6 offset-md-3 " style="height:40%">
                             <div class="card mt-3">
                                 <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
                                     <p style="font-weight:bold;font-size:30px;color: #232f3e">Company Login
@@ -178,7 +178,7 @@
                 <main class="d-flex align-items-center mb-5 ">
                     <div class="container">
 
-                        <div class="col-md-6 offset-md-3 " style="margin-top:7%;height:40%">
+                        <div class="col-md-6 offset-md-3 " style="height:40%">
                             <div class="card mt-3">
                                 <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
                                     <p style="font-weight:bold;font-size:30px;color: #232f3e">Center Login<p>
@@ -230,13 +230,14 @@
                 </main>
             </section>
         </div>
+
         <!-- start for admin code -->
         <div id="adminloginmodal" class="modal">
             <section class="about main">
                 <main class="d-flex align-items-center mb-5 ">
                     <div class="container">
                         <div class="row " style="">
-                            <div class="col-md-6 offset-md-3 " style="margin-top:7%;height:40%">
+                            <div class="col-md-6 offset-md-3 " style="height:40%">
                                 <div class="card mt-3">
                                     <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
                                         <p style="font-weight:bold;font-size:30px;color: #232f3e">Admin Login
@@ -288,141 +289,211 @@
         </div>
         <!-- ended admin code -->
 
-        <!--  code for sign up company -->
-        <div id="signuploginmodal" class="modal">
-            <section class="about main"> 
-                <main class="d-flex align-items-center mb-5 ">
-                    <div class="container">
-                        <div class="row "style="margin-top:5%; ">
-                            <div class="col-md-6 offset-md-3 ">
-                                <div class="card mt-3">
+        <!--  code for sign up company -->  
+        <section class="about main modal" id="signuploginmodal"> 
+            <main class="d-flex align-items-center mb-5 ">
+                <div class="container">
+                    <div class="row "style="">
+                        <div class="col-md-6 offset-md-3 ">
+                            <div class="card mt-3">
 
-                                    <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
-                                        <p style="font-weight:bold;font-size:30px;color: #232f3e">Register Here<p>
-                                    </div>
+                                <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
+                                    <p style="font-weight:bold;font-size:30px;color: #232f3e">Register Here<p>
+                                </div>
 
-                                    <div class="card-body ">
-                                        <form name="form" method="post" onsubmit="return validate();" action="{% url 'comsignup' %}">
-                                            {% csrf_token %}
-                                            {% include "msg.html" %}
-                                            <div class="form-group pt-3">
-                                                <input type="text" name="name" class="form-control" id="name" placeholder="Enter Organisation Name"required>
-                                            </div>
-
-                                            <div class="form-group pt-3">
-                                                <input type="number" name="phone" class="form-control" id="phone" placeholder="Phone number"required>
-                                            </div>
-
-                                            <div class="form-group pt-3">
-                                                <input type="email" name="email" class="form-control" id="email" placeholder="Email address"required>
-                                            </div>
-
-                                            <div class="form-group pt-3">
-                                                <input type="password" name="password" class="form-control" id="password" placeholder="Password"required>
-                                            </div>
-
-                                            <div class="form-group pt-1">
-                                                <input type="text" name="cpassword" class="form-control" id="cpassword" placeholder="Confirm Password"required>
-                                            </div>
-                                            <div class="row mt-3">
-                                                <div class="col">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <button class="btn btn-primary" type="submit" style="color:white;background-color:#65db9f;font-weight:bold;">Sign up</button>
-                                                        </div>
-                                                        <div class="col">
-                                                            <button class="btn btn-primary"
-                                                                style="color:white;background-color:#65db9f;font-weight:bold;" id="already">Already a User
-                                                            </button> 
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>
-                                        </form>
-                                            </div>
-                                            <span class="close-button" id="closesignup">&times;</span>
+                                <div class="card-body ">
+                                    <form name="form" method="post" onsubmit="return validate();" action="{% url 'comsignup' %}">
+                                        {% csrf_token %}
+                                        {% include "msg.html" %}
+                                        <div class="form-group pt-3">
+                                            <input type="text" name="name" class="form-control" id="name" placeholder="Enter Organisation Name"required>
                                         </div>
-                                    </div>
+
+                                        <div class="form-group pt-3">
+                                            <input type="number" name="phone" class="form-control" id="phone" placeholder="Phone number"required>
+                                        </div>
+
+                                        <div class="form-group pt-3">
+                                            <input type="email" name="email" class="form-control" id="email" placeholder="Email address"required>
+                                        </div>
+
+                                        <div class="form-group pt-3">
+                                            <input type="password" name="password" class="form-control" id="password" placeholder="Password"required>
+                                        </div>
+
+                                        <div class="form-group pt-1">
+                                            <input type="text" name="cpassword" class="form-control" id="cpassword" placeholder="Confirm Password"required>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <button class="btn btn-primary" type="submit" style="color:white;background-color:#65db9f;font-weight:bold;">Sign up</button>
+                                                    </div>
+                                                    <div class="col">
+                                                        <button class="btn btn-primary"
+                                                            style="color:white;background-color:#65db9f;font-weight:bold;" id="already">Already a User
+                                                        </button> 
+                                                    </div>    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <span class="close-button" id="closesignup">&times;</span>
                             </div>
                         </div>
-                            
                     </div>
-                </main>
-            </section>
-        </div>
-            
+                </div>
+            </main>
+        </section>                 
         <!-- ended sign up code  of company login -->
+
+        <!-- code for contact pop up -->
+        <section class="about main modal" id="contactmodal"> 
+            <main class="d-flex align-items-center mb-5 ">
+                <div class="container" >
+                    <div class="row "style="">
+                        <div class="col-md-6 offset-md-3 "style="height:40%">
+                            <div class="card mt-3">
+                                <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
+                                    <p style="font-weight:bold;font-size:30px;color:#ffffff">Contact Us<p>
+                                </div>
+
+                                <div class="card-body ">
+                                    <form name="form" method="post" action="{% url 'contact' %}">
+                                        {% csrf_token %}
+                                        {% include "msg.html" %}
+                                        <div class="form-group pt-3 pb-4 mt-2">
+                                            <input type="text" name="name" class="form-control" id="name" placeholder="Your name"required>
+
+                                        </div>
+
+                                        <div class="form-group pt-3 pb-4 mt-2">
+                                            <input type="email" name="email" class="form-control" id="email" placeholder="Email Address"required>
+
+                                        </div>
+
+                                        <div class="form-group pt-3 pb-4 mt-2">
+                                            <input type="number" name="phone" class="form-control" id="phone" placeholder="Phone Number"required>
+
+                                        </div>
+
+                                        <div class="form-group pt-3 pb-4 mt-2">
+                                            <input type="text" name="organizations" class="form-control" id="organizations" placeholder="Organization name"required>
+
+                                        </div>
+
+                                        <div class="form-group pt-3 pb-4 mt-2">
+                                        <textarea name="message" class="form-control" rows="4" id="message" placeholder="Write your message"required></textarea>
+                                        </div>
+
+                                        <div class="row mt-3 pb-4">
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <button class="btn btn-primary" type="submit" style="color:white;background-color:#65db9f;font-weight:bold;">Submit</button>
+                                                    </div>
+                                                    <div class="col">
+                                                        <button class="btn btn-primary" type="reset" style="color:white;background-color:#65db9f;font-weight:bold;">Reset</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                        
+                                </div>
+                                <span class="close-button" id="closecontact">&times;</span>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+        </section>
+        <!-- contact popup closed  -->
 
         <!--  js code for poup -->
         <script>
             document.addEventListener("DOMContentLoaded", function () {
+                // code for company modal
                 const comloginButton = document.getElementById('comloginbutton');
-                const cenloginButton = document.getElementById('cenloginbutton');
                 const comloginModal = document.getElementById('comloginmodal');
-                const cenloginModal = document.getElementById('cenloginmodal');
                 const closeComModal = document.getElementById('closecom');
-                const closeCenModal = document.getElementById('closecen');
-                const adminloginButton = document.getElementById('adminloginbutton');
-                const adminloginModal = document.getElementById('adminloginmodal');
-                const closeadminModal = document.getElementById('closeadmin');
-                const signuploginButton = document.getElementById('signuploginbutton');
-                const signuploginModal = document.getElementById('signuploginmodal');
-                const closesignupModal = document.getElementById('closesignup');
-
-                const  already = document.getElementById('already');
-                const  alreadymodal = document.getElementById('alreadymodal');
-                const closealready = document.getElementById('closealready');
-
                 comloginButton.addEventListener('click', function () {
                     comloginModal.style.display = 'block';
                     signuploginModal.style.display = 'none'; //for disable 
                 });
 
+                closeComModal.addEventListener('click', function () {
+                    comloginModal.style.display = 'none';
+                    document.body.classList.remove('no-scroll');
+                });
+                // code for center modal
+                const cenloginButton = document.getElementById('cenloginbutton');    
+                const cenloginModal = document.getElementById('cenloginmodal');
+                const closeCenModal = document.getElementById('closecen');
                 cenloginButton.addEventListener('click', function () {
                     cenloginModal.style.display = 'block';
                     document.body.classList.remove('no-scroll');
                 });
 
+                closeCenModal.addEventListener('click', function () {
+                    cenloginModal.style.display = 'none';
+                    document.body.classList.remove('no-scroll');
+                });
+
+                // code for admin modal
+                const adminloginButton = document.getElementById('adminloginbutton');
+                const adminloginModal = document.getElementById('adminloginmodal');
+                const closeadminModal = document.getElementById('closeadmin');
+
                 adminloginButton.addEventListener('click', function () {
                     adminloginModal.style.display = 'block';
                     document.body.classList.remove('no-scroll');
                 });
+                closeadminModal.addEventListener('click', function () {
+                    adminloginModal.style.display = 'none';
+                    document.body.classList.remove('no-scroll');
+                });
+
+                // code for com signup modal
+                const signuploginButton = document.getElementById('signuploginbutton');
+                const signuploginModal = document.getElementById('signuploginmodal');
+                const closesignupModal = document.getElementById('closesignup');
 
                 signuploginButton.addEventListener('click', function () {
                     signuploginModal.style.display = 'block';
                     comloginModal.style.display = 'none';// for disable 
                 });
+                closesignupModal.addEventListener('click', function () {
+                    signuploginModal.style.display = 'none';
+                });
+
+                // code for already a user model
+                const  already = document.getElementById('already');
+                const  alreadymodal = document.getElementById('alreadymodal');
+                const closealready = document.getElementById('closealready');
 
                 already.addEventListener('click', function () {
                     comloginModal.style.display = 'block';
                     signuploginModal.style.display = 'none';// for disable 
                 });
 
+                // code for contact modal
+                const contactButton = document.getElementById('contactbutton');
+                const contactModal = document.getElementById('contactmodal');
+                const closecontact = document.getElementById('closecontact');
 
-                closeComModal.addEventListener('click', function () {
-                    comloginModal.style.display = 'none';
+                contactButton.addEventListener('click', function () {
+                    contactModal.style.display = 'block';
                     document.body.classList.remove('no-scroll');
                 });
-
-                closeadminModal.addEventListener('click', function () {
-                    adminloginModal.style.display = 'none';
-                    document.body.classList.remove('no-scroll');
+                closecontact.addEventListener('click', function () {
+                    contactModal.style.display = 'none';
                 });
-
-                closesignupModal.addEventListener('click', function () {
-                    signuploginModal.style.display = 'none';
-                    document.body.classList.remove('no-scroll');
-                });
-
-                // closealready.addEventListener('click', function () {
-                //     alreadymodal.style.display = 'none';
-                    
-                // });
-
-                closeCenModal.addEventListener('click', function () {
-                    cenloginModal.style.display = 'none';
-                    document.body.classList.remove('no-scroll');
-                });
+                
             });
         </script>
     </body>
