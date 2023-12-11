@@ -191,7 +191,7 @@
                 <!-- ADD CENTER FORM -->
                 <div class="row">
                     <h2 style="font-size:30px;color:blueviolet;text-align: center;">Add New Center in Center list.</h2><hr>     
-                    <form class="form" method="POST" action="{% url 'addnewcenter' %}">
+                    <form class="form" method="POST" action="{% url 'addcenter' %}">
                         {% csrf_token %}
                         <div class="form-field">
                             <label for="centerCode">Center Code:</label>
