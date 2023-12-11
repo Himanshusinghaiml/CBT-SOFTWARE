@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="all,follow">
+        <!-- Google fonts - Roboto -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+        <!-- Choices CSS-->
+        <link rel="stylesheet" href="{% static 'vendor/choices.js/public/assets/styles/choices.min.css' %}">
+        <!-- Custom Scrollbar-->
+        <link rel="stylesheet" href="{% static 'vendor/overlayscrollbars/css/OverlayScrollbars.min.css' %}">
+        <!-- theme stylesheet-->
+        <link rel="stylesheet" href="{% static 'css/style.default.css' %}" id="theme-stylesheet">
+        <!-- Custom stylesheet - for your changes-->
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+        <!-- Favicon-->
+        <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+        <link rel="stylesheetn" href="{% static 'css/main.css' %}">
+         
+        <title>CBT</title>
+            <!-- <script src="{% static 'https://oss.maxc' %}dn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+            <script src="{% static 'https://oss.maxc' %}dn.com/respond/1.4.2/respond.min.js"></script> -->
+        <!--  BOOTSTRAP  -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script>
+            function openExamPortal() {
+                const url = "{% url 'studhome' %}"; // Replace this with the URL of your exam portal
+                const windowFeatures = 'width=' + screen.width + ',height=' + screen.height + ',fullscreen=yes,scrollbars=no,location=no,menubar=no,toolbar=no,status=no,resizable=no';
+            
+                const newWindow = window.open(url, 'Exam Portal', windowFeatures);
+            
+                if (newWindow) {
+                    newWindow.focus();
+                    newWindow.addEventListener('keydown', function (event) {
+                        const allowedKeys = [8]; // 8 is the keycode for the backspace key
+                        const isAllowed = allowedKeys.includes(event.keyCode);
+                        
+                        // Allow number keys (0-9) and the backspace key
+                        if (!(event.keyCode >= 48 && event.keyCode <= 57) && !isAllowed) {
+                            event.preventDefault();
+                        }
+                    });
+                } else {
+                    alert("Please disable your pop-up blocker to access the exam portal.");
+                }
+            }
+            </script>
+           
+    </head>
+    <body>
+        <!-- Side Navbar -->
+        <nav class="side-navbar bg-second">
+            <div class="side-navbar-inner bg-second">
+                <!-- Sidebar Header    -->
+                <div class="sidebar-header d-flex align-items-center justify-content-center p-3 mb-3">
+                    <!-- User Info-->
+                    <div class="sidenav-header-inner text-center"><img class="img-fluid rounded-circle avatar mb-3" src="{% static 'img/kit.jpeg' %}" alt="person">
+                        <h2 class="h5 text-white text-uppercase mb-0">KIT Varanasi</h2>
+                        <p class="text-sm mb-0">Center code-428</p>
+                    </div>
+                    <!-- Small Brand information, appears on minimized sidebar-->
+                    <a class="brand-small text-center" href="#">
+                        <p class="h1 m-0">HS</p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <!-- navbar-->
+        <header class="header mb-5 pb-3">
+            <nav class="nav navbar fixed-top">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center justify-content-between w-100">
+                <div class="d-flex align-items-center"><a class="menu-btn d-flex align-items-center justify-content-center p-2 bg-gray-900" id="toggle-btn" href="#">
+                    <svg class="svg-icon svg-icon-sm svg-icon-heavy text-white">
+                        <use xlink:href="#menu-1"> </use>
+                    </svg></a>
+                    <div class="brand-text d-none d-md-inline-block text-uppercase letter-spacing-0"></div>
+                </div>
+                <ul class="nav-menu mb-0 list-unstyled d-flex flex-md-row align-items-md-center"  >
+                    <!-- Log out-->
+
+                     <button id="logout" type="submit" class="btn btn-primary" style="cursor: pointer;">logout</button>
+                     <script>
+                        var logoutUrl = "{% url 'cenlogout' %}";
+                    </script>
+                    
+                    
+
+                </ul>
+                </div>
+            </div>
+            </nav>
+        </header>
+        <div class="page">
+            <main class="d-flex align-items-center mt-5 "style="">
+                <div class="container offset-1">
+                    <div class="row mt-5">           
+                        <div class="row font-primary mt-5 pr-3">
+                            <!------FIRST COLUMN-- -->
+                            <div class="col-md-4">
+                                <div class="card" style=" background-color:#2596be;width:300px; height:120px;padding: 10px 30px;">
+                                    <div clas="card-title">
+                                        <a class="stretched-link" href="{% url 'cendashboard' %}"><span style="font-size:20px;font-weight:bold;color:white">Dashboard</span><br>   
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <span class="fa fa-user" style="color:white;font-size: 30px;"></span> 
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!------SECOND COLUMN--- -->
+                            <div class="col-md-4">
+                                <div class="card" style="background-color:#66ff99;width:300px; height:120px;padding: 10px 30px;">
+                                    <div clas="card-title">
+                                        <a class="stretched-link" href="#"  onclick="openExamPortal();return false;"><span style="font-size:20px;font-weight:bold;color:white">Exam Portal</span><br>   
+                                        </a>
+                                        
+                                    </div>
+                                    <div class="card-body">
+                                        <span class="fa fa-laptop-code" style="color:white;font-size: 30px;"></span> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>           
+                    </div>  
+                </div>
+            </main>
+        </div>
+        <!-- FontAwesome CSS - loading as last, so it doesn't block rendering -->
+        <script src="{% static 'js/logout.js' %}"></script>
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    </body>
+</html>
+
+
+
+

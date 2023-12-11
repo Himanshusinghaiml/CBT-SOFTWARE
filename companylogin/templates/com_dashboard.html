@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>User Dashboard</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="all,follow">
+        <!-- Google fonts - Roboto -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+        <!-- Choices CSS-->
+        <link rel="stylesheet" href="{% static 'vendor/choices.js/public/assets/styles/choices.min.css' %}">
+        <!-- Custom Scrollbar-->
+        <link rel="stylesheet" href="{% static 'vendor/overlayscrollbars/css/OverlayScrollbars.min.css' %}">
+        <!-- theme stylesheet-->
+        <!-- <link rel="stylesheet" href="{% static 'static/css/main.css' %}"> -->
+        <!-- Custom stylesheet - for your changes-->
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+        <!-- Favicon-->
+        <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+          
+    
+    </head>
+    <body>
+        <!-- header file -->      
+        {% include 'com_header.html' %}
+        <!-- header close -->
+
+        <!-- main content -->
+        <div class="page" style="background-color:  #232f3e;">
+            <section style="margin-top:5%;">
+                <div class="row p-5 ">
+                    <!------FIRST COLUMN-- -->
+                    
+                    <div class="col-md-4">
+                        <div class="card" style="background-color:gray;width:300px; height:120px; padding:20px 60px;">
+                            <div class="card-body">
+                                <a class="stretched-link font-white" href="{% url 'addexam' %}"><span style="font-size:20px;font-weight:bold;color:white">Add test</span>    
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!------SECOND COLUMN--- -->
+                    <div class="col-md-4">
+                        <div class="card" style="background-color:gray;width: 300px; height: 120px;padding: 20px 50px;">
+                            <div class="card-body">
+                                <a class="stretched-link font-white" href="{% url 'ongoingtests' %}"><span style="font-size:20px;font-weight:bold;color:white">Ongoing tests</span>    
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!------THIRD COLUMN--- -->
+                    <div class="col-md-4">
+                        <div class="card bg-red" style="width: 300px; height: 120px;padding: 20px 50px;">
+                            <div class="card-body">
+                                <a class="stretched-link font-white" href="{% url 'completedtests' %}"><span style="font-size:20px;width:auto;font-weight:bold;color:white;">Completed tests</span>    
+                                </a>
+                            </div>
+                        </div>        
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!--main close -->
+
+        <!-- JavaScript files-->
+        <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+        <script src="{% static 'vendor/just-validate/js/just-validate.min.js' %}"></script>
+        <script src="{% static 'vendor/choices.js/public/assets/scripts/choices.min.js'" %}></script>
+        <script src="{% static 'vendor/overlayscrollbars/js/OverlayScrollbars.min.js' %}"></script>
+        <script src="{% static 'js/charts-home.js' %}"></script>
+        <!-- Main File-->
+        <script src="{% static 'js/front.js'%}"></script>
+        <script>
+            function injectSvgSprite(path) {
+            
+                var ajax = new XMLHttpRequest();
+                ajax.open("GET", path, true);
+                ajax.send();
+                ajax.onload = function(e) {
+                var div = document.createElement("div");
+                div.className = 'd-none';
+                div.innerHTML = ajax.responseText;
+                document.body.insertBefore(div, document.body.childNodes[0]);
+                }
+            }
+            injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg'); 
+        </script>
+        <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <script> var logoutUrl = "{% url 'logout' %}"; </script>
+        <script src="{% static 'js/logout.js' %}"></script>
+    </body>
+</html> 
