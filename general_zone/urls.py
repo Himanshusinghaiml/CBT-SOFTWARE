@@ -1,5 +1,11 @@
-from django.urls import path
+from django.urls import include, path
 from general_zone import views
+from rest_framework.routers import DefaultRouter
+from .views import CompanyViewSet
+
+
+router = DefaultRouter()
+router.register(r'company', CompanyViewSet, basename='company')
 
 urlpatterns = [
     path('',views.homepage,name="homepage"),
@@ -12,4 +18,8 @@ urlpatterns = [
     path('courses/',views.courses,name="courses"),  
     path( 'homepage-centerlist/',views.centerlist,name="centerlist"),
     path('requestdemo/',views.request_demo,name="requestdemo"),
+
+    
+    path('', include(router.urls)),
+
 ]
