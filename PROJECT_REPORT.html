@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBT Software — Project Report</title>
+<style>
+  /* ===== PRINT & SCREEN STYLES ===== */
+  @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&family=Arial:wght@400;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 12pt;
+    line-height: 1.8;
+    color: #111;
+    background: #f0f0f0;
+  }
+
+  /* Page container */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 10mm auto;
+    padding: 25mm 25mm 20mm 30mm;
+    background: #fff;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.12);
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: avoid; }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      width: 100%;
+    }
+    .no-print { display: none !important; }
+  }
+
+  /* ===== TYPOGRAPHY ===== */
+  h1 { font-size: 20pt; font-weight: bold; text-align: center; margin-bottom: 8pt; }
+  h2 { font-size: 15pt; font-weight: bold; margin: 24pt 0 10pt; border-bottom: 2px solid #333; padding-bottom: 4pt; }
+  h3 { font-size: 13pt; font-weight: bold; margin: 16pt 0 8pt; }
+  h4 { font-size: 12pt; font-weight: bold; margin: 12pt 0 6pt; }
+  p  { margin-bottom: 10pt; text-align: justify; }
+  ul, ol { margin: 6pt 0 10pt 24pt; }
+  li { margin-bottom: 4pt; }
+
+  /* ===== COVER PAGE ===== */
+  .cover {
+    text-align: center;
+    padding-top: 20mm;
+  }
+  .cover .univ { font-size: 18pt; font-weight: bold; margin-bottom: 4pt; }
+  .cover .dept { font-size: 13pt; margin-bottom: 2pt; }
+  .cover .acad { font-size: 11pt; color: #444; margin-bottom: 20pt; }
+  .cover .sep  { border: none; border-top: 3px double #333; margin: 14pt 0; }
+  .cover .proj-label { font-size: 12pt; letter-spacing: 2pt; margin-bottom: 6pt; }
+  .cover .proj-title  { font-size: 22pt; font-weight: bold; line-height: 1.3; margin-bottom: 6pt; }
+  .cover .proj-sub    { font-size: 13pt; color: #444; margin-bottom: 30pt; }
+  .cover .seal {
+    width: 90px; height: 90px;
+    border: 4px solid #333;
+    border-radius: 50%;
+    margin: 0 auto 30pt;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9pt; font-weight: bold; letter-spacing: 1pt; color: #333;
+    text-align: center; padding: 8pt;
+    line-height: 1.3;
+  }
+  .cover .author-box {
+    margin-top: 20pt;
+    text-align: left;
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 14pt 24pt;
+    border-radius: 6pt;
+  }
+  .cover .author-box table { border-collapse: collapse; }
+  .cover .author-box td { padding: 3pt 10pt 3pt 0; font-size: 11pt; }
+  .cover .author-box td:first-child { font-weight: bold; color: #333; }
+
+  /* ===== CHAPTER DIVIDER ===== */
+  .chapter-header {
+    text-align: center;
+    padding: 60mm 0;
+    border: 2px solid #333;
+  }
+  .chapter-header .chap-num  { font-size: 14pt; letter-spacing: 3pt; color: #555; }
+  .chapter-header .chap-name { font-size: 24pt; font-weight: bold; margin-top: 12pt; }
+
+  /* ===== TABLE ===== */
+  table.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10pt 0 16pt;
+    font-size: 11pt;
+  }
+  table.report-table th {
+    background: #e8e8e8;
+    padding: 7pt 10pt;
+    border: 1px solid #999;
+    font-weight: bold;
+    text-align: left;
+  }
+  table.report-table td {
+    padding: 6pt 10pt;
+    border: 1px solid #bbb;
+    vertical-align: top;
+  }
+  table.report-table tr:nth-child(even) td { background: #f9f9f9; }
+
+  /* ===== CODE / PRE ===== */
+  pre, code {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 10pt;
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 3pt;
+    padding: 2pt 4pt;
+  }
+  pre { padding: 10pt; white-space: pre-wrap; margin: 8pt 0 12pt; }
+
+  /* ===== FIGURE / DIAGRAM ===== */
+  .diagram-box {
+    border: 1px solid #bbb;
+    border-radius: 4pt;
+    padding: 14pt;
+    margin: 12pt 0;
+    background: #fafafa;
+    font-family: "Courier New", monospace;
+    font-size: 10pt;
+    white-space: pre;
+    line-height: 1.5;
+  }
+  .fig-caption { text-align: center; font-style: italic; font-size: 11pt; margin-top: 4pt; color: #555; }
+
+  /* ===== CERT PAGE ===== */
+  .cert-page { padding-top: 30mm; }
+  .cert-title { font-size: 18pt; font-weight: bold; text-align: center; text-decoration: underline; margin-bottom: 20pt; }
+  .cert-body  { font-size: 12pt; text-align: justify; line-height: 2.2; }
+  .sig-row    { display: flex; justify-content: space-between; margin-top: 50pt; }
+  .sig-col    { text-align: center; }
+  .sig-line   { border-top: 1px solid #333; width: 120pt; margin: 0 auto 4pt; }
+
+  /* ===== ABSTRACT BOX ===== */
+  .abstract-box {
+    border: 1px solid #999;
+    padding: 14pt 18pt;
+    margin: 14pt 0;
+    background: #f8f8f8;
+  }
+  .abstract-box .ab-title { font-weight: bold; text-align: center; margin-bottom: 8pt; font-size: 13pt; }
+
+  /* ===== TOC ===== */
+  .toc-row { display: flex; justify-content: space-between; margin-bottom: 6pt; font-size: 11pt; }
+  .toc-row .dots { flex: 1; border-bottom: 1px dotted #888; margin: 0 6pt 4pt; }
+  .toc-section { font-weight: bold; margin-top: 10pt; font-size: 11.5pt; }
+
+  /* ===== HIGHLIGHT BOX ===== */
+  .highlight {
+    background: #fffbe6;
+    border-left: 4px solid #e6a817;
+    padding: 10pt 14pt;
+    margin: 10pt 0;
+    font-size: 11pt;
+  }
+
+  /* ===== PRINT BUTTON ===== */
+  .print-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #1a237e;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    z-index: 9999;
+  }
+  .print-btn:hover { background: #283593; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!--  PRINT BUTTON (hidden when printing)                        -->
+<!-- ============================================================ -->
+<button class="print-btn no-print" onclick="window.print()">
+  Save as PDF (Ctrl+P)
+</button>
+
+<!-- ============================================================ -->
+<!--  PAGE 1 — COVER PAGE                                        -->
+<!-- ============================================================ -->
+<div class="page cover">
+  <div class="univ">XYZ University / Institute of Technology</div>
+  <div class="dept">Department of Computer Engineering</div>
+  <div class="acad">Academic Year 2023–2024</div>
+  <hr class="sep">
+  <div class="proj-label">BACHELOR OF ENGINEERING</div>
+  <div class="proj-label">FINAL YEAR PROJECT REPORT</div>
+  <hr class="sep">
+
+  <div class="seal">CBT<br>SOFTWARE<br>&#9733;</div>
+
+  <div class="proj-title">CBT Software</div>
+  <div class="proj-sub">Computer Based Testing System</div>
+  <div style="font-size:11pt; color:#444; margin-bottom: 20pt;">
+    A web-based examination management platform with AI-powered question generation
+  </div>
+
+  <div class="author-box">
+    <table>
+      <tr><td>Submitted By</td><td>:</td><td>Himanshu Singh &amp; Akash Anand</td></tr>
+      <tr><td>Roll Number</td><td>:</td><td>[Your Roll Numbers]</td></tr>
+      <tr><td>Branch</td><td>:</td><td>Computer Engineering</td></tr>
+      <tr><td>Guide</td><td>:</td><td>[Guide Name, Designation]</td></tr>
+      <tr><td>Submitted To</td><td>:</td><td>[University / Examination Board]</td></tr>
+      <tr><td>Date</td><td>:</td><td>February 2024</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  PAGE 2 — CERTIFICATE                                       -->
+<!-- ============================================================ -->
+<div class="page cert-page">
+  <div class="cert-title">CERTIFICATE</div>
+  <p style="text-align:center; font-style:italic; margin-bottom: 20pt;">
+    Department of Computer Engineering<br>
+    [Institute Name], [City] — [PIN]
+  </p>
+
+  <div class="cert-body">
+    <p>
+      This is to certify that the project report entitled <strong>"CBT Software — Computer Based
+      Testing System"</strong> submitted by <strong>Himanshu Singh</strong> (Roll No. __________)
+      and <strong>Akash Anand</strong> (Roll No. __________) of Final Year B.E. (Computer
+      Engineering) is a bonafide record of the work carried out by them under our guidance
+      and supervision.
+    </p>
+    <p>
+      The project has been carried out in partial fulfillment of the requirements for the
+      award of the degree of <strong>Bachelor of Engineering in Computer Engineering</strong>
+      from [University Name] for the academic year 2023–2024.
+    </p>
+    <p>
+      To the best of our knowledge and belief, the work embodied in this report has not been
+      submitted to any other university or institution for the award of any degree or diploma.
+    </p>
+  </div>
+
+  <div class="sig-row" style="margin-top: 60pt;">
+    <div class="sig-col">
+      <div class="sig-line"></div>
+      <div><strong>Project Guide</strong></div>
+      <div style="font-size:10pt;">[Name]<br>[Designation]</div>
+    </div>
+    <div class="sig-col">
+      <div class="sig-line"></div>
+      <div><strong>Head of Department</strong></div>
+      <div style="font-size:10pt;">[Name]<br>Dept. of Computer Engineering</div>
+    </div>
+    <div class="sig-col">
+      <div class="sig-line"></div>
+      <div><strong>Principal</strong></div>
+      <div style="font-size:10pt;">[Name]<br>[Institute Name]</div>
+    </div>
+  </div>
+
+  <div class="sig-row" style="margin-top: 50pt;">
+    <div class="sig-col">
+      <div class="sig-line"></div>
+      <div><strong>Himanshu Singh</strong></div>
+    </div>
+    <div class="sig-col">
+      <div class="sig-line"></div>
+      <div><strong>Akash Anand</strong></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 50pt; font-size:10pt; color:#555;">
+    <strong>Place:</strong> [City] &nbsp;&nbsp;&nbsp;
+    <strong>Date:</strong> ____ / ____ / 2024
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  PAGE 3 — ACKNOWLEDGEMENT                                   -->
+<!-- ============================================================ -->
+<div class="page">
+  <h2>Acknowledgement</h2>
+  <p>
+    We wish to express our deep sense of gratitude and sincere thanks to our project guide
+    <strong>[Guide Name]</strong>, [Designation], Department of Computer Engineering,
+    [Institute Name], for their invaluable guidance, constant encouragement, and constructive
+    suggestions throughout the course of this project work.
+  </p>
+  <p>
+    We are grateful to <strong>[HoD Name]</strong>, Head of Department of Computer
+    Engineering, for providing us with all the necessary facilities and support for the
+    completion of this project.
+  </p>
+  <p>
+    We are also thankful to all the faculty members of the Department of Computer Engineering
+    for their direct and indirect support and encouragement.
+  </p>
+  <p>
+    We extend our heartfelt thanks to our family and friends for their moral support and
+    motivation throughout our project work.
+  </p>
+  <br><br>
+  <div style="text-align: right;">
+    <p><strong>Himanshu Singh</strong></p>
+    <p><strong>Akash Anand</strong></p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  PAGE 4 — ABSTRACT                                          -->
+<!-- ============================================================ -->
+<div class="page">
+  <h2>Abstract</h2>
+  <div class="abstract-box">
+    <div class="ab-title">CBT Software — Computer Based Testing System</div>
+    <p>
+      The CBT (Computer Based Testing) Software is a full-stack web application designed to
+      digitize and streamline the entire lifecycle of computer-based examinations. The system
+      provides a multi-role platform supporting four user types: Super Admin, Company (exam
+      organizer), Exam Center, and Student.
+    </p>
+    <p>
+      Built using the Python Django framework with an SQLite3 database and Bootstrap 5
+      frontend, the system enables exam companies to create and manage tests, build a
+      question bank (including AI-powered automatic question generation via the OpenAI API),
+      and register multiple exam centers with secure hashed credentials.
+    </p>
+    <p>
+      Exam centers log in to manage student entry, seating arrangements, and emergency
+      procedures. Students take fully timed Multiple Choice Question (MCQ) exams through an
+      AJAX-driven interface that supports question navigation, review marking, and
+      auto-submission on timer expiry.
+    </p>
+    <p>
+      The system implements session-based authentication, PBKDF2-SHA256 password hashing,
+      Django REST Framework for API endpoints, and an optional OpenAI integration for
+      automated question generation categorized by topic and difficulty level.
+    </p>
+    <p>
+      <strong>Keywords:</strong> Computer Based Testing, Django, MCQ Examination, AI Question
+      Generation, Exam Management System, Online Examination, Web Application.
+    </p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!--  PAGE 5 — TABLE OF CONTENTS                                 -->
+<!-- ============================================================ -->
+<div class="page">
+  <h2>Table of Contents</h2>
+
+  <div class="toc-row toc-section"><span>1. Introduction</span><span></span></div>
+  <div class="toc-row"><span style="margin-left:16pt">1.1 Problem Statement</span><span class="dots"></span><span>01</span></div>
+  <div class="toc-row"><span style="margin-left:16pt">1.2 Objectives</span><span class="dots"></span><span>02</span></div>
+  <div class="toc-row"><span style="margin-left:16pt">1.3 Scope of the Project</span><span class="dots"></span><span>02</span></div>
+  <div class="toc-row"><span style="margin-left:16pt">1.4 Organization of Report</span><span class="dots"></span><span>03</span></div>
+
+  <div class="toc-row toc-section"><span>2. Literature Survey</span><span></span></div>
+  <div class="toc-row"><span style="margin-left:16pt">2.1 Existing Systems</span><span class="dots"></span><span>04</span></div>
+  <div class="toc-row"><span style="margin-left:16pt">2.2 Comparison with Proposed System</span><span class="dots"></span><span>05</span></div>
+
+  <div class="toc-row toc-section"><span>3. System Design</span><span></span></div>
+  <div class="toc-row"><span style="margin-left:16pt">3.1 System Architecture</span><span class="dots"></span><span>06</span></div>
+  <div class="toc-row"><span style="margin-left:16pt">3.2 User Roles and Access Control</span><span class="dots"></span><span>07</span></div>
+  <div class="toc-row"><span style="margin-left:16pt">3.3 Data Flow Diagram</span><span class="dots"></span><span>08</span></div>
+  <div class="toc-row"><span style="margin-left:16pt">3.4 Entity Relationship Diagram</span><span class="dots"></span><span>09</span></div>
+  <div class="toc-row"><span style="margin-left:16pt">3.5 Database Design</span><span class="dots"></span><span>10</span></div>
+  <div class="toc-row"><span style="margin-left:16pt">3.6 Module Description</span><span class="dots"></span><span>11</span></div>
+
+  <div class="toc-row toc-section"><span>4. Implementation</span><span></span></div>
+  <div class="toc-row"><span style="margin-left:16pt">4.1 Technologies Used</span><span class="dots"></span><span>13</span></div>
+  <div class="toc-row"><span style="margin-left:16pt">4.2 Development Environment</span><span class="dots"></span><span>14</span></div>
+  <div class="toc-row"><span style="margin-left:16pt">4.3 Module Implementation</span><span class="dots"></span><span>14</span></div>
+  <div class="toc-row"><span style="margin-left:16pt">4.4 AI Question Generation</span><span class="dots"></span><span>17</span></div>
+  <div class="toc-row"><span style="margin-left:16pt">4.5 Security Implementation</span><span class="dots"></span><span>18</span></div>
+
+  <div class="toc-row toc-section"><span>5. Testing</span><span></span></div>
+  <div class="toc-row"><span style="margin-left:16pt">5.1 Testing Methodology</span><span class="dots"></span><span>19</span></div>
+  <div class="toc-row"><span style="margin-left:16pt">5.2 Test Cases</span><span class="dots"></span><span>20</span></div>
+
+  <div class="toc-row toc-section"><span>6. Conclusion and Future Work</span><span></span></div>
+  <div class="toc-row"><span style="margin-left:16pt">6.1 Conclusion</span><span class="dots"></span><span>22</span></div>
+  <div class="toc-row"><span style="margin-left:16pt">6.2 Future Enhancements</span><span class="dots"></span><span>22</span></div>
+
+  <div class="toc-row toc-section"><span>References</span><span class="dots"></span><span>23</span></div>
+</div>
+
+<!-- ============================================================ -->
+<!--  CHAPTER 1 — INTRODUCTION                                   -->
+<!-- ============================================================ -->
+<div class="page">
+  <h2>Chapter 1: Introduction</h2>
+
+  <h3>1.1 Problem Statement</h3>
+  <p>
+    Traditional paper-based examinations are associated with significant challenges: high
+    printing and logistics costs, susceptibility to paper leaks, manual and error-prone
+    evaluation, slow result declaration, limited scalability, and large administrative
+    overhead. These problems are especially acute for organizations that conduct examinations
+    at multiple geographically distributed centers simultaneously.
+  </p>
+  <p>
+    There is a clear need for a reliable, scalable, and secure digital platform that
+    automates question bank management, examination delivery, multi-center coordination,
+    and result processing — while remaining easy to deploy and maintain by non-technical
+    administrators.
+  </p>
+
+  <h3>1.2 Objectives</h3>
+  <ul>
+    <li>Design and develop a multi-role web-based examination management system.</li>
+    <li>Provide a secure company portal for creating tests, managing question banks, and registering exam centers.</li>
+    <li>Provide a center portal for managing student entry and seat arrangements.</li>
+    <li>Deliver an AJAX-driven student exam interface with countdown timer, question palette, and review marking.</li>
+    <li>Implement secure password storage using PBKDF2-SHA256 hashing.</li>
+    <li>Integrate an AI-powered question generation module using the OpenAI API.</li>
+    <li>Build RESTful API endpoints using Django REST Framework.</li>
+    <li>Ensure role-based access control through custom session management.</li>
+  </ul>
+
+  <h3>1.3 Scope of the Project</h3>
+  <p>The CBT Software covers the following scope:</p>
+  <ul>
+    <li><strong>In scope:</strong> MCQ-based examinations, multi-center management, question bank with AI generation, timed exam interface, session-based security, Django admin panel.</li>
+    <li><strong>Out of scope:</strong> Video proctoring, descriptive answer evaluation, SMS/email notifications, payment gateway (these are planned as future enhancements).</li>
+  </ul>
+
+  <h3>1.4 Organization of Report</h3>
+  <p>
+    <strong>Chapter 2</strong> surveys existing examination systems and motivates the proposed solution.
+    <strong>Chapter 3</strong> covers system design including architecture, DFD, ER diagram, and module descriptions.
+    <strong>Chapter 4</strong> describes the technology stack and implementation details.
+    <strong>Chapter 5</strong> presents testing methodology and test cases.
+    <strong>Chapter 6</strong> concludes the report and outlines future work.
+  </p>
+</div>
+
+<!-- ============================================================ -->
+<!--  CHAPTER 2 — LITERATURE SURVEY                              -->
+<!-- ============================================================ -->
+<div class="page">
+  <h2>Chapter 2: Literature Survey</h2>
+
+  <h3>2.1 Existing Systems</h3>
+
+  <h4>2.1.1 Google Forms / Microsoft Forms</h4>
+  <p>
+    Cloud-based quiz tools that allow basic MCQ creation and automatic grading. However,
+    they lack multi-center management, exam-center-level security, a dedicated student
+    interface with question palettes, or integration with an organizational exam workflow.
+    They are not suitable for formal, proctored examinations at scale.
+  </p>
+
+  <h4>2.1.2 Moodle (LMS)</h4>
+  <p>
+    An open-source Learning Management System supporting online quizzes. While feature-rich,
+    Moodle requires complex installation, has a steep learning curve for administrators, and
+    is primarily designed for course management rather than standalone examination delivery.
+  </p>
+
+  <h4>2.1.3 HackerRank / TestGorilla</h4>
+  <p>
+    Commercial SaaS platforms for technical assessments. They are proprietary, subscription-based,
+    and not customizable for local institutional requirements such as custom center management
+    or government examination workflows.
+  </p>
+
+  <h4>2.1.4 Conducted Research</h4>
+  <p>
+    Several papers (Nwaocha, V.O. — 2012; Jimoh, R.G. et al. — 2012) highlight that
+    computer-based testing reduces examination malpractice, speeds up result processing,
+    and improves test validity compared to paper-based methods. AI-assisted question
+    generation has been explored in recent works (Kurdi et al., 2020), demonstrating that
+    NLP-based question generation significantly reduces content creation time for educators.
+  </p>
+
+  <h3>2.2 Comparison with Proposed System</h3>
+  <table class="report-table">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Google Forms</th>
+        <th>Moodle</th>
+        <th>CBT Software</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Multi-center management</td><td>✗</td><td>Partial</td><td>✓</td></tr>
+      <tr><td>Custom exam company portal</td><td>✗</td><td>✗</td><td>✓</td></tr>
+      <tr><td>Dedicated student exam UI</td><td>Partial</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Question palette &amp; review</td><td>✗</td><td>✓</td><td>✓</td></tr>
+      <tr><td>AI question generation</td><td>✗</td><td>✗</td><td>✓</td></tr>
+      <tr><td>PBKDF2 password hashing</td><td>N/A</td><td>✓</td><td>✓</td></tr>
+      <tr><td>REST API</td><td>✗</td><td>Partial</td><td>✓</td></tr>
+      <tr><td>Open source &amp; self-hosted</td><td>✗</td><td>✓</td><td>✓</td></tr>
+      <tr><td>Lightweight setup</td><td>✓</td><td>✗</td><td>✓</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============================================================ -->
+<!--  CHAPTER 3 — SYSTEM DESIGN                                  -->
+<!-- ============================================================ -->
+<div class="page">
+  <h2>Chapter 3: System Design</h2>
+
+  <h3>3.1 System Architecture</h3>
+  <p>
+    The CBT Software follows a monolithic Django architecture with five Django applications
+    (apps), each encapsulating a distinct business domain. The entire application is served
+    by the Django development server (or Gunicorn/Nginx in production) and uses SQLite3 as
+    the relational database.
+  </p>
+
+  <div class="diagram-box">
+┌──────────────────────────────────────────────────────────────┐
+│                    Client Browser (HTTP)                     │
+└─────────────────────────┬────────────────────────────────────┘
+                          │
+┌─────────────────────────▼────────────────────────────────────┐
+│                   Django Application Server                  │
+│  ┌────────────┐  ┌──────────────┐  ┌───────────────────────┐ │
+│  │general_zone│  │ companylogin │  │     centerlogin       │ │
+│  │(Auth/Public)│  │(Company Dash)│  │(Center Management)    │ │
+│  └────────────┘  └──────────────┘  └───────────────────────┘ │
+│  ┌────────────────────────┐  ┌────────────────────────────┐  │
+│  │     studentexam        │  │       admin_zone           │  │
+│  │  (Exam Interface)      │  │  (Super Admin / REST API)  │  │
+│  └────────────────────────┘  └────────────────────────────┘  │
+└─────────────────────────┬────────────────────────────────────┘
+                          │
+┌─────────────────────────▼────────────────────────────────────┐
+│                  SQLite3 Database (db.sqlite3)                │
+│  Tables: Test | Center | Question | Company | Admin | ...    │
+└──────────────────────────────────────────────────────────────┘</div>
+  <div class="fig-caption">Figure 3.1 — System Architecture Diagram</div>
+
+  <h3>3.2 User Roles and Access Control</h3>
+  <table class="report-table">
+    <thead>
+      <tr><th>Role</th><th>Authentication</th><th>Session Key</th><th>Capabilities</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Super Admin</td>
+        <td>Django built-in</td>
+        <td>Django session</td>
+        <td>Full access via /admin/ — manage all models</td>
+      </tr>
+      <tr>
+        <td>Company</td>
+        <td>Email + hashed password</td>
+        <td><code>com_id</code></td>
+        <td>Create/delete tests, manage centers and question bank</td>
+      </tr>
+      <tr>
+        <td>Center</td>
+        <td>Email + hashed password</td>
+        <td><code>center_id</code></td>
+        <td>Entry login, student list, seat arrangement, emergency</td>
+      </tr>
+      <tr>
+        <td>Student</td>
+        <td>Center-provided credentials</td>
+        <td>N/A (stateless)</td>
+        <td>Take timed MCQ exam, submit answers</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Access control is enforced in each view by checking the relevant session key (e.g.,
+    <code>request.session['com_id']</code>) and redirecting unauthenticated requests to
+    the homepage.
+  </p>
+</div>
+
+<div class="page">
+  <h3>3.3 Data Flow Diagram (Level 0 — Context Diagram)</h3>
+
+  <div class="diagram-box">
+                    ┌─────────────┐
+                    │  COMPANY    │
+                    └──────┬──────┘
+          [Login/Test/      │         [Dashboard/Test List/
+           Questions/       │          Centers/Questions]
+           Centers]         │
+                    ┌───────▼──────────────────┐
+  ┌────────┐        │                          │       ┌─────────┐
+  │ CENTER │───────►│     CBT SOFTWARE         │◄──────│  ADMIN  │
+  └────────┘        │      SYSTEM              │       └─────────┘
+  [Login/Entry]     │                          │  [Manage All Data]
+                    └───────┬──────────────────┘
+          [Student           │         [Exam Questions/
+           Credentials/      │          Timer/Results]
+           Instructions]     │
+                    ┌────────▼────┐
+                    │   STUDENT   │
+                    └─────────────┘</div>
+  <div class="fig-caption">Figure 3.2 — Context Level DFD</div>
+
+  <h3 style="margin-top: 20pt;">3.4 Entity Relationship Diagram</h3>
+
+  <div class="diagram-box">
+  ┌──────────────┐          ┌───────────────┐          ┌──────────────────┐
+  │   COMPANY    │  1    *  │     TEST      │  1    *  │    QUESTION      │
+  │──────────────│──────────│───────────────│          │──────────────────│
+  │ id (PK)      │          │ id (PK)       │          │ id (PK)          │
+  │ name         │          │ test_name     │          │ question         │
+  │ email        │          │ no_of_questions│         │ option_1..4      │
+  │ phone        │          │ total_marks   │          │ correct_option   │
+  │ password     │          │ status        │          │ marks            │
+  └──────────────┘          └───────────────┘          │ topic            │
+                                                       │ difficulty       │
+  ┌──────────────┐                                     │ generated_by     │
+  │    CENTER    │                                     │ created_at       │
+  │──────────────│                                     └──────────────────┘
+  │ id (PK)      │
+  │ center_name  │
+  │ address      │
+  │ phone        │
+  │ email        │
+  │ profile_pic  │
+  │ password     │
+  └──────────────┘</div>
+  <div class="fig-caption">Figure 3.3 — Entity Relationship Diagram</div>
+</div>
+
+<div class="page">
+  <h3>3.5 Database Design</h3>
+
+  <h4>Table: companylogin_test</h4>
+  <table class="report-table">
+    <thead><tr><th>Column</th><th>Type</th><th>Constraints</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>id</td><td>INTEGER</td><td>PK, Auto-increment</td><td>Primary key</td></tr>
+      <tr><td>test_name</td><td>VARCHAR(128)</td><td>NOT NULL</td><td>Exam name</td></tr>
+      <tr><td>no_of_questions</td><td>INT</td><td>NOT NULL, > 0</td><td>Total questions</td></tr>
+      <tr><td>total_marks</td><td>INT</td><td>NOT NULL, > 0</td><td>Maximum marks</td></tr>
+      <tr><td>status</td><td>VARCHAR(128)</td><td>DEFAULT 'Active'</td><td>Active or Completed</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Table: companylogin_center</h4>
+  <table class="report-table">
+    <thead><tr><th>Column</th><th>Type</th><th>Constraints</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>id</td><td>INTEGER</td><td>PK, Auto-increment</td><td>Primary key</td></tr>
+      <tr><td>center_name</td><td>VARCHAR(256)</td><td>NOT NULL</td><td>Center name</td></tr>
+      <tr><td>address</td><td>VARCHAR(256)</td><td>NOT NULL</td><td>Physical address</td></tr>
+      <tr><td>phone</td><td>VARCHAR(256)</td><td>NOT NULL</td><td>Contact number</td></tr>
+      <tr><td>email</td><td>VARCHAR(256)</td><td>NOT NULL</td><td>Login email</td></tr>
+      <tr><td>profile_pic</td><td>VARCHAR(100)</td><td>NULLABLE</td><td>Uploaded image path</td></tr>
+      <tr><td>password</td><td>VARCHAR(128)</td><td>NOT NULL</td><td>PBKDF2-SHA256 hash</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Table: companylogin_question</h4>
+  <table class="report-table">
+    <thead><tr><th>Column</th><th>Type</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>id</td><td>INTEGER PK</td><td>Primary key</td></tr>
+      <tr><td>question</td><td>VARCHAR(512)</td><td>Question text</td></tr>
+      <tr><td>option_1..4</td><td>VARCHAR(256)</td><td>Four MCQ options</td></tr>
+      <tr><td>correct_option</td><td>VARCHAR(256)</td><td>Correct answer text</td></tr>
+      <tr><td>marks</td><td>INT</td><td>Marks for correct answer</td></tr>
+      <tr><td>topic</td><td>VARCHAR(128) NULL</td><td>Subject topic</td></tr>
+      <tr><td>difficulty</td><td>VARCHAR(64) NULL</td><td>Easy / Medium / Hard</td></tr>
+      <tr><td>question_type</td><td>VARCHAR(64)</td><td>Default: MCQ</td></tr>
+      <tr><td>generated_by</td><td>VARCHAR(64) NULL</td><td>'manual' or 'ai'</td></tr>
+      <tr><td>created_at</td><td>DATETIME</td><td>Auto timestamp</td></tr>
+    </tbody>
+  </table>
+
+  <h3>3.6 Module Description</h3>
+  <p>The system is divided into five Django application modules:</p>
+
+  <h4>Module 1: general_zone (Public &amp; Authentication)</h4>
+  <ul>
+    <li>Serves the public-facing website (homepage, about, services, courses)</li>
+    <li>Handles Company signup and login (with PBKDF2 password hashing)</li>
+    <li>Handles Center login and Admin login</li>
+    <li>Provides Contact/Request Demo form</li>
+    <li>Exposes Company REST API via Django REST Framework</li>
+  </ul>
+
+  <h4>Module 2: companylogin (Company Portal)</h4>
+  <ul>
+    <li>Company dashboard with quick-access cards</li>
+    <li>Test management: create, list (ongoing/completed), delete</li>
+    <li>Center management: add, list, delete</li>
+    <li>Question bank: add manually, list with filters, delete, AI generation</li>
+    <li>Session-secured views using <code>request.session['com_id']</code></li>
+  </ul>
+
+  <h4>Module 3: centerlogin (Center Portal)</h4>
+  <ul>
+    <li>Center dashboard</li>
+    <li>Student entry login interface</li>
+    <li>Student list management</li>
+    <li>Seat arrangement visualization</li>
+    <li>Emergency management page</li>
+  </ul>
+
+  <h4>Module 4: studentexam (Exam Interface)</h4>
+  <ul>
+    <li>Student home with login form</li>
+    <li>Instructions page with exam rules</li>
+    <li>AJAX-powered running exam interface with countdown timer</li>
+    <li>Question navigation (Next/Previous), Mark for Review, Clear Response</li>
+    <li>Question palette showing answered/unanswered/reviewed status</li>
+    <li>Submit confirmation page</li>
+  </ul>
+
+  <h4>Module 5: admin_zone (Super Admin)</h4>
+  <ul>
+    <li>Super admin management panel</li>
+    <li>Stores Company, Admin, Center list, and Contact data models</li>
+    <li>Accessible via Django's built-in <code>/admin/</code> interface</li>
+  </ul>
+</div>
+
+<!-- ============================================================ -->
+<!--  CHAPTER 4 — IMPLEMENTATION                                 -->
+<!-- ============================================================ -->
+<div class="page">
+  <h2>Chapter 4: Implementation</h2>
+
+  <h3>4.1 Technologies Used</h3>
+  <table class="report-table">
+    <thead><tr><th>Component</th><th>Technology</th><th>Version</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>Programming Language</td><td>Python</td><td>3.8+</td><td>Backend logic</td></tr>
+      <tr><td>Web Framework</td><td>Django</td><td>4.2.28</td><td>MVC framework, ORM, templating</td></tr>
+      <tr><td>REST API</td><td>Django REST Framework</td><td>3.15.2</td><td>API endpoints</td></tr>
+      <tr><td>Database</td><td>SQLite3</td><td>Built-in</td><td>Relational data storage</td></tr>
+      <tr><td>Frontend CSS</td><td>Bootstrap</td><td>5.x</td><td>Responsive UI components</td></tr>
+      <tr><td>Frontend JS</td><td>JavaScript (ES6)</td><td>–</td><td>AJAX exam navigation, modals</td></tr>
+      <tr><td>AI Integration</td><td>OpenAI API</td><td>≥ 1.0.0</td><td>Auto question generation</td></tr>
+      <tr><td>Password Security</td><td>Django Hashers</td><td>–</td><td>PBKDF2-SHA256 hashing</td></tr>
+      <tr><td>Async Server</td><td>ASGI (Django)</td><td>3.8.1</td><td>Async request support</td></tr>
+    </tbody>
+  </table>
+
+  <h3>4.2 Development Environment</h3>
+  <table class="report-table">
+    <thead><tr><th>Tool</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>VS Code</td><td>Primary IDE</td></tr>
+      <tr><td>Python virtualenv</td><td>Isolated dependency environment</td></tr>
+      <tr><td>Git + GitHub</td><td>Version control</td></tr>
+      <tr><td>SQLite Browser</td><td>Database inspection</td></tr>
+      <tr><td>Django Dev Server</td><td>Local development server</td></tr>
+      <tr><td>macOS / Windows</td><td>Development OS</td></tr>
+    </tbody>
+  </table>
+
+  <h3>4.3 Module Implementation</h3>
+
+  <h4>4.3.1 Authentication Flow</h4>
+  <p>
+    The system uses custom session-based authentication rather than Django's built-in
+    authentication system. On successful login, the user's primary key is stored in the
+    session:
+  </p>
+  <pre>request.session['com_id'] = user.id      # Company login
+request.session['center_id'] = user.id   # Center login</pre>
+  <p>
+    Every protected view checks for this session key at the start:
+  </p>
+  <pre>if not request.session.get('com_id'):
+    return redirect('homepage')</pre>
+  <p>
+    Passwords are hashed on registration using Django's <code>make_password()</code> which
+    applies PBKDF2-HMAC-SHA256 with a random salt. Verification uses
+    <code>check_password(raw, hash)</code>.
+  </p>
+
+  <h4>4.3.2 Test Management</h4>
+  <p>
+    A <code>Test</code> model stores the exam metadata. Tests are created via a POST form,
+    listed on the ongoing/completed pages based on their <code>status</code> field, and
+    deleted via a dedicated view that redirects based on the test's previous status.
+  </p>
+
+  <h4>4.3.3 AJAX Exam Interface</h4>
+  <p>
+    The running exam page loads questions dynamically via AJAX calls to two JSON endpoints:
+    <code>/get-next-question/&lt;id&gt;/</code> and <code>/get-previous-question/&lt;id&gt;/</code>.
+    The countdown timer is implemented in JavaScript using <code>setInterval</code>:
+  </p>
+  <pre>const timer = setInterval(() => {
+  const now = new Date().getTime();
+  const distance = endTime - now;
+  if (distance &lt;= 0) {
+    clearInterval(timer);
+    document.querySelector('form').submit();
+  }
+  // update display...
+}, 1000);</pre>
+
+  <h3>4.4 AI Question Generation</h3>
+  <p>
+    When an <code>OPENAI_API_KEY</code> is configured, company users can auto-generate
+    questions by submitting a topic, count, and difficulty level. The system sends a
+    structured prompt to OpenAI's <code>gpt-3.5-turbo</code> model and parses the response:
+  </p>
+  <pre>prompt = f"Generate {count} MCQs on '{topic}' at {difficulty} difficulty.
+Provide each with options A, B, C, D and the correct letter."</pre>
+  <p>
+    The parsed questions are saved to the <code>Question</code> model with
+    <code>generated_by='ai'</code> and are immediately available in the question bank.
+    This feature is fully optional — the system functions normally without it.
+  </p>
+
+  <h3>4.5 Security Implementation</h3>
+  <ul>
+    <li><strong>Password Hashing:</strong> PBKDF2-SHA256 via Django's <code>make_password()</code></li>
+    <li><strong>CSRF Protection:</strong> Django CSRF middleware enabled for all POST forms (<code>{% csrf_token %}</code>)</li>
+    <li><strong>Session Security:</strong> Custom session key checking on every protected view</li>
+    <li><strong>No Raw Passwords Displayed:</strong> Center passwords shown as <code>●●●●●●●●</code> in UI</li>
+    <li><strong>Input Validation:</strong> HTML5 <code>required</code> attributes and server-side Django ORM queries</li>
+    <li><strong>SQL Injection Prevention:</strong> All database access via Django ORM (parameterized queries)</li>
+    <li><strong>XSS Prevention:</strong> Django template auto-escaping enabled by default</li>
+  </ul>
+</div>
+
+<!-- ============================================================ -->
+<!--  CHAPTER 5 — TESTING                                        -->
+<!-- ============================================================ -->
+<div class="page">
+  <h2>Chapter 5: Testing</h2>
+
+  <h3>5.1 Testing Methodology</h3>
+  <p>
+    The project was tested using a combination of manual functional testing (black-box),
+    integration testing across modules, and boundary value analysis. Django's built-in
+    test framework was used for unit tests.
+  </p>
+
+  <h4>Testing Types Applied:</h4>
+  <ul>
+    <li><strong>Unit Testing:</strong> Individual view functions tested for correct HTTP responses</li>
+    <li><strong>Integration Testing:</strong> Login → Dashboard → Test Creation → Question Addition flow verified end-to-end</li>
+    <li><strong>Boundary Testing:</strong> Empty form submissions, invalid credentials, non-existent question IDs</li>
+    <li><strong>Security Testing:</strong> Session hijacking attempts, unauthorized URL access, CSRF token validation</li>
+    <li><strong>UI Testing:</strong> Responsive layout on desktop and mobile browsers</li>
+  </ul>
+
+  <h3>5.2 Test Cases</h3>
+
+  <table class="report-table">
+    <thead>
+      <tr>
+        <th>TC#</th>
+        <th>Module</th>
+        <th>Test Case</th>
+        <th>Input</th>
+        <th>Expected</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>TC01</td><td>Company Login</td>
+        <td>Valid login</td>
+        <td>Correct email + password</td>
+        <td>Redirect to /com_dashboard/</td>
+        <td>PASS</td>
+      </tr>
+      <tr>
+        <td>TC02</td><td>Company Login</td>
+        <td>Invalid password</td>
+        <td>Wrong password</td>
+        <td>Redirect to homepage</td>
+        <td>PASS</td>
+      </tr>
+      <tr>
+        <td>TC03</td><td>Center Login</td>
+        <td>Valid center login</td>
+        <td>Correct email + password</td>
+        <td>Redirect to /entrylogin/</td>
+        <td>PASS</td>
+      </tr>
+      <tr>
+        <td>TC04</td><td>Add Test</td>
+        <td>Create new test</td>
+        <td>Test name, questions, marks</td>
+        <td>Test saved, redirect to dashboard</td>
+        <td>PASS</td>
+      </tr>
+      <tr>
+        <td>TC05</td><td>Delete Test</td>
+        <td>Delete active test</td>
+        <td>Test ID (active)</td>
+        <td>Test removed, redirect to ongoingtests</td>
+        <td>PASS</td>
+      </tr>
+      <tr>
+        <td>TC06</td><td>Add Center</td>
+        <td>Add new center</td>
+        <td>All required fields</td>
+        <td>Center saved with hashed password</td>
+        <td>PASS</td>
+      </tr>
+      <tr>
+        <td>TC07</td><td>Delete Center</td>
+        <td>Delete existing center</td>
+        <td>Center ID</td>
+        <td>Center removed, redirect to /centers/</td>
+        <td>PASS</td>
+      </tr>
+      <tr>
+        <td>TC08</td><td>Add Question</td>
+        <td>Manual question entry</td>
+        <td>All MCQ fields</td>
+        <td>Question saved with generated_by='manual'</td>
+        <td>PASS</td>
+      </tr>
+      <tr>
+        <td>TC09</td><td>Delete Question</td>
+        <td>Delete question</td>
+        <td>Question ID</td>
+        <td>Question removed, redirect to /questions/</td>
+        <td>PASS</td>
+      </tr>
+      <tr>
+        <td>TC10</td><td>Exam Interface</td>
+        <td>Next question AJAX</td>
+        <td>Current question ID</td>
+        <td>JSON response with next question</td>
+        <td>PASS</td>
+      </tr>
+      <tr>
+        <td>TC11</td><td>Exam Timer</td>
+        <td>Timer countdown</td>
+        <td>Page load</td>
+        <td>Timer decrements, auto-submit at 0</td>
+        <td>PASS</td>
+      </tr>
+      <tr>
+        <td>TC12</td><td>Security</td>
+        <td>Access dashboard without login</td>
+        <td>Direct URL /com_dashboard/</td>
+        <td>Redirect to homepage</td>
+        <td>PASS</td>
+      </tr>
+      <tr>
+        <td>TC13</td><td>Security</td>
+        <td>CSRF token missing</td>
+        <td>POST without CSRF token</td>
+        <td>403 Forbidden</td>
+        <td>PASS</td>
+      </tr>
+      <tr>
+        <td>TC14</td><td>Question Filter</td>
+        <td>Filter by topic</td>
+        <td>topic=Python</td>
+        <td>Only Python questions shown</td>
+        <td>PASS</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============================================================ -->
+<!--  CHAPTER 6 — CONCLUSION                                     -->
+<!-- ============================================================ -->
+<div class="page">
+  <h2>Chapter 6: Conclusion and Future Work</h2>
+
+  <h3>6.1 Conclusion</h3>
+  <p>
+    The CBT Software successfully delivers a complete, self-contained Computer Based Testing
+    platform that addresses the core challenges of paper-based examinations. The system
+    implements the full examination lifecycle: from company registration and test/question
+    creation, through multi-center management, to a secure timed MCQ examination interface
+    for students.
+  </p>
+  <p>
+    Key accomplishments of this project include:
+  </p>
+  <ul>
+    <li>A clean multi-role Django web application serving four distinct user types</li>
+    <li>Secure authentication using PBKDF2-SHA256 password hashing and custom session management</li>
+    <li>A responsive, modern dark-themed administrative dashboard</li>
+    <li>An AJAX-driven timed exam interface with question palette, review marking, and auto-submission</li>
+    <li>An AI-powered question generation module using the OpenAI API</li>
+    <li>RESTful API endpoints using Django REST Framework</li>
+    <li>Comprehensive CRUD operations for all core entities (Tests, Centers, Questions)</li>
+  </ul>
+  <p>
+    The project demonstrates the practical application of full-stack web development
+    principles, database design, security best practices, and modern AI API integration
+    within a real-world examination management context.
+  </p>
+
+  <h3>6.2 Future Enhancements</h3>
+  <ul>
+    <li>
+      <strong>Online Proctoring:</strong> Integration of webcam-based monitoring and AI-powered
+      suspicious activity detection during exams.
+    </li>
+    <li>
+      <strong>Automated Result Calculation:</strong> Immediate score computation after exam
+      submission and a student results dashboard.
+    </li>
+    <li>
+      <strong>Multi-format Questions:</strong> Support for True/False, fill-in-the-blank, and
+      descriptive (essay) question types with manual grading.
+    </li>
+    <li>
+      <strong>Email Notifications:</strong> Automated email alerts for exam schedules, center
+      credentials, and result announcements.
+    </li>
+    <li>
+      <strong>Advanced Analytics:</strong> Company-level dashboards showing question difficulty
+      analysis, student performance graphs, and topic-wise breakdowns.
+    </li>
+    <li>
+      <strong>Mobile App:</strong> React Native or Flutter mobile application for exam
+      delivery on tablets.
+    </li>
+    <li>
+      <strong>Production Deployment:</strong> Dockerized deployment with Gunicorn, Nginx,
+      and PostgreSQL for production-grade reliability.
+    </li>
+    <li>
+      <strong>Question Negative Marking:</strong> Configurable negative marking per question
+      for competitive examination formats.
+    </li>
+  </ul>
+</div>
+
+<!-- ============================================================ -->
+<!--  REFERENCES                                                  -->
+<!-- ============================================================ -->
+<div class="page">
+  <h2>References</h2>
+  <ol style="line-height: 2.2;">
+    <li>
+      Nwaocha, V. O. (2012). Enhancing students' interest in mathematics via multimedia
+      presentation. <em>African Journal of Mathematics and Computer Science Research</em>, 5(7),
+      129–136.
+    </li>
+    <li>
+      Jimoh, R. G., Shittu, A. J. K., &amp; Kawu, Y. K. (2012). Students perception of
+      computer based test (CBT) for examining undergraduate chemistry courses.
+      <em>Journal of Emerging Trends in Educational Research and Policy Studies (JETERAPS)</em>,
+      3(2), 125–130.
+    </li>
+    <li>
+      Kurdi, G., Leo, J., Parsia, B., Sattler, U., &amp; Al-Emari, S. (2020). A systematic
+      review of automatic question generation for educational purposes.
+      <em>International Journal of Artificial Intelligence in Education</em>, 30, 121–204.
+    </li>
+    <li>
+      Django Documentation. (2024). Django 4.2 Official Documentation.
+      Retrieved from https://docs.djangoproject.com/en/4.2/
+    </li>
+    <li>
+      Django REST Framework. (2024). Django REST Framework Documentation.
+      Retrieved from https://www.django-rest-framework.org/
+    </li>
+    <li>
+      OpenAI. (2024). OpenAI API Documentation.
+      Retrieved from https://platform.openai.com/docs/
+    </li>
+    <li>
+      Bootstrap. (2024). Bootstrap 5 Documentation.
+      Retrieved from https://getbootstrap.com/docs/5.0/
+    </li>
+    <li>
+      OWASP. (2023). OWASP Top Ten Web Application Security Risks.
+      Retrieved from https://owasp.org/www-project-top-ten/
+    </li>
+    <li>
+      Holovaty, A., &amp; Kaplan-Moss, J. (2009). <em>The Definitive Guide to Django: Web
+      Development Done Right</em> (2nd ed.). Apress.
+    </li>
+    <li>
+      SQLite Documentation. (2024). SQLite Home Page.
+      Retrieved from https://www.sqlite.org/docs.html
+    </li>
+  </ol>
+
+  <br><br>
+  <div style="border-top: 2px solid #333; padding-top: 14pt; text-align: center; font-size: 10pt; color: #555;">
+    <p><em>— End of Project Report —</em></p>
+    <p style="margin-top: 6pt;">CBT Software | Department of Computer Engineering | 2023–2024</p>
+  </div>
+</div>
+
+</body>
+</html>
