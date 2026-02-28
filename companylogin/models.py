@@ -28,6 +28,16 @@ class Question(models.Model):
     option_4 = models.CharField(max_length=256)
     correct_option = models.CharField(max_length=256)
     marks = models.PositiveIntegerField()
+    # new metadata fields for categorization and AI generation
+    topic = models.CharField(max_length=128, blank=True, null=True, help_text="Subject/topic of the question")
+    difficulty = models.CharField(max_length=64, blank=True, null=True)
+    question_type = models.CharField(max_length=64, default="MCQ", help_text="MCQ, Descriptive, etc")
+    generated_by = models.CharField(max_length=64, blank=True, null=True,
+                                    help_text="set to 'ai' for auto-generated questions")
+    created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
+        # include topic in string representation if available
+        if self.topic:
+            return f"[{self.topic}] {self.question}"
         return self.question

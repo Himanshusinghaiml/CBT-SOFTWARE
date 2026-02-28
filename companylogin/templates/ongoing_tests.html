@@ -1,102 +1,221 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Ongoing tests</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="robots" content="all,follow">
-        <!-- Google fonts - Roboto -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-        <!-- Choices CSS-->
-        <link rel="stylesheet" href="{% static 'vendor/choices.js/public/assets/styles/choices.min.css' %}">
-        <!-- Custom Scrollbar-->
-        <link rel="stylesheet" href="{% static 'vendor/overlayscrollbars/css/OverlayScrollbars.min.css' %}">
-        <!-- theme stylesheet-->
-        <link rel="stylesheet" href="{% static 'static/css/main.css' %}">
-        <!-- Custom stylesheet - for your changes-->
-        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-        <!-- Favicon-->
-        <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
-       
-    
-    </head>
-    <body>
-        <!-- header file -->      
-        {% include 'com_header.html' %}
-        <!-- header close -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ongoing Tests</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="{% static 'vendor/choices.js/public/assets/styles/choices.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/overlayscrollbars/css/OverlayScrollbars.min.css' %}">
+    <link rel="stylesheet" href="{% static 'static/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+    <style>
+        .content-area {
+            padding: 2rem 2rem 2rem 2.5rem;
+            margin-top: 5rem;
+        }
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+        }
+        .page-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #5b86ff;
+            margin: 0;
+        }
+        .page-subtitle {
+            color: #6c8aad;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+        .btn-add {
+            background: linear-gradient(135deg, #2145ff, #6c8aff);
+            color: #fff;
+            border: none;
+            padding: 0.65rem 1.4rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            text-decoration: none;
+        }
+        .btn-add:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(33,69,255,0.4);
+            color: #fff;
+        }
+        .table-card {
+            background: #1a2535;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+        }
+        .table-card table {
+            width: 100%;
+            border-collapse: collapse;
+            color: #c8d6e5;
+        }
+        .table-card thead th {
+            background: #0f1825;
+            color: #7a9cc7;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            padding: 1rem 1.25rem;
+            border: none;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .table-card tbody tr {
+            border-bottom: 1px solid #1f2f45;
+            transition: background 0.15s;
+        }
+        .table-card tbody tr:last-child { border-bottom: none; }
+        .table-card tbody tr:hover { background: #1f2f45; }
+        .table-card tbody td {
+            padding: 0.9rem 1.25rem;
+            border: none;
+            vertical-align: middle;
+        }
+        .test-id {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 36px;
+            height: 36px;
+            padding: 0 0.5rem;
+            background: #1e3a5f;
+            color: #74b9ff;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.82rem;
+        }
+        .test-name { font-weight: 600; color: #e8f0fb; }
+        .badge-active {
+            display: inline-block;
+            background: rgba(46,213,115,0.15);
+            color: #2ed573;
+            padding: 0.28rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+        .btn-delete {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid #c0392b;
+            color: #e74c3c;
+            padding: 0.32rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.18s;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .btn-delete:hover {
+            background: #c0392b;
+            border-color: #c0392b;
+            color: #fff;
+        }
+        .empty-row td {
+            text-align: center;
+            padding: 3.5rem 1rem;
+            color: #4a6385;
+        }
+        .empty-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    </style>
+</head>
+<body>
+    {% include 'com_header.html' %}
 
-        <!-- main content -->
-        <div class="page " style="background-color: #232f3e;">
-            <div class="container offset-md-1">
-                <div class="row" style="margin-top:10%; text-align: center; display: flex; justify-content: center; align-items: center;">
-                    
-                </div>                
-                <div class="row p-1" >
-                    <table class="table table-bordered table-success" style="width: 85%;">
-                        <thead> 
-                            <tr>
-                                <h2 style="font-size:30px;color:#2145ff;margin-left: 30%;">Ongoing Tests</h2>
-                            </tr>                          
-                            <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">Test Name</th>
-                                <th scope="col">No of Questions</th>
-                                <th scope="col">Max Marks</th>
-                                <th scope="col">Status</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for test in tests %}
-                                {% if test.status == "Active" %} 
-                                    <tr>
-                                        <td>{{ test.id }}</td>
-                                        <td>{{ test.test_name }}</td>
-                                        <td>{{ test.no_of_questions }}</td>
-                                        <td>{{ test.total_marks }}</td>
-                                        <td style="color: #eb34e1;">{{ test.status }}</td>
-                                        <td><a href="#" style="color: red;">Delete</a></td>
-                                    </tr>
-                                {% endif %}
-                            {% endfor %}
+    <div class="page" style="background-color: #232f3e; min-height: 100vh;">
+        <div class="content-area">
 
-                        </tbody>                            
-                    </table>
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">&#9654; Ongoing Tests</h1>
+                    <p class="page-subtitle">Tests currently active and available to students</p>
                 </div>
+                <a href="{% url 'addexam' %}" class="btn-add">&#43; Add Test</a>
             </div>
-            
-        </div>
-        <!--main close -->
 
-        <!-- JavaScript files-->
-        <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-        <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
-        <script src="{% static 'vendor/just-validate/js/just-validate.min.js' %}"></script>
-        <script src="{% static 'vendor/choices.js/public/assets/scripts/choices.min.js'" %}></script>
-        <script src="{% static 'vendor/overlayscrollbars/js/OverlayScrollbars.min.js' %}"></script>
-        <script src="{% static 'js/charts-home.js' %}"></script>
-        <!-- Main File-->
-        <script src="{% static 'js/front.js'%}"></script>
-        <script>
-            function injectSvgSprite(path) {
-            
-                var ajax = new XMLHttpRequest();
-                ajax.open("GET", path, true);
-                ajax.send();
-                ajax.onload = function(e) {
+            <div class="table-card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Test Name</th>
+                            <th>Questions</th>
+                            <th>Max Marks</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for test in tests %}
+                            {% if test.status == "Active" %}
+                            <tr>
+                                <td><span class="test-id">#{{ test.id }}</span></td>
+                                <td><span class="test-name">{{ test.test_name }}</span></td>
+                                <td>{{ test.no_of_questions }}</td>
+                                <td>{{ test.total_marks }}</td>
+                                <td><span class="badge-active">&#11044; Active</span></td>
+                                <td>
+                                    <a href="{% url 'delete_test' test.id %}"
+                                       class="btn-delete"
+                                       onclick="return confirm('Delete test &quot;{{ test.test_name }}&quot;? This cannot be undone.')">
+                                        &#128465; Delete
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endif %}
+                        {% empty %}
+                        <tr class="empty-row">
+                            <td colspan="6">
+                                <div class="empty-icon">&#128196;</div>
+                                <p>No ongoing tests found.</p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/front.js' %}"></script>
+    <script>
+        function injectSvgSprite(path) {
+            var ajax = new XMLHttpRequest();
+            ajax.open("GET", path, true);
+            ajax.send();
+            ajax.onload = function (e) {
                 var div = document.createElement("div");
                 div.className = 'd-none';
                 div.innerHTML = ajax.responseText;
                 document.body.insertBefore(div, document.body.childNodes[0]);
-                }
             }
-            injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg'); 
-        </script>
-        <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-     
-    </body>
-</html> 
+        }
+        injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg');
+    </script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</body>
+</html>

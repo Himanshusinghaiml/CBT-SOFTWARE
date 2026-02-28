@@ -13,6 +13,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 # from .models import Company
 from .serializers import CompanySerializer
+from django.contrib.auth.hashers import make_password, check_password
 
 def homepage(request):
     return render(request,'homepage.html')
@@ -50,7 +51,8 @@ def comsignup(request):
         password = request.POST.get('com_signup_password')
         if Company.objects.filter(email=email).exists():
             return render(request, 'homepage', {'error': 'Email already exists'})
-        company = Company(name=name, phone=phone, email=email, password=password)
+        # store hashed password
+        company = Company(name=name, phone=phone, email=email, password=make_password(password))
         company.save()
         return JsonResponse({'success': True})     
     return JsonResponse({'success': False})  
@@ -67,7 +69,7 @@ def comLogin(request):
 
         try:
             user = Company.objects.get(email=email)
-            if user.password == password:
+            if check_password(password, user.password):
                 request.session['com_id'] = user.id
                 return redirect('com_dashboard')
         except Company.DoesNotExist:
@@ -87,7 +89,7 @@ def centerlogin(request):
 
         try:
             user = Center.objects.get(email=email)
-            if user.password == password:
+            if check_password(password, user.password):
                 request.session['center_id'] = user.id
                 return redirect('entrylogin')
         except Center.DoesNotExist:
@@ -107,7 +109,7 @@ def admin_login(request):
 
         try:
             user = Admin.objects.get(email=email)
-            if user.password == password:
+            if check_password(password, user.password):
                 request.session['admin_id'] = user.id
                 return redirect('adminhome')
         except Admin.DoesNotExist:

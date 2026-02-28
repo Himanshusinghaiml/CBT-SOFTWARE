@@ -4,6 +4,8 @@
 - Install dependency with `pip install -r requirements.txt`
 - run django make migrations `python manage.py makemigrations`
 - run django migrations `python manage.py migrations`
+    **IMPORTANT:** after updating the code you will need new migrations for
+    the extended `Question` model, e.g. `python manage.py makemigrations companylogin`.
 - create django superuser with `python manage.py createsuperuser`
 - run django server with `python manage.py runserver`
 - Test the API as follows
@@ -38,7 +40,7 @@
         - Resumption capability for students
         - Automatic grading
         - Question randomization
-        - AI based software         
+        - AI based software (auto‑generated questions & metadata)
     * #### Examiner
         
         - Manage exams and set questions for assigned courses.
@@ -63,6 +65,20 @@
 - Django
 - SQLite3
 - mysql 
+
+## AI Features
+This project now integrates with the OpenAI API to automatically create
+multiple choice questions.  To use this feature you must set an
+`OPENAI_API_KEY` environment variable (or add it to `CBT/settings.py`).
+Company users can click "Auto Generate" on the questions page and provide a
+topic, number of questions and optional difficulty; the system will call the
+AI model, save the results and make them available to students.
+
+The generated questions are tagged with `generated_by='ai'` and the topic/
+difficulty are stored for later filtering.
+
+Feel free to extend the helper in `companylogin/views.py` if you want a
+different prompt or output format.
 
 ## <a name="design-inspo"></a> Design Inspiration
 The backend interface of this project was inspired by [Himanshu singh, Akash Anand] 

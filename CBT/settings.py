@@ -147,6 +147,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     'django.contrib.auth.backends.ModelBackend',
 # )
 
+# OpenAI API key (for question generation). Set this in the environment
+# to enable AI features. In development you can also hardcode a value here,
+# but avoid committing real keys into source control.
+OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY', '')
+
 
 
 

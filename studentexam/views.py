@@ -40,6 +40,8 @@ def get_next_question(request, current_question_id):
             'option2': next_question.option_2,
             'option3': next_question.option_3,
             'option4': next_question.option_4,
+            'topic': next_question.topic,
+            'difficulty': next_question.difficulty,
             'size':Question.objects.count()
         }
     else:
@@ -69,6 +71,8 @@ def get_previous_question(request, current_question_id):
             'option2': previous_question.option_2,
             'option3': previous_question.option_3,
             'option4': previous_question.option_4,
+            'topic': previous_question.topic,
+            'difficulty': previous_question.difficulty,
         }
     else:
         data = {

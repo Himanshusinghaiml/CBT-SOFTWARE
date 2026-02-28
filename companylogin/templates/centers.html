@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,168 +8,343 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
-    <!-- Google fonts - Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
-    <!-- Choices CSS-->
     <link rel="stylesheet" href="{% static 'vendor/choices.js/public/assets/styles/choices.min.css' %}">
-    <!-- Custom Scrollbar-->
     <link rel="stylesheet" href="{% static 'vendor/overlayscrollbars/css/OverlayScrollbars.min.css' %}">
-    <!-- theme stylesheet-->
     <link rel="stylesheet" href="{% static 'static/css/main.css' %}">
-    <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    <!-- Favicon-->
     <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
-     
-     
+    <style>
+        .content-area {
+            padding: 2rem 2rem 2rem 2.5rem;
+            margin-top: 5rem;
+        }
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+        }
+        .page-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ff216f;
+            margin: 0;
+        }
+        .page-subtitle {
+            color: #6c8aad;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+        .btn-add {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: #fff;
+            border: none;
+            padding: 0.65rem 1.4rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            text-decoration: none;
+        }
+        .btn-add:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(39,174,96,0.4);
+            color: #fff;
+        }
+        /* Table card */
+        .table-card {
+            background: #1a2535;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+        }
+        .table-card table {
+            width: 100%;
+            border-collapse: collapse;
+            color: #c8d6e5;
+        }
+        .table-card thead th {
+            background: #0f1825;
+            color: #7a9cc7;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            padding: 1rem 1.25rem;
+            border: none;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .table-card tbody tr {
+            border-bottom: 1px solid #1f2f45;
+            transition: background 0.15s;
+        }
+        .table-card tbody tr:last-child {
+            border-bottom: none;
+        }
+        .table-card tbody tr:hover {
+            background: #1f2f45;
+        }
+        .table-card tbody td {
+            padding: 0.9rem 1.25rem;
+            border: none;
+            vertical-align: middle;
+        }
+        .center-id-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 36px;
+            height: 36px;
+            padding: 0 0.5rem;
+            background: #1e3a5f;
+            color: #74b9ff;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.82rem;
+        }
+        .center-name {
+            font-weight: 600;
+            color: #e8f0fb;
+        }
+        .pw-mask {
+            font-size: 1.15rem;
+            letter-spacing: 0.1em;
+            color: #4a6385;
+        }
+        .btn-delete {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid #c0392b;
+            color: #e74c3c;
+            padding: 0.32rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.18s;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .btn-delete:hover {
+            background: #c0392b;
+            border-color: #c0392b;
+            color: #fff;
+        }
+        .empty-row td {
+            text-align: center;
+            padding: 3.5rem 1rem;
+            color: #4a6385;
+        }
+        .empty-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
 
-
+        /* Modal overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.65);
+            z-index: 1200;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-overlay.open { display: flex; }
+        .modal-box {
+            background: #1a2535;
+            border-radius: 14px;
+            width: 100%;
+            max-width: 480px;
+            padding: 2rem 2rem 1.75rem;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.55);
+            position: relative;
+            animation: slideUp 0.22s ease;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to   { transform: translateY(0);    opacity: 1; }
+        }
+        .modal-box .modal-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #e8f0fb;
+            margin: 0 0 1.5rem;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.25rem;
+            background: none;
+            border: none;
+            color: #4a6385;
+            font-size: 1.5rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+        .modal-close:hover { color: #e8f0fb; }
+        .field-label {
+            display: block;
+            color: #7a9cc7;
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .field-input {
+            width: 100%;
+            background: #0f1825;
+            border: 1px solid #243044;
+            color: #e0e0e0;
+            border-radius: 8px;
+            padding: 0.65rem 1rem;
+            font-size: 0.92rem;
+            outline: none;
+            transition: border 0.15s;
+            box-sizing: border-box;
+        }
+        .field-input:focus { border-color: #27ae60; }
+        .field-input::placeholder { color: #3d5270; }
+        .field-group { margin-bottom: 1rem; }
+        .btn-save {
+            width: 100%;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: #fff;
+            border: none;
+            padding: 0.7rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 0.75rem;
+            transition: opacity 0.15s;
+        }
+        .btn-save:hover { opacity: 0.9; }
+    </style>
 </head>
-        {% include "com_header.html" %}
-        <div class="page">-
-            <!-- Table data -->
-            <div class="container offset-md-1" id="centers_table">
-               
-                <div class="row p-1"style="margin-top:10%;" >
-                    <table class="table table-bordered table-success" style="width: 85%;">
-                        <thead> 
-                            <tr>
-                                <h2 style="font-size:30px;color:#ff216f;margin-left: 30%;">Exam Centers List</h2>
-                            </tr>                          
-                            <tr>
-                                <th scope="col">Center code</th>
-                                <th scope="col">Center Name</th>
-                                <th scope="col">Address</th>  
-                                <th scope="col">Mobile No.</th>
-                                <th scope="col">Email Id</th>
-                                <th scope="col">Password</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for center in centers %}
-                                    <tr>
-                                        <td>{{ center.id }}</td>
-                                        <td>{{ center.center_name }}</td>
-                                        <td>{{ center.address }}</td>
-                                        <td>{{ center.phone }}</td>
-                                        <td>{{ center.email }}</td>
-                                        <td>{{ center.password }}</td>
-                                        <td><a href="#" style="color: red;"><button class="btn btn-outline-danger">Delete</button></a></td>
-                                    </tr>
-                            {% endfor %}
 
-                        </tbody>                            
-                    </table>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <button class="btn btn-outline-danger" id="add_center_btn" >Add Center</button>
-                    </div>
-                </div>
+{% include "com_header.html" %}
+
+<div class="page" style="background-color:#232f3e; min-height: 100vh;">
+    <div class="content-area">
+
+        <!-- Page header -->
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">Exam Centers</h1>
+                <p class="page-subtitle">Manage all registered exam centers</p>
             </div>
+            <button class="btn-add" id="open_modal_btn">&#43; Add Center</button>
         </div>
 
-        <!-- Add a center -->
-        <div class="container" id="add_center_form" style="display:none;">
-            <div class="row " style="margin-top:5%; ">
-                <div class="col-md-6 offset-md-3 ">
-                    <div class="card mt-3">
-
-                        <div class="card-header text-white text-center" style="background-color:#99db9fdd;">
-
-                            <p style="font-weight:bold;font-size:30px;color:#ffffff">Enter Center Details
-                            <p>
-                        </div>
-
-                        <div class="card-body ">
-                            <form name="form" method="post" action="{% url 'addcenter'  %}">
-                                {% csrf_token %}
-                                <div class="form-group pt-3">
-                                    <input type="text" name="center_name" class="form-control" id="center_name"
-                                        placeholder="Center Name" required>
-
-                                </div>
-
-                                <div class="form-group pt-3">
-                                    <input type="text" name="address" class="form-control" id="address"
-                                        placeholder="Address" required>
-                                </div>
-
-                                <div class="form-group pt-3">
-                                    <input type="text" name="phone" class="form-control" id="phone"
-                                        placeholder="Phone No" required>
-                                </div>
-
-                                <div class="form-group pt-3">
-                                    <input type="email" name="email" class="form-control" id="email"
-                                        placeholder="Email address" required>
-                                </div>
-
-                                <div class="form-group pt-3">
-                                    <input type="password" name="password" class="form-control" id="password"
-                                        placeholder="Password" required>
-                                </div>
-
-                                    <div class="row mt-3">
-                                        <div class="col">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <button class="btn btn-primary" type="submit" id="submit" style="color:white;background-color:#65db9f;font-weight:bold;">Submit</button>
-                                                </div>
-                                                <div class="col">
-                                                    <button class="btn btn-primary" type="reset" style="color:white;background-color:#65db9f;font-weight:bold;">Reset</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
+        <!-- Centers table -->
+        <div class="table-card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Center Name</th>
+                        <th>Address</th>
+                        <th>Mobile</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for center in centers %}
+                    <tr>
+                        <td><span class="center-id-badge">#{{ center.id }}</span></td>
+                        <td><span class="center-name">{{ center.center_name }}</span></td>
+                        <td>{{ center.address }}</td>
+                        <td>{{ center.phone }}</td>
+                        <td>{{ center.email }}</td>
+                        <td><span class="pw-mask">&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;</span></td>
+                        <td>
+                            <a href="{% url 'delete_center' center.id %}"
+                               class="btn-delete"
+                               onclick="return confirm('Delete center &quot;{{ center.center_name }}&quot;? This cannot be undone.')">
+                                &#128465; Delete
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr class="empty-row">
+                        <td colspan="7">
+                            <div class="empty-icon">&#127983;</div>
+                            <p>No centers yet. Click <strong>+ Add Center</strong> to add one.</p>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
 
     </div>
-    <!--main close -->
+</div>
 
-        <script>
-            document.getElementById("add_center_btn").addEventListener("click", function() {
-                var hiddenContent = document.getElementById("add_center_form");
-                var centers_table = document.getElementById("centers_table");
-                if (hiddenContent.style.display === "none") {
-                    centers_table.style.display = "none";
-                    hiddenContent.style.display = "block";
-                }else{
-                    hiddenContent.style.display = "none";
-                    centers_table.style.display = "block";
-                }
-                
-            });
-        </script>
-        <script>
-            function injectSvgSprite(path) {
-            
-                var ajax = new XMLHttpRequest();
-                ajax.open("GET", path, true);
-                ajax.send();
-                ajax.onload = function(e) {
-                var div = document.createElement("div");
-                div.className = 'd-none';
-                div.innerHTML = ajax.responseText;
-                document.body.insertBefore(div, document.body.childNodes[0]);
-            }
+<!-- Add Center Modal -->
+<div class="modal-overlay" id="add_center_modal">
+    <div class="modal-box">
+        <button class="modal-close" id="close_modal_btn">&times;</button>
+        <p class="modal-title">&#10133; Add New Center</p>
+        <form method="post" action="{% url 'addcenter' %}">
+            {% csrf_token %}
+            <div class="field-group">
+                <label class="field-label">Center Name</label>
+                <input type="text" name="center_name" class="field-input" placeholder="e.g. Main Exam Hall" required>
+            </div>
+            <div class="field-group">
+                <label class="field-label">Address</label>
+                <input type="text" name="address" class="field-input" placeholder="Full address" required>
+            </div>
+            <div class="field-group">
+                <label class="field-label">Phone Number</label>
+                <input type="text" name="phone" class="field-input" placeholder="e.g. 9876543210" required>
+            </div>
+            <div class="field-group">
+                <label class="field-label">Email Address</label>
+                <input type="email" name="email" class="field-input" placeholder="center@example.com" required>
+            </div>
+            <div class="field-group">
+                <label class="field-label">Password</label>
+                <input type="password" name="password" class="field-input" placeholder="Set login password" required>
+            </div>
+            <button type="submit" class="btn-save">Save Center</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById('add_center_modal');
+    document.getElementById('open_modal_btn').addEventListener('click', function () {
+        modal.classList.add('open');
+    });
+    document.getElementById('close_modal_btn').addEventListener('click', function () {
+        modal.classList.remove('open');
+    });
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) modal.classList.remove('open');
+    });
+</script>
+<script>
+    function injectSvgSprite(path) {
+        var ajax = new XMLHttpRequest();
+        ajax.open("GET", path, true);
+        ajax.send();
+        ajax.onload = function (e) {
+            var div = document.createElement("div");
+            div.className = 'd-none';
+            div.innerHTML = ajax.responseText;
+            document.body.insertBefore(div, document.body.childNodes[0]);
         }
-        injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg'); 
-    </script>
-    <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
+    }
+    injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg');
+</script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </body>
-
 </html>
